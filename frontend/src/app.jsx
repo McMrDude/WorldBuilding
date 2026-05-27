@@ -23,10 +23,7 @@ function App() {
             />
         )}
 
-        <createWorld
-          open={worldBoxOpen}
-          onClose={() => setWorldBoxOpen(false)}
-        />
+        <createWorld style={{ display: worldBoxOpen ? "block" : "none" }} />
     </>
   )
 }
