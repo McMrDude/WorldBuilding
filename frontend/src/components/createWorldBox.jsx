@@ -37,7 +37,7 @@ function CreateWorld({ onClose }) {
                 <label htmlFor="world-description">Description (optional):</label>
                 <textarea id="world-description" name="world-description"></textarea>
 
-                <button onclick={createWorld}>Create World</button>
+                <button onClick={createWorld}>Create World</button>
             </div>
         </>
     )
