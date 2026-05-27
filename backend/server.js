@@ -27,7 +27,7 @@ app.post("/api/worlds", async (req, res) => {
         }
 
         await pool.query(`
-            INSERT INTO worlds (worldName, description)
+            INSERT INTO worlds (worldname, description)
             VALUES ($1, $2)
             `, [req.body.worldName, req.body.description]);
 
