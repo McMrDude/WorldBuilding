@@ -8,6 +8,22 @@ import CreateWorld from './components/createWorldBox.jsx'
 function App() {
   const [worldBoxOpen, setWorldBoxOpen] = useState(false);
 
+  const [worlds, setWorlds] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/worlds", {credentials: 'include'})
+    .then(res => res.json())
+    .then(data => {
+      if(Array.isArray(data)) {
+        setWorlds(data)
+      } else {
+        setWorlds()
+      }
+    })
+  });
+
+  const allWorlds = [...worlds]
+  
   return (
     <>
         <h1>Welcome to World Building!</h1>
@@ -15,6 +31,16 @@ function App() {
         <button onClick={() => setWorldBoxOpen(true)}>
             Create a new world
         </button>
+
+        {allWorlds.length > 0 && (
+          <div>
+            <h2>World Name:</h2>
+            <h3>{allWorlds.worldname}</h3>
+
+            <h2>Description:</h2>
+            <h3>{allWorlds.description}</h3>
+          </div>
+        )}
 
         {worldBoxOpen && (
           <>
