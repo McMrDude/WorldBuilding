@@ -16,14 +16,7 @@ function App() {
             Create a new world
         </button>
 
-        {worldBoxOpen && (
-            <div
-              className={`overlay ${worldBoxOpen ? "show" : "hide"}`} 
-              onClick={() => setWorldBoxOpen(false)}
-            />
-        )}
-
-        <createWorld style={{ display: worldBoxOpen ? "block" : "none" }} />
+        <createWorld/>
     </>
   )
 }
