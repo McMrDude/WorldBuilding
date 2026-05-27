@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "build": "npm install && npm run build",
-    "start": "node ./src/main.jsx"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
