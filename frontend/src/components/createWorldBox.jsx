@@ -33,6 +33,9 @@ function CreateWorld({ onClose }) {
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
+                boxshadow: "0 0 10px rgba(0,0,0,0.5)",
+                padding: "10px",
+                border: "1px solid #555",
                 justifyContent: "center",
                 alignItems: "center"
             }}>
