@@ -18,7 +18,7 @@ const pool = new pg.Pool({
   }
 });
 
-app.post("/api/worlds", (req, res) => {
+app.post("/api/worlds", async (req, res) => {
     try {
         console.log(req.body);
 
@@ -26,7 +26,7 @@ app.post("/api/worlds", (req, res) => {
             return res.status(400).json({ error: "Missing fields" });
         }
 
-        pool.query(`
+        await pool.query(`
             INSERT INTO worlds (worldName, description)
             VALUES ($1, $2)
             `, [req.body.worldName, req.body.description]);
