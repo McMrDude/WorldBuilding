@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import reactLogo from './assets/react.svg'
 import viteLogo from "./assets/vite.svg"
 import './App.css'
-import createWorld from './components/createWorldBox.jsx'
+import CreateWorld from './components/createWorldBox.jsx'
 
 function App() {
   const [worldBoxOpen, setWorldBoxOpen] = useState(false);
@@ -16,7 +16,7 @@ function App() {
             Create a new world
         </button>
 
-        <createWorld/>
+        <CreateWorld/>
     </>
   )
 }
