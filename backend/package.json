@@ -1,11 +1,11 @@
 {
-  "name": "backend",
+  "name": "frontend",
   "version": "1.0.0",
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "build": "cd ../frontend && npm install && npm run build",
-    "start": "node ../frontend/src/main.jsx"
+    "build": "npm install && npm run build",
+    "start": "node ./src/main.jsx"
   },
   "keywords": [],
   "author": "",
