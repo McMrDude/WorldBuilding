@@ -27,8 +27,9 @@ function CreateWorld({ onClose }) {
         <>
             <div style={{
                 position: "fixed",
-                top: 0,
-                left: 0,
+                transform: "translate(-50%, -50%)",
+                top: "50%",
+                left: "50%",
                 width: "100%",
                 height: "100%",
                 display: "flex",
