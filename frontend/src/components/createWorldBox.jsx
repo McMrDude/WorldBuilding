@@ -24,7 +24,7 @@ function createWorld() {
     }
     return (
         <>
-            <div className="create-world-box">
+            <div className={`box ${open ? "open" : ""}`}>
                 <h2>Create a New World</h2>
 
                 <label htmlFor="world-name">World Name:</label>
@@ -33,7 +33,7 @@ function createWorld() {
                 <label htmlFor="world-description">Description (optional):</label>
                 <textarea id="world-description" name="world-description"></textarea>
 
-                <button onclick>Create World</button>
+                <button onclick={createWorld}>Create World</button>
             </div>
         </>
     )
