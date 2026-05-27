@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "build": "cd ../frontend && npm install && npm run build",
-    "start": "node main.jsx"
+    "start": "node frontend/src/main.jsx"
   },
   "keywords": [],
   "author": "",
