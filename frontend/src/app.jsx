@@ -26,7 +26,6 @@ function App() {
         <createWorld
           open={worldBoxOpen}
           onClose={() => setWorldBoxOpen(false)}
-          users={users}
         />
     </>
   )
