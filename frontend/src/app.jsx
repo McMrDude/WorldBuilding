@@ -17,16 +17,17 @@ function App() {
         </button>
 
         {worldBoxOpen && (
+          <>
             <div
               className={`overlay ${worldBoxOpen ? "show" : "hide"}`} 
               onClick={() => setWorldBoxOpen(false)}
             />
-        )}
 
-        <CreateWorld
-          open={worldBoxOpen}
-          onClose={() => setWorldBoxOpen(false)}
-        />
+            <CreateWorld
+              onClose={() => setWorldBoxOpen(false)}
+            />
+          </>
+        )}
     </>
   )
 }
