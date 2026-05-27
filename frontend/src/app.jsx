@@ -3,18 +3,31 @@ import { Link } from 'react-router-dom'
 import reactLogo from './assets/react.svg'
 import viteLogo from "./assets/vite.svg"
 import './App.css'
+import createWorld from './components/createWorldBox.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [worldBoxOpen, setWorldBoxOpen] = useState(false);
 
   return (
     <>
-        <div className="card">
-        <h1>Vite + React</h1>
-        <button onClick={() => setCount((count) => count + 1)}>
-            count is {count}
+        <h1>Welcome to World Building!</h1>
+        <p>This is a platform for creating and sharing your own worlds.</p>
+        <button onClick={() => setWorldBoxOpen(true)}>
+            Create a new world
         </button>
-        </div>
+
+        {worldBoxOpen && (
+            <div
+              className={`overlay ${worldBoxOpen ? "show" : "hide"}`} 
+              onClick={() => setWorldBoxOpen(false)}
+            />
+        )}
+
+        <createWorld
+          open={worldBoxOpen}
+          onClose={() => setWorldBoxOpen(false)}
+          users={users}
+        />
     </>
   )
 }
