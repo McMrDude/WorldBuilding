@@ -29,9 +29,8 @@ app.post("/api/worlds", (req, res) => {
         pool.query(`
             INSERT INTO worlds (worldName, description)
             VALUES ($1, $2)
-            `, [req.body.worldName, req.body.description], (err, result) => {
-            
-        });
+            `, [req.body.worldName, req.body.description]);
+
         res.json({ message: "World created" });
     } catch (error) {
         console.error('Error handling request:', error);
