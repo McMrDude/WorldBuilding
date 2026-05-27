@@ -12,6 +12,7 @@ function CreateWorld({ onClose }) {
             headers: {
                 "Content-Type": "application/json"
             },
+            credentials: "include",
             body: JSON.stringify({ 
                 worldName, 
                 description 
