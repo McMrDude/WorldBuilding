@@ -18,24 +18,24 @@ const pool = new pg.Pool({
   }
 });
 
-app.post("/submit", (req, res) => {
+app.post("/api/worlds", (req, res) => {
     console.log(req.body);
     pool.query(`
-        INSERT INTO messages (text)
-        VALUES ($1)
-        `, [req.body.text], (err, result) => {
+        INSERT INTO worlds (worldName, description)
+        VALUES ($1, $2)
+        `, [req.body.worldName, req.body.description], (err, result) => {
         if (err) {
             console.error('Error inserting data into database:', err);
             res.status(500).json({ error: 'Internal server error' });
-        messages} else {
-            res.json({ message: 'Form submitted successfully!' });
+        } else {
+            res.json({ message: 'World created successfully!' });
         }
     });
 });
 
-app.get("/text", async (req, res) => {
-    const text = await pool.query('SELECT text FROM messages');
-    res.json(text.rows);
+app.get("/api/worlds", async (req, res) => {
+    const worlds = await pool.query('SELECT * FROM worlds');
+    res.json(worlds.rows);
 });
 
 
