@@ -25,7 +25,17 @@ function CreateWorld({ onClose }) {
     }
     return (
         <>
-            <div className="box">
+            <div style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                transform: "translate(-50%, -50%)",
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
                 <button className="closeBtn" onClick={onClose}>
                     ✕
                 </button>
