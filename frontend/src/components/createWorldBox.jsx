@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function createWorld() {
+function CreateWorld({ open, onClose }) {
     const [worldName, setWorldName] = useState('');
     const [description, setDescription] = useState('');
 
@@ -25,6 +25,9 @@ function createWorld() {
     return (
         <>
             <div className={`box ${open ? "open" : ""}`}>
+                <button className="closeBtn" onClick={onClose}>
+                    ✕
+                </button>
                 <h2>Create a New World</h2>
 
                 <label htmlFor="world-name">World Name:</label>
@@ -39,4 +42,4 @@ function createWorld() {
     )
 }
 
-export default createWorld;
+export default CreateWorld;
