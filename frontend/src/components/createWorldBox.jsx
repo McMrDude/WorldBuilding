@@ -32,10 +32,22 @@ function CreateWorld({ onClose }) {
                 <h2>Create a New World</h2>
 
                 <label htmlFor="world-name">World Name:</label>
-                <input type="text" id="world-name" name="world-name" required />
+                <input 
+                    type="text" 
+                    id="world-name" 
+                    name="world-name" 
+                    value={worldName}
+                    onChange={(e) => setWorldName(e.target.value)}
+                    required 
+                />
 
                 <label htmlFor="world-description">Description (optional):</label>
-                <textarea id="world-description" name="world-description"></textarea>
+                <textarea 
+                    id="world-description" 
+                    name="world-description" 
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                ></textarea>
 
                 <button onClick={createWorld}>Create World</button>
             </div>
