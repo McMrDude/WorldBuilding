@@ -24,6 +24,7 @@ function App() {
 
   const allWorlds = [...worlds]
   
+  console.log(allWorlds)
   return (
     <>
         <h1>Welcome to World Building!</h1>
@@ -40,6 +41,7 @@ function App() {
             <h2>Description:</h2>
             <h3>{allWorlds.description}</h3>
           </div>
+
         )}
 
         {worldBoxOpen && (
