@@ -34,14 +34,15 @@ function App() {
         </button>
 
         {allWorlds.length > 0 && (
-          <div>
-            <h2>World Name:</h2>
-            <h3>{allWorlds.worldname}</h3>
+          {allWorlds.map(Worlds => (
+            <div>
+              <h2>World Name:</h2>
+              <h3>{Worlds.worldname}</h3>
 
-            <h2>Description:</h2>
-            <h3>{allWorlds.description}</h3>
-          </div>
-
+              <h2>Description:</h2>
+              <h3>{.description}</h3>
+            </div>
+          ))}
         )}
 
         {worldBoxOpen && (
