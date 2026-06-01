@@ -30,7 +30,7 @@ function App() {
         </button>
 
         {worlds.map(Worlds => (
-          <div className="world-card" key={Worlds.id}>
+          <div className="world-card" key={Worlds.id} onClick={() => console.log(Worlds.id)}>
             <h2>World Name:</h2>
             <h3>{Worlds.worldname}</h3>
 
