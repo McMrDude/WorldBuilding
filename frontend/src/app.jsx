@@ -30,7 +30,7 @@ function App() {
         </button>
 
         {worlds.map(Worlds => (
-          <div>
+          <div className="world-card" key={Worlds.id}>
             <h2>World Name:</h2>
             <h3>{Worlds.worldname}</h3>
 
