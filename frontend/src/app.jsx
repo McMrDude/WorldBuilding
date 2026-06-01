@@ -10,17 +10,12 @@ function App() {
 
   const [worlds, setWorlds] = useState([]);
 
-  useEffect(() => {
+  
+  const fetchWorlds = () => {
     fetch("/api/worlds", {credentials: 'include'})
     .then(res => res.json())
-    .then(data => {
-      if(Array.isArray(data)) {
-        setWorlds(data)
-      } else {
-        setWorlds()
-      }
-    })
-  }, []);
+    .then(data => setWorlds(Array.isArray(data) ? data : []))
+  }, [];
 
   const allWorlds = [...worlds]
   
@@ -44,6 +39,11 @@ function App() {
             </div>
           ))
         )}
+
+        <CreateWorld 
+          onClose={() => setWorldBoxOpen(false)}
+          onWorldCreated={fetchWorlds}
+        />
 
         {worldBoxOpen && (
           <>

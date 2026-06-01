@@ -21,6 +21,8 @@ function CreateWorld({ onClose }) {
 
         setWorldName('');
         setDescription('');
+        onWorldCreated();
+        onClose();
         alert("World created!");
     }
     return (
