@@ -20,7 +20,7 @@ function App() {
         setWorlds()
       }
     })
-  });
+  }, []);
 
   const allWorlds = [...worlds]
   
@@ -34,15 +34,15 @@ function App() {
         </button>
 
         {allWorlds.length > 0 && (
-          {allWorlds.map(Worlds => (
+          allWorlds.map(Worlds => (
             <div>
               <h2>World Name:</h2>
               <h3>{Worlds.worldname}</h3>
 
               <h2>Description:</h2>
-              <h3>{.description}</h3>
+              <h3>{Worlds.description}</h3>
             </div>
-          ))}
+          ))
         )}
 
         {worldBoxOpen && (
