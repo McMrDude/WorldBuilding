@@ -15,7 +15,7 @@
 }
 .world-card:active {
   background-color: #999;
-  transform: scale(1.02);
+  transform: scale(0.95);
 }
 
 
