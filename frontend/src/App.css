@@ -13,7 +13,7 @@
   background-color: #c1c1c1;
   transform: scale(0.98);
 }
-.world-card::after {
+.world-card:active {
   background-color: #999;
   transform: scale(1.02);
 }
