@@ -21,7 +21,6 @@ function App() {
     fetchWorlds();
   }, []);
   
-  console.log(allWorlds)
   return (
     <>
         <h1>Welcome to World Building!</h1>
