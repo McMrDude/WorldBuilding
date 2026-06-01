@@ -39,7 +39,7 @@ function CreateWorld({ onClose, onWorldCreated }) {
                 padding: "10px",
                 border: "1px solid #555",
                 justifyContent: "center",
-                alignItems: "center"
+                alignItems: "center",
                 backgroundColor: "#fff",
             }}>
                 <button className="closeBtn" onClick={onClose}>
