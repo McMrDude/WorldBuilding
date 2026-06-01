@@ -15,7 +15,7 @@ function App() {
     fetch("/api/worlds", {credentials: 'include'})
     .then(res => res.json())
     .then(data => setWorlds(Array.isArray(data) ? data : []))
-  }, [];
+  };
 
   const allWorlds = [...worlds]
   
