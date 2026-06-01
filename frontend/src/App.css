@@ -6,6 +6,16 @@
   margin: 16px auto;
   max-width: 400px;
   text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+.world-card:hover {
+  background-color: #c1c1c1;
+  transform: scale(0.98);
+}
+.world-card::after {
+  background-color: #999;
+  transform: scale(1.02);
 }
 
 
