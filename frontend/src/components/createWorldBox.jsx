@@ -1,8 +1,9 @@
 import { useState } from 'react';
 
-function CreateWorld({ onClose }) {
+function CreateWorld({ onClose, onWorldCreated }) {
     const [worldName, setWorldName] = useState('');
     const [description, setDescription] = useState('');
+    
 
     const createWorld = async () => {
         if (!worldName || !description) return;

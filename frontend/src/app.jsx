@@ -17,7 +17,9 @@ function App() {
     .then(data => setWorlds(Array.isArray(data) ? data : []))
   };
 
-  const allWorlds = [...worlds]
+  useEffect(() => {
+    fetchWorlds();
+  }, []);
   
   console.log(allWorlds)
   return (
@@ -28,17 +30,15 @@ function App() {
             Create a new world
         </button>
 
-        {allWorlds.length > 0 && (
-          allWorlds.map(Worlds => (
-            <div>
-              <h2>World Name:</h2>
-              <h3>{Worlds.worldname}</h3>
+        {worlds.map(Worlds => (
+          <div>
+            <h2>World Name:</h2>
+            <h3>{Worlds.worldname}</h3>
 
-              <h2>Description:</h2>
-              <h3>{Worlds.description}</h3>
-            </div>
-          ))
-        )}
+            <h2>Description:</h2>
+            <h3>{Worlds.description}</h3>
+          </div>
+        ))}
 
         {worldBoxOpen && (
           <>
