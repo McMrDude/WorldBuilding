@@ -40,11 +40,6 @@ function App() {
           ))
         )}
 
-        <CreateWorld 
-          onClose={() => setWorldBoxOpen(false)}
-          onWorldCreated={fetchWorlds}
-        />
-
         {worldBoxOpen && (
           <>
             <div
@@ -54,6 +49,7 @@ function App() {
 
             <CreateWorld
               onClose={() => setWorldBoxOpen(false)}
+              onWorldCreated={fetchWorlds}
             />
           </>
         )}
