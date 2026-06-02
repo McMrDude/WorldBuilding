@@ -1,0 +1,30 @@
+import { useParams } from 'react-router-dom'
+
+function worldPage() {
+    const { id } = useParams();
+    const { world, setWorld } = useState(null);
+
+    useEffect(() => {
+        fetch(`/api/worlds/${id}`)
+            .then(res => res.json())
+            .then(data => setWorldData(data));
+    }, [id]);
+
+    if (!world) {
+        return <div>Loading...</div>;
+    }
+
+    return (
+        <div>
+            <h1>World {id}</h1>
+            {world && (
+                <div>
+                    <h2>{world.worldname}</h2>
+                    <p>{world.description}</p>
+                </div>
+            )}
+        </div>
+    )
+}
+
+export default worldPage;
