@@ -7,7 +7,7 @@ function worldPage() {
     useEffect(() => {
         fetch(`/api/worlds/${id}`)
             .then(res => res.json())
-            .then(data => setWorldData(data));
+            .then(data => setWorld(data));
     }, [id]);
 
     if (!world) {
