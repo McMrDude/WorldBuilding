@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import CreateCharacter from '/components/createCharacterBox.jsx';
 
 function CharacterPage() {
     const [characterBoxOpen, setCharacterBoxOpen] = useState(false);
