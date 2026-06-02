@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom'
 import CreateCharacter from '../components/createCharacterBox.jsx';
 
 function CharacterPage() {
     const [characterBoxOpen, setCharacterBoxOpen] = useState(false);
     const [characters, setCharacters] = useState([]);
-    const { id } = useParams();
+    
 
     const fetchCharacters = () => {
         fetch("/api/characters", {credentials: 'include'})

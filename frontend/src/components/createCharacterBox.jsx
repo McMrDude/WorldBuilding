@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { Link, useParams } from 'react-router-dom'
 
 function CreateCharacter({ onClose, onCharacterCreated }) {
     const [characterName, setCharacterName] = useState('');
     const [description, setDescription] = useState('');
+    const { id } = useParams();
     
 
     const createCharacter = async () => {
