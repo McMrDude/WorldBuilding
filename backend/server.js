@@ -42,6 +42,9 @@ app.get("/api/worlds/:id", async (req, res) => {
         'SELECT * FROM worlds WHERE id = $1', 
         [req.params.id]
     );
+    
+    console.log(req.params.id);
+    console.log(result.rows);
 
     res.json(result.rows[0]);
 });
