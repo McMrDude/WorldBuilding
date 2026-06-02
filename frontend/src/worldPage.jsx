@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 function WorldPage() {
     const { id } = useParams();
@@ -17,6 +17,11 @@ function WorldPage() {
 
     return (
         <div>
+            <div>
+                <Link to={`/world/${id}/characters`}>
+                    <button>Karakterer</button>
+                </Link>
+            </div>
             <h1>World {id}</h1>
             {world && (
                 <div>

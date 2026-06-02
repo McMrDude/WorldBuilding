@@ -42,7 +42,7 @@ app.get("/api/worlds/:id", async (req, res) => {
         'SELECT * FROM worlds WHERE id = $1', 
         [req.params.id]
     );
-    
+
     console.log(req.params.id);
     console.log(result.rows);
 
@@ -54,6 +54,34 @@ app.get("/api/worlds", async (req, res) => {
     res.json(worlds.rows);
 });
 
+
+app.post("/api/characters", async (req, res) => {
+    try {
+        console.log(req.body);
+
+        if (!req.body.characterName) {
+            return res.status(400).json({ error: "Missing fields" });
+        }
+
+        await pool.query(`
+            INSERT INTO characters (name, description)
+            VALUES ($1, $2)
+            `, [req.body.characterName, req.body.description]);
+
+        res.json({ message: "Character created" });
+    } catch (error) {
+        console.error('Error handling request:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+app.get("/api/characters/:id", async (req, res) => {
+    const result = await pool.query(
+        'SELECT * FROM characters WHERE id = $1', 
+        [req.params.id]
+    );
+
+    res.json(result.rows[0]);
+});
 
 /*SERVER START*/
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
