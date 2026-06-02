@@ -31,15 +31,13 @@ function App() {
 
         <div id="worlds-container">
           {worlds.map(Worlds => (
-            <Link style={{ all: 'unset' }} to={`/world/${Worlds.id}`}>
-              <div className="world-card" key={Worlds.id}>
-                <h2>World Name:</h2>
-                <h3>{Worlds.worldname}</h3>
+            <div className="world-card" onClick={() => `/world/${Worlds.id}`} key={Worlds.id}>
+              <h2>World Name:</h2>
+              <h3>{Worlds.worldname}</h3>
 
-                <h2>Description:</h2>
-                <h3>{Worlds.description}</h3>
-              </div>
-            </Link>
+              <h2>Description:</h2>
+              <h3>{Worlds.description}</h3>
+            </div>
           ))}
         </div>
 
