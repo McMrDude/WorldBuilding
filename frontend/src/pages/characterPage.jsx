@@ -20,7 +20,6 @@ function CharacterPage() {
         <div>
             <button onClick={() => setCharacterBoxOpen(true)}>Create Character</button>
 
-            <h1>ID: {id}</h1>
 
             {characterBoxOpen && (
             <>
