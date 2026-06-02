@@ -1,8 +1,9 @@
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 
-function worldPage() {
+function WorldPage() {
     const { id } = useParams();
-    const { world, setWorld } = useState(null);
+    const [ world, setWorld ] = useState(null);
 
     useEffect(() => {
         fetch(`/api/worlds/${id}`)
@@ -27,4 +28,4 @@ function worldPage() {
     )
 }
 
-export default worldPage;
+export default WorldPage;
