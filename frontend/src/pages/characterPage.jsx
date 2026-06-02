@@ -13,21 +13,21 @@ function CharacterPage() {
     useEffect(() => {
         fetchCharacters();
     }, []);
+
+    return (
+        <div>
+            <button onClick={() => setCharacterBoxOpen(true)}>Create Character</button>
+
+            {characterBoxOpen && (
+            <>
+                <CreateCharacter
+                onClose={() => setCharacterBoxOpen(false)}
+                onCharacterCreated={fetchCharacters}
+                />
+            </>
+            )}
+        </div>
+    );
 }
-return (
-    <div>
-        <button onClick={() => setCharacterBoxOpen(true)}>Create Character</button>
-
-        {characterBoxOpen && (
-          <>
-            <CreateCharacter
-              onClose={() => setCharacterBoxOpen(false)}
-              onCharacterCreated={fetchCharacters}
-            />
-          </>
-        )}
-    </div>
-);
-
 
 export default CharacterPage;
