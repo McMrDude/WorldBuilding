@@ -1,38 +1,15 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import supabase from "../supabase.js";
-import Draw from './drawBox.jsx';
+import CreateCharacterPortrait from './createCharacterPortrait.jsx';
 
 function CreateCharacter({ onClose, onCharacterCreated }) {
     const [characterName, setCharacterName] = useState('');
     const [description, setDescription] = useState('');
-    const [imageFile, setImageFile] = useState(null);
-    const [drawBoxOpen, setDrawBoxOpen] = useState(false);
     const { id } = useParams();    
 
     const createCharacter = async () => {
         if (!characterName || !id) return;
-
-        const file = imageFile;
-
-        const fileName = `${Date.now()}-${file.name}`;
-
-        const { data: uploadData, error } = await supabase.storage
-            .from("character_portraits")
-            .upload(fileName, file);
-
-        if (error) {
-            console.error("UPLOAD ERROR:", error);
-            return;
-        }
-
-        const { data: publicUrlData, error: urlError } = await supabase.storage
-            .from("character_portraits")
-            .getPublicUrl(fileName);
-
-        const publicUrl = publicUrlData.publicUrl;
-
-        console.log(publicUrl);
 
         await fetch("/api/characters", {
             method: "POST",
@@ -75,16 +52,6 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                 </button>
                 <h2>Create a New Character</h2>
 
-                <label htmlFor="character-image">Character Image (optional):</label>
-                <input 
-                    type="file" 
-                    id="character-image" 
-                    name="character-image" 
-                    accept="image/*"
-                    value={imageFile ? undefined : ''}
-                    onChange={(e) => setImageFile(e.target.files[0])}
-                />
-
                 <label htmlFor="character-name">Character Name:</label>
                 <input 
                     type="text" 
@@ -103,17 +70,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                     onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
 
-                <button onClick={() => setDrawBoxOpen(true)}>Draw Character</button>
-
                 <button onClick={createCharacter}>Create Character</button>
-
-                {drawBoxOpen && (
-                <>
-                    <Draw
-                        onClose={() => setDrawBoxOpen(false)}
-                    />
-                </>
-                )}
             </div>
         </>
     )
