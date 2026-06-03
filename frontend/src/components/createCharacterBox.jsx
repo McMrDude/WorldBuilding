@@ -6,26 +6,24 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
     const [characterName, setCharacterName] = useState('');
     const [description, setDescription] = useState('');
     const [imageFile, setImageFile] = useState(null);
-    const { id } = useParams();
-
-
-    const file = imageFile;
-
-    const fileName = `${Date.now()}-${file.name}`;
-
-    const { data, error } = await supabase.setDescription
-        .from("character_portaits")
-        .upload(fileName, file);
-
-    const {
-        data: { publicUrl }
-    } = supabase.storage
-    .from("character_portaits")
-    .getPublicUrl(fileName);
-    
+    const { id } = useParams();    
 
     const createCharacter = async () => {
         if (!characterName || !id) return;
+
+        const file = imageFile;
+
+        const fileName = `${Date.now()}-${file.name}`;
+
+        const { data, error } = await supabase.setDescription
+            .from("character_portaits")
+            .upload(fileName, file);
+
+        const {
+            data: { publicUrl }
+        } = supabase.storage
+        .from("character_portaits")
+        .getPublicUrl(fileName);
 
         console.log(publicUrl);
 
