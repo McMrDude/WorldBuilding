@@ -4,11 +4,14 @@ import { Link, useParams } from 'react-router-dom'
 function CreateCharacter({ onClose, onCharacterCreated }) {
     const [characterName, setCharacterName] = useState('');
     const [description, setDescription] = useState('');
+    const [characterImage, setCharacterImage] = useState('');
     const { id } = useParams();
     
 
     const createCharacter = async () => {
         if (!characterName || !id) return;
+
+        console.log(characterImage);
 
         await fetch("/api/characters", {
             method: "POST",
@@ -18,6 +21,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
             credentials: "include",
             body: JSON.stringify({ 
                 id,
+                characterImage,
                 characterName, 
                 description 
             })
@@ -49,6 +53,16 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                     ✕
                 </button>
                 <h2>Create a New Character</h2>
+
+                <label htmlFor="character-image">Character Image (optional):</label>
+                <input 
+                    type="file" 
+                    id="character-image" 
+                    name="character-image" 
+                    accept="image/*"
+                    value={characterImage}
+                    onChange={(e) => setCharacterImage(e.target.value)}
+                />
 
                 <label htmlFor="character-name">Character Name:</label>
                 <input 
