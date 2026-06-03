@@ -6,6 +6,7 @@ import CreateCharacterPortrait from './createCharacterPortrait.jsx';
 function CreateCharacter({ onClose, onCharacterCreated }) {
     const [characterName, setCharacterName] = useState('');
     const [description, setDescription] = useState('');
+    const [imgBoxOpen, setImgBoxOpen] = useState(false);
     const { id } = useParams();    
 
     const createCharacter = async () => {
@@ -25,6 +26,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
             })
         });
 
+        setImgBoxOpen(true);
         setCharacterName('');
         setDescription('');
         onCharacterCreated();
@@ -71,6 +73,10 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                 ></textarea>
 
                 <button onClick={createCharacter}>Create Character</button>
+
+                {imgBoxOpen && (
+                    <CreateCharacterPortrait/>
+                )}
             </div>
         </>
     )
