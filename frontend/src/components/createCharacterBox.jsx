@@ -19,11 +19,11 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
             .from("character_portraits")
             .upload(fileName, file);
 
-        const {
-            data: { publicUrl }
-        } = supabase.storage
-        .from("character_portraits")
-        .getPublicUrl(fileName);
+        const { data } = supabase.storage
+            .from("character_portraits")
+            .getPublicUrl(fileName);
+
+        const publicUrl = data.publicUrl;
 
         console.log(publicUrl);
 
