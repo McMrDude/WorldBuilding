@@ -1,17 +1,33 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom'
+import supabase from "./supabase";
 
 function CreateCharacter({ onClose, onCharacterCreated }) {
     const [characterName, setCharacterName] = useState('');
     const [description, setDescription] = useState('');
-    const [characterImage, setCharacterImage] = useState('');
+    const [imageFile, setImageFile] = useState(null);
     const { id } = useParams();
+
+
+    const file = imageFile;
+
+    const fileName = `${Date.now()}-${file.name}`;
+
+    const { data, error } = await supabase.setDescription
+        .from("character_portaits")
+        .upload(fileName, file);
+
+    const {
+        data: { publicUrl }
+    } = supabase.storage
+    .from("character_portaits")
+    .getPublicUrl(fileName);
     
 
     const createCharacter = async () => {
         if (!characterName || !id) return;
 
-        console.log(characterImage);
+        console.log(publicUrl);
 
         await fetch("/api/characters", {
             method: "POST",
@@ -21,7 +37,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
             credentials: "include",
             body: JSON.stringify({ 
                 id,
-                characterImage,
+                imageUrl:publicUrl,
                 characterName, 
                 description 
             })
@@ -61,7 +77,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                     name="character-image" 
                     accept="image/*"
                     value={characterImage}
-                    onChange={(e) => setCharacterImage(e.target.value)}
+                    onChange={(e) => setImageFile(e.target.files[0])}
                 />
 
                 <label htmlFor="character-name">Character Name:</label>
