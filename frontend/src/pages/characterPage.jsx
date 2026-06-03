@@ -22,15 +22,17 @@ function CharacterPage() {
         <div>
             <button onClick={() => setCharacterBoxOpen(true)}>Create Character</button>
 
-            {characters.map(character => (
-                character.world_id === id && (
-                    <div key={character.id}>
-                        <img src={character.img} alt={character.name} style={{ width: '200px', height: '200px' }} />
-                        <h2>Name: {character.name}</h2>
-                        <p>Description: {character.description}</p>
-                    </div>
-                )
-            ))}
+            <div className="characters-container">
+                {characters.map(character => (
+                    character.world_id === id && (
+                        <div key={character.id}>
+                            <img src={character.img} alt={character.name} style={{ width: '200px', height: '200px' }} />
+                            <h2>Name: {character.name}</h2>
+                            <p>Description: {character.description}</p>
+                        </div>
+                    )
+                ))}
+            </div>
 
             {characterBoxOpen && (
             <>
