@@ -1,10 +1,55 @@
-import { useState } from 'react';
+import {useRef, useEffect, useState } from 'react';
 
 function Draw({ onClose, onDrawn }) {    
+    const canvasRef = useRef(null);
+    const ctxRef = useRef(null);
+    const isDrawing = useRef(false);
 
-    const draw = async () => {
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext("2d");
 
-    }
+        canvas.width = 400;
+        canvas.height = 400;
+
+        ctx.lineCap = "round";
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 4;
+
+        ctxRef.current = ctx;
+    }, []);
+
+    const startDraw = (e) => {
+        const ctx = ctxRef.current;
+        const rect = canvasRef.current.getBoundingClientRect();
+
+        isDrawing.current = true;
+
+        ctx.beginPath();
+        ctx.moveTo(
+            e.clientX - rect.left,
+            e.clientY - rect.top
+        );
+    };
+
+    const draw = (e) => {
+        if (!isDrawing.current) return;
+
+        const ctx = ctzRef.current;
+        const rect = canvasRef.current.getBoundingClientRect();
+
+        ctx.lineTo(
+            e.clientX - rect.left,
+            e.clentY - rect.top
+        );
+
+        ctx.stroke();
+    };
+
+    const stopDraw = () => {
+        isDrawing.current = false;
+    };
+
     return (
         <>
             <div style={{
@@ -28,13 +73,14 @@ function Draw({ onClose, onDrawn }) {
 
                 <canvas 
                     ref={canvasRef} 
-                    width={400} 
-                    height={400} 
-                    style={{ border: '1px solid #000; cursor: crosshair' }}
-                    onMouseDown={startDrawing}
+                    style={{ 
+                        border: '1px solid #000;',
+                        cursor: 'crosshair' 
+                    }}
+                    onMouseDown={startDraw}
                     onMouseMove={draw}
-                    onMouseUp={stopDrawing}
-                    onMouseLeave={stopDrawing}
+                    onMouseUp={stopDraw}
+                    onMouseLeave={stopDraw}
                 ></canvas>
             </div>
         </>
