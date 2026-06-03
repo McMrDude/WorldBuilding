@@ -110,8 +110,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                 {drawBoxOpen && (
                 <>
                     <Draw
-                    onClose={() => setDrawBoxOpen(false)}
-                    onDrawn={fetchCharacters}
+                        onClose={() => setDrawBoxOpen(false)}
                     />
                 </>
                 )}
