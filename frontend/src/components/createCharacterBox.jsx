@@ -19,6 +19,11 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
             .from("character_portraits")
             .upload(fileName, file);
 
+        if (error) {
+            console.error("UPLOAD ERROR:", error);
+            return;
+        }
+
         const { data: publicUrlData, error: urlError } = await supabase.storage
             .from("character_portraits")
             .getPublicUrl(fileName);
