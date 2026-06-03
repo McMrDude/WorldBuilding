@@ -35,12 +35,12 @@ function Draw({ onClose, onDrawn }) {
     const draw = (e) => {
         if (!isDrawing.current) return;
 
-        const ctx = ctzRef.current;
+        const ctx = ctxRef.current;
         const rect = canvasRef.current.getBoundingClientRect();
 
         ctx.lineTo(
             e.clientX - rect.left,
-            e.clentY - rect.top
+            e.clientY - rect.top
         );
 
         ctx.stroke();
