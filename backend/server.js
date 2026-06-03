@@ -76,11 +76,10 @@ app.post("/api/characters", async (req, res) => {
 });
 app.get("/api/characters", async (req, res) => {
     const result = await pool.query(
-        'SELECT * FROM characters WHERE id = $1', 
-        [req.params.id]
+        'SELECT * FROM characters', 
     );
 
-    res.json(result.rows[0]);
+    res.json(result.rows);
 });
 
 /*SERVER START*/
