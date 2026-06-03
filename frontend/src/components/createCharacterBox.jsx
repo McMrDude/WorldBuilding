@@ -15,15 +15,15 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
 
         const fileName = `${Date.now()}-${file.name}`;
 
-        const { data, error } = await supabase.storage
+        const { data: uploadData, error } = await supabase.storage
             .from("character_portraits")
             .upload(fileName, file);
 
-        const { data } = supabase.storage
+        const { data: publicUrlData, error: urlError } = await supabase.storage
             .from("character_portraits")
             .getPublicUrl(fileName);
 
-        const publicUrl = data.publicUrl;
+        const publicUrl = publicUrlData.publicUrl;
 
         console.log(publicUrl);
 
