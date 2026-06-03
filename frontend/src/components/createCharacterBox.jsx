@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom'
-import supabase from "../frontend/src/supabase.js";
+import supabase from "../supabase.js";
 
 function CreateCharacter({ onClose, onCharacterCreated }) {
     const [characterName, setCharacterName] = useState('');
