@@ -7,26 +7,30 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
     const [imageFile, setImageFile] = useState(null);
     const [drawBoxOpen, setDrawBoxOpen] = useState(false);
 
-    const file = imageFile;
+    const addImage = async () => {
+        const file = imageFile;
 
-    const fileName = `${Date.now()}-${file.name}`;
+        const fileName = `${Date.now()}-${file.name}`;
 
-    const { data: uploadData, error } = await supabase.storage
-        .from("character_portraits")
-        .upload(fileName, file);
+        const { data: uploadData, error } = await supabase.storage
+            .from("character_portraits")
+            .upload(fileName, file);
 
-    if (error) {
-        console.error("UPLOAD ERROR:", error);
-        return;
+        if (error) {
+            console.error("UPLOAD ERROR:", error);
+            return;
+        }
+
+        const { data: publicUrlData, error: urlError } = await supabase.storage
+            .from("character_portraits")
+            .getPublicUrl(fileName);
+
+        const publicUrl = publicUrlData.publicUrl;
+
+        console.log(publicUrl);
+
+        if (!imageFile) return;
     }
-
-    const { data: publicUrlData, error: urlError } = await supabase.storage
-        .from("character_portraits")
-        .getPublicUrl(fileName);
-
-    const publicUrl = publicUrlData.publicUrl;
-
-    console.log(publicUrl);
 
     return (
         <>
