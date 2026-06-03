@@ -15,14 +15,14 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
 
         const fileName = `${Date.now()}-${file.name}`;
 
-        const { data, error } = await supabase.setDescription
-            .from("character_portaits")
+        const { data, error } = await supabase.storage
+            .from("character_portraits")
             .upload(fileName, file);
 
         const {
             data: { publicUrl }
         } = supabase.storage
-        .from("character_portaits")
+        .from("character_portraits")
         .getPublicUrl(fileName);
 
         console.log(publicUrl);
