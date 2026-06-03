@@ -74,7 +74,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                     id="character-image" 
                     name="character-image" 
                     accept="image/*"
-                    value={characterImage}
+                    value={imageFile ? undefined : ''}
                     onChange={(e) => setImageFile(e.target.files[0])}
                 />
 
