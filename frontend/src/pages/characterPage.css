@@ -2,6 +2,9 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+
+.character-card {
     border: 2px solid rgb(45, 136, 193);
     border-radius: 8px;
     padding: 6px;
