@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import supabase from "../supabase.js";
+import Draw from './drawBox.jsx';
 
 function CreateCharacter({ onClose, onCharacterCreated }) {
     const [characterName, setCharacterName] = useState('');
     const [description, setDescription] = useState('');
     const [imageFile, setImageFile] = useState(null);
+    const [drawBoxOpen, setDrawBoxOpen] = useState(false);
     const { id } = useParams();    
 
     const createCharacter = async () => {
@@ -101,7 +103,18 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                     onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
 
+                <button onClick={() => setDrawBoxOpen(true)}>Draw Character</button>
+
                 <button onClick={createCharacter}>Create Character</button>
+
+                {drawBoxOpen && (
+                <>
+                    <Draw
+                    onClose={() => setDrawBoxOpen(false)}
+                    onDrawn={fetchCharacters}
+                    />
+                </>
+                )}
             </div>
         </>
     )
