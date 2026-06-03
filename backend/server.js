@@ -74,7 +74,7 @@ app.post("/api/characters", async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
-app.get("/api/characters/:id", async (req, res) => {
+app.get("/api/characters", async (req, res) => {
     const result = await pool.query(
         'SELECT * FROM characters WHERE id = $1', 
         [req.params.id]
