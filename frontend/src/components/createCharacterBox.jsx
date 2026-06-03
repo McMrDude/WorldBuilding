@@ -8,7 +8,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
     
 
     const createCharacter = async () => {
-        if (!characterName || !description || !id) return;
+        if (!characterName || !id) return;
 
         await fetch("/api/characters", {
             method: "POST",
