@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import supabase from "../supabase.js";
 import Draw from './drawBox.jsx';
@@ -98,9 +98,9 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
         getIcons()
     } , []);
 
-    const imageUploader = getElementById("character-image");
+    const imgInputRef = useRef(null);
 
-    imageUploader.addEventListener("change", function() {
+    imgInputRef.current?.addEventListener("change", function() {
         setImageFile(this.files[0]);
         uploadImage();
     });
@@ -149,6 +149,7 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
                         name="character-image" 
                         accept="image/*"
                         value={imageFile ? undefined : ''}
+                        ref={imgInputRef}
                         onChange={(e) => setImageFile(e.target.files[0])}
                     />
 
