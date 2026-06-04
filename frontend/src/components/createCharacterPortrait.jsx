@@ -80,7 +80,8 @@ function CreatePortrait({ name, description, onCharacterCreated }) {
 
                 <label htmlFor="or">Or:</label>
                 <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-                    <input 
+                    <input
+                        style={{ width: "150px" }} 
                         type="file" 
                         id="character-image" 
                         className="image-picker"
