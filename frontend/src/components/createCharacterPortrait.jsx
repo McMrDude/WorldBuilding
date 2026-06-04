@@ -58,7 +58,7 @@ function CreatePortrait({ name, description, onCharacterCreated }) {
         alert("Character created!");
     }
 
-    async function getIcons() {
+    const getIcons = async () => {
         const { data: files, error } = await supabase
         .storage
         .from("characterIcons")
