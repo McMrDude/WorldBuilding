@@ -12,27 +12,27 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
     const { id } = useParams();
 
     const createCharacter = async () => {
+        let finalUrl = publicUrl;
+
         if (imageFile) {
-            const file = imageFile;
+            const fileName = `${Date.now()}-${imageFile.name}`;
 
-            const fileName = `${Date.now()}-${file.name}`;
-
-            const { data: uploadData, error } = await supabase.storage
-                .from("character_portraits")
-                .upload(fileName, file);
+            const { error } = await supabase.storage
+            .from("character_portraits")
+            .upload(fileName, imageFile);
 
             if (error) {
-                console.error("UPLOAD ERROR:", error);
+                console.error(error);
                 return;
             }
 
-            const { data: publicUrlData, error: urlError } = await supabase.storage
-                .from("character_portraits")
-                .getPublicUrl(fileName);
+            const { data } = supabase.storage
+            .from("character_portraits")
+            .getPublicUrl(fileName);
 
-            setPublicUrl(publicUrlData.publicUrl);
+            finalUrl = data.publicUrl;
 
-            console.log("New public URL set to:", publicUrl, "by uploading image");
+            console.log("New public URL set to:", finalUrl, "by uploading image");
 
             if (!imageFile) return;   
         }
@@ -48,7 +48,7 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
             body: JSON.stringify({ 
                 id,
                 name, 
-                imageUrl:publicUrl,
+                imageUrl:finalUrl,
                 description 
             })
         });
@@ -92,13 +92,6 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
     useEffect(() => {
         getIcons()
     } , []);
-
-    const imgInputRef = useRef(null);
-
-    imgInputRef.current?.addEventListener("change", function() {
-        setImageFile(this.files[0]);
-        uploadImage();
-    });
 
     return (
         <>
@@ -145,7 +138,12 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
                         accept="image/*"
                         value={imageFile ? undefined : ''}
                         ref={imgInputRef}
-                        onChange={(e) => setImageFile(e.target.files[0])}
+                        onChange={(e) => {
+                            const file = e.target.files[0];
+                            setImageFile(file);
+                            const previewUrl = URL.createObjectURL(file);
+                            setPublicUrl(previewUrl);
+                        }}
                     />
 
                     <button onClick={() => setDrawBoxOpen(true)}>Draw Character</button>
