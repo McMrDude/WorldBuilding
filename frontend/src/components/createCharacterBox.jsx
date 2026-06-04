@@ -6,10 +6,13 @@ import CreateCharacterPortrait from './createCharacterPortrait.jsx';
 function CreateCharacter({ onClose, onCharacterCreated }) {
     const [characterName, setCharacterName] = useState('');
     const [description, setDescription] = useState('');
-    const [imgBoxOpen, setImgBoxOpen] = useState(false);
-    const { id } = useParams();    
+    const [imgBoxOpen, setImgBoxOpen] = useState(false);    
 
     const createCharacter = async () => {
+        if (!characterName) {
+            alert("Please enter a character name.");
+            return;
+        }
         setImgBoxOpen(true);
     }
     return (

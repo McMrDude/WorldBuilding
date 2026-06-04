@@ -7,10 +7,9 @@ import "./character_portrait.css";
 function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
     const [imageFile, setImageFile] = useState(null);
     const [drawBoxOpen, setDrawBoxOpen] = useState(false);
-
     const [IconUrls, setIconUrls] = useState([]);
-
     const [publicUrl, setPublicUrl] = useState("");
+    const { id } = useParams();
 
     const createCharacter = async () => {
         if (imageFile) {
@@ -38,7 +37,7 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
             if (!imageFile) return;   
         }
 
-        if (!characterName || !id) return;
+        if (!name || !id) return;
 
         await fetch("/api/characters", {
             method: "POST",
@@ -48,7 +47,7 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
             credentials: "include",
             body: JSON.stringify({ 
                 id,
-                characterName, 
+                name, 
                 imageUrl:publicUrl,
                 description 
             })
