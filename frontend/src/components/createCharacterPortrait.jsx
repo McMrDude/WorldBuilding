@@ -56,6 +56,35 @@ function CreatePortrait({ name, description, onCharacterCreated }) {
         alert("Character created!");
     }
 
+    async function getIcons() {
+        const { data: files, error } = await supabase
+        .storage
+        .from("characterIcons")
+        .list("", {
+            limit: 100,
+            offset: 0,
+            sortBy: { column: "name", order: "asc"}
+        });
+
+        if (error) {
+            console.error("Error fetching icons:", error);
+            return [];
+        }
+
+        const imageUrls = files
+        .filter(file => file.id !== null)
+        .map(file => {
+            const { data } = supabase
+            .storage
+            .from("characterIcons")
+            .getPublicUrl(file.name);
+
+            return data.publicUrl;
+        });
+
+        return imageUrls;
+    }
+
     return (
         <>
             <div style={{
@@ -75,7 +104,14 @@ function CreatePortrait({ name, description, onCharacterCreated }) {
                 <label htmlFor="character-image">Character Image (optional):</label>
                 <label htmlFor="icon">Choose a pre made icon</label>
                 <div id="iconContainer">
-
+                    {imageUrls.map((url, index) => (
+                        <img 
+                            key={index}
+                            src={url}
+                            alt={`Icon ${index}`}
+                            style={{ width: "50px", height: "50px", margin: "5px" }}
+                        />
+                    ))}
                 </div>
 
                 <label htmlFor="or">Or:</label>
