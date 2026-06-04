@@ -89,6 +89,8 @@ function CreatePortrait({ name, description, onCharacterCreated }) {
         setIconUrls(imageUrls);
     }
 
+    console.log(IconUrls);
+
     useEffect(() => {
         getIcons()
     } , []);
