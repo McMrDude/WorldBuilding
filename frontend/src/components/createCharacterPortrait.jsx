@@ -12,8 +12,6 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
 
     const [publicUrl, setPublicUrl] = useState("");
 
-    console.log("Name: ", name, "   ", "Description: ", description);
-
     const createCharacter = async () => {
         if (!characterName || !id) return;
 
