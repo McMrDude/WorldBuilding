@@ -33,6 +33,8 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
 
             setPublicUrl(publicUrlData.publicUrl);
 
+            console.log("New public URL set to:", publicUrl, "by uploading image");
+
             if (!imageFile) return;   
         }
     }
