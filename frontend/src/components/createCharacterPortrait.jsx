@@ -4,15 +4,17 @@ import supabase from "../supabase.js";
 import Draw from './drawBox.jsx';
 import "./character_portrait.css";
 
-function CreatePortrait({ name, description, onCharacterCreated }) {
+function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
     const [imageFile, setImageFile] = useState(null);
     const [drawBoxOpen, setDrawBoxOpen] = useState(false);
 
     const [IconUrls, setIconUrls] = useState([]);
 
-    const createCharacter = async () => {
-        if (!characterName || !id) return;
+    const [publicUrl, setPublicUrl] = useState("");
 
+    console.log("Name: ", name, "   ", "Description: ", description);
+
+    const createCharacter = async () => {
         const file = imageFile;
 
         const fileName = `${Date.now()}-${file.name}`;
@@ -30,11 +32,15 @@ function CreatePortrait({ name, description, onCharacterCreated }) {
             .from("character_portraits")
             .getPublicUrl(fileName);
 
-        const publicUrl = publicUrlData.publicUrl;
+        setPublicUrl(publicUrlData.publicUrl);
 
-        console.log(publicUrl);
+        console.log("New public URL set to:", publicUrl, "by uploading file");
 
         if (!imageFile) return;
+    }
+
+    const createCharacter = async () => {
+        if (!characterName || !id) return;
 
         await fetch("/api/characters", {
             method: "POST",
@@ -50,7 +56,6 @@ function CreatePortrait({ name, description, onCharacterCreated }) {
             })
         });
 
-        setImgBoxOpen(true);
         setCharacterName('');
         setDescription('');
         onCharacterCreated();
@@ -121,7 +126,11 @@ function CreatePortrait({ name, description, onCharacterCreated }) {
                             key={index}
                             src={url}
                             alt={`Icon ${index}`}
-                            style={{ width: "100px", height: "100px", margin: "5px" }}
+                            style={{ width: "75px", height: "75px", margin: "5px" }}
+                            onClick={() => {
+                                setPublicUrl(url);
+                                console.log("New public URL set to:", publicUrl), "by clicking on icon";
+                            }}
                         />
                     ))}
                 </div>
@@ -141,6 +150,10 @@ function CreatePortrait({ name, description, onCharacterCreated }) {
 
                     <button onClick={() => setDrawBoxOpen(true)}>Draw Character</button>
                 </div>
+
+                <label>Or just don't select anything if you don't want an image</label>
+
+                <button>Create Character</button>
 
                 {drawBoxOpen && (
                 <>
