@@ -15,32 +15,32 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
     console.log("Name: ", name, "   ", "Description: ", description);
 
     const createCharacter = async () => {
-        const file = imageFile;
-
-        const fileName = `${Date.now()}-${file.name}`;
-
-        const { data: uploadData, error } = await supabase.storage
-            .from("character_portraits")
-            .upload(fileName, file);
-
-        if (error) {
-            console.error("UPLOAD ERROR:", error);
-            return;
-        }
-
-        const { data: publicUrlData, error: urlError } = await supabase.storage
-            .from("character_portraits")
-            .getPublicUrl(fileName);
-
-        setPublicUrl(publicUrlData.publicUrl);
-
-        console.log("New public URL set to:", publicUrl, "by uploading file");
-
-        if (!imageFile) return;
-    }
-
-    const createCharacter = async () => {
         if (!characterName || !id) return;
+
+        if (imageFile) {
+            const file = imageFile;
+
+            const fileName = `${Date.now()}-${file.name}`;
+
+            const { data: uploadData, error } = await supabase.storage
+                .from("character_portraits")
+                .upload(fileName, file);
+
+            if (error) {
+                console.error("UPLOAD ERROR:", error);
+                return;
+            }
+
+            const { data: publicUrlData, error: urlError } = await supabase.storage
+                .from("character_portraits")
+                .getPublicUrl(fileName);
+
+            setPublicUrl(publicUrlData.publicUrl);
+
+            console.log("New public URL set to:", publicUrl, "by uploading file");
+
+            if (!imageFile) return;   
+        } 
 
         await fetch("/api/characters", {
             method: "POST",
@@ -129,6 +129,7 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
                             style={{ width: "75px", height: "75px", margin: "5px" }}
                             onClick={() => {
                                 setPublicUrl(url);
+                                setImageFile(null);
                                 console.log("New public URL set to:", publicUrl), "by clicking on icon";
                             }}
                         />
