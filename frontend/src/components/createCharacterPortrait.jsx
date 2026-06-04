@@ -73,17 +73,25 @@ function CreatePortrait({ name, description, onCharacterCreated }) {
                 backgroundColor: "#fff",
             }}>
                 <label htmlFor="character-image">Character Image (optional):</label>
-                <input 
-                    type="file" 
-                    id="character-image" 
-                    className="image-picker"
-                    name="character-image" 
-                    accept="image/*"
-                    value={imageFile ? undefined : ''}
-                    onChange={(e) => setImageFile(e.target.files[0])}
-                />
+                <label htmlFor="icon">Choose a pre made icon</label>
+                <div id="iconContainer">
 
-                <button onClick={() => setDrawBoxOpen(true)}>Draw Character</button>
+                </div>
+
+                <label htmlFor="or">Or:</label>
+                <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+                    <input 
+                        type="file" 
+                        id="character-image" 
+                        className="image-picker"
+                        name="character-image" 
+                        accept="image/*"
+                        value={imageFile ? undefined : ''}
+                        onChange={(e) => setImageFile(e.target.files[0])}
+                    />
+
+                    <button onClick={() => setDrawBoxOpen(true)}>Draw Character</button>
+                </div>
 
                 {drawBoxOpen && (
                 <>
