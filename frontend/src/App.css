@@ -209,3 +209,9 @@
     border-right-color: var(--border);
   }
 }
+
+
+.image-picker::file-selector-button {
+  display: block;
+  margin-bottom: 8px;
+}

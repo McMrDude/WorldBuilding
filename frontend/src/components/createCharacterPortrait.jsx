@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import supabase from "../supabase.js";
 import Draw from './drawBox.jsx';
+import css from "../App.css";
 
 function CreatePortrait({ name, description, onCharacterCreated }) {
     const [imageFile, setImageFile] = useState(null);
@@ -75,6 +76,7 @@ function CreatePortrait({ name, description, onCharacterCreated }) {
                 <input 
                     type="file" 
                     id="character-image" 
+                    className="image-picker"
                     name="character-image" 
                     accept="image/*"
                     value={imageFile ? undefined : ''}
