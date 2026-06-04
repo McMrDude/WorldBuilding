@@ -140,7 +140,7 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
                         name="character-image" 
                         accept="image/*"
                         value={imageFile ? undefined : ''}
-                        onChange={(e) => setImageFile(e.target.files[0]), console.log("New public URL set to:", publicUrl, "by uploading file")}
+                        onChange={(e) => setImageFile(e.target.files[0])}
                     />
 
                     <button onClick={() => setDrawBoxOpen(true)}>Draw Character</button>
