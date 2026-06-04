@@ -98,6 +98,13 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
         getIcons()
     } , []);
 
+    const imageUploader = getElementById("character-image");
+
+    imageUploader.addEventListener("change", function() {
+        setImageFile(this.files[0]);
+        uploadImage();
+    });
+
     return (
         <>
             <div style={{
@@ -142,7 +149,7 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
                         name="character-image" 
                         accept="image/*"
                         value={imageFile ? undefined : ''}
-                        onChange={"(e) => setImageFile(e.target.files[0]); uploadImage()"}
+                        onChange={(e) => setImageFile(e.target.files[0])}
                     />
 
                     <button onClick={() => setDrawBoxOpen(true)}>Draw Character</button>
