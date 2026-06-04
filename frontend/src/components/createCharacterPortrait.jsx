@@ -150,6 +150,8 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
 
                 <button>Create Character</button>
 
+                <img src={publicUrl} alt="Character Portrait" style={{ width: "150px", height: "150px", marginTop: "10px" }} />
+
                 {drawBoxOpen && (
                 <>
                     <Draw
