@@ -25,9 +25,9 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
             .from("character_portraits")
             .getPublicUrl(fileName);
 
-        const publicUrl = publicUrlData.publicUrl;
+/*         const publicUrl = publicUrlData.publicUrl;
 
-        console.log(publicUrl);
+        console.log(publicUrl); */
 
         if (!imageFile) return;
     }
