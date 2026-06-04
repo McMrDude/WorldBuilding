@@ -20,7 +20,6 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
             credentials: "include",
             body: JSON.stringify({ 
                 id,
-                imageUrl:publicUrl,
                 characterName, 
                 description 
             })
