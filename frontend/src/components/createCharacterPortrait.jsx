@@ -8,6 +8,8 @@ function CreatePortrait({ name, description, onCharacterCreated }) {
     const [imageFile, setImageFile] = useState(null);
     const [drawBoxOpen, setDrawBoxOpen] = useState(false);
 
+    const [IconUrls, setIconUrls] = useState([]);
+
     const createCharacter = async () => {
         if (!characterName || !id) return;
 
@@ -83,6 +85,8 @@ function CreatePortrait({ name, description, onCharacterCreated }) {
         });
 
         return imageUrls;
+
+        setIconUrls(imageUrls);
     }
 
     useEffect(() => {
@@ -108,7 +112,7 @@ function CreatePortrait({ name, description, onCharacterCreated }) {
                 <label htmlFor="character-image">Character Image (optional):</label>
                 <label htmlFor="icon">Choose a pre made icon</label>
                 <div id="iconContainer">
-                    {imageUrls.map((url, index) => (
+                    {IconUrls.map((url, index) => (
                         <img 
                             key={index}
                             src={url}
