@@ -85,6 +85,10 @@ function CreatePortrait({ name, description, onCharacterCreated }) {
         return imageUrls;
     }
 
+    useEffect(() => {
+        getIcons()
+    } , []);
+
     return (
         <>
             <div style={{
