@@ -12,32 +12,32 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
 
     const [publicUrl, setPublicUrl] = useState("");
 
-    const uploadImage = async () => {
-        const file = imageFile;
+    const createCharacter = async () => {
+        if (imageFile) {
+            const file = imageFile;
 
-        const fileName = `${Date.now()}-${file.name}`;
+            const fileName = `${Date.now()}-${file.name}`;
 
-        const { data: uploadData, error } = await supabase.storage
-            .from("character_portraits")
-            .upload(fileName, file);
+            const { data: uploadData, error } = await supabase.storage
+                .from("character_portraits")
+                .upload(fileName, file);
 
-        if (error) {
-            console.error("UPLOAD ERROR:", error);
-            return;
+            if (error) {
+                console.error("UPLOAD ERROR:", error);
+                return;
+            }
+
+            const { data: publicUrlData, error: urlError } = await supabase.storage
+                .from("character_portraits")
+                .getPublicUrl(fileName);
+
+            setPublicUrl(publicUrlData.publicUrl);
+
+            console.log("New public URL set to:", publicUrl, "by uploading image");
+
+            if (!imageFile) return;   
         }
 
-        const { data: publicUrlData, error: urlError } = await supabase.storage
-            .from("character_portraits")
-            .getPublicUrl(fileName);
-
-        setPublicUrl(publicUrlData.publicUrl);
-
-        console.log("New public URL set to:", publicUrl, "by uploading image");
-
-        if (!imageFile) return;   
-    }
-        
-    const createCharacter = async () => {
         if (!characterName || !id) return;
 
         await fetch("/api/characters", {
@@ -156,7 +156,7 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
 
                 <label>Or just don't select anything if you don't want an image</label>
 
-                <button>Create Character</button>
+                <button onClick={ createCharacter }>Create Character</button>
 
                 <img src={publicUrl} alt="Character Portrait" style={{ width: "150px", height: "150px", marginTop: "10px" }} />
 
