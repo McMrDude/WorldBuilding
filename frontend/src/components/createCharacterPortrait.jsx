@@ -3,11 +3,13 @@ import { Link, useParams } from 'react-router-dom'
 import supabase from "../supabase.js";
 import Draw from './drawBox.jsx';
 
-function CreateCharacter({ onClose, onCharacterCreated }) {
+function CreatePortrait({ name, description, onCharacterCreated }) {
     const [imageFile, setImageFile] = useState(null);
     const [drawBoxOpen, setDrawBoxOpen] = useState(false);
 
-    const addImage = async () => {
+    const createCharacter = async () => {
+        if (!characterName || !id) return;
+
         const file = imageFile;
 
         const fileName = `${Date.now()}-${file.name}`;
@@ -30,6 +32,27 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
         console.log(publicUrl);
 
         if (!imageFile) return;
+
+        await fetch("/api/characters", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "include",
+            body: JSON.stringify({ 
+                id,
+                characterName, 
+                imageUrl:publicUrl,
+                description 
+            })
+        });
+
+        setImgBoxOpen(true);
+        setCharacterName('');
+        setDescription('');
+        onCharacterCreated();
+        onClose();
+        alert("Character created!");
     }
 
     return (
@@ -72,4 +95,4 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
     )
 }
 
-export default CreateCharacter;
+export default CreatePortrait;

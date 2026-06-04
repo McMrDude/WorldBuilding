@@ -10,27 +10,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
     const { id } = useParams();    
 
     const createCharacter = async () => {
-        if (!characterName || !id) return;
-
-        await fetch("/api/characters", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            credentials: "include",
-            body: JSON.stringify({ 
-                id,
-                characterName, 
-                description 
-            })
-        });
-
         setImgBoxOpen(true);
-        setCharacterName('');
-        setDescription('');
-        onCharacterCreated();
-        onClose();
-        alert("Character created!");
     }
     return (
         <>
@@ -74,7 +54,10 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                 <button onClick={createCharacter}>Create Character</button>
 
                 {imgBoxOpen && (
-                    <CreateCharacterPortrait/>
+                    <CreateCharacterPortrait
+                        name={characterName}
+                        description={description}
+                    />
                 )}
             </div>
         </>
