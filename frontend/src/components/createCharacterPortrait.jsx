@@ -84,11 +84,9 @@ function CreatePortrait({ name, description, onCharacterCreated }) {
             return data.publicUrl;
         });
 
-        return imageUrls;
-
-        console.log("all the image urls: ",imageUrls);
-
         setIconUrls(imageUrls);
+
+        return imageUrls;
     }
 
     console.log(IconUrls);
