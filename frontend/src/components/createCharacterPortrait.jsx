@@ -121,7 +121,7 @@ function CreatePortrait({ name, description, onCharacterCreated }) {
                             key={index}
                             src={url}
                             alt={`Icon ${index}`}
-                            style={{ width: "50px", height: "50px", margin: "5px" }}
+                            style={{ width: "100px", height: "100px", margin: "5px" }}
                         />
                     ))}
                 </div>
