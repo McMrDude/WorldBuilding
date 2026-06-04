@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import supabase from "../supabase.js";
 import Draw from './drawBox.jsx';
