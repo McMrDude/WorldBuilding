@@ -53,8 +53,6 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
             })
         });
 
-        setCharacterName('');
-        setDescription('');
         onCharacterCreated();
         onClose();
         alert("Character created!");
