@@ -37,8 +37,6 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
 
             setPublicUrl(publicUrlData.publicUrl);
 
-            console.log("New public URL set to:", publicUrl, "by uploading file");
-
             if (!imageFile) return;   
         } 
 
@@ -89,14 +87,10 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
             return data.publicUrl;
         });
 
-        console.log("The icon URLs are:", imageUrls);
-
         setIconUrls(imageUrls);
 
         return imageUrls;
     }
-
-    console.log(IconUrls);
 
     useEffect(() => {
         getIcons()
@@ -146,7 +140,7 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
                         name="character-image" 
                         accept="image/*"
                         value={imageFile ? undefined : ''}
-                        onChange={(e) => setImageFile(e.target.files[0])}
+                        onChange={(e) => setImageFile(e.target.files[0]), console.log("New public URL set to:", publicUrl, "by uploading file")}
                     />
 
                     <button onClick={() => setDrawBoxOpen(true)}>Draw Character</button>
