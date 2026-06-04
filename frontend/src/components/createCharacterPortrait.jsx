@@ -12,9 +12,7 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
 
     const [publicUrl, setPublicUrl] = useState("");
 
-    const createCharacter = async () => {
-        if (!characterName || !id) return;
-
+    const uploadImage = async () => {
         if (imageFile) {
             const file = imageFile;
 
@@ -36,7 +34,11 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
             setPublicUrl(publicUrlData.publicUrl);
 
             if (!imageFile) return;   
-        } 
+        }
+    }
+        
+    const createCharacter = async () => {
+        if (!characterName || !id) return;
 
         await fetch("/api/characters", {
             method: "POST",
@@ -122,7 +124,7 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
                             onClick={() => {
                                 setPublicUrl(url);
                                 setImageFile(null);
-                                console.log("New public URL set to:", publicUrl), "by clicking on icon";
+                                console.log("New public URL set to:", publicUrl, "by clicking on icon");
                             }}
                         />
                     ))}
@@ -138,7 +140,7 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
                         name="character-image" 
                         accept="image/*"
                         value={imageFile ? undefined : ''}
-                        onChange={(e) => setImageFile(e.target.files[0])}
+                        onChange={"(e) => setImageFile(e.target.files[0]); uploadImage()"}
                     />
 
                     <button onClick={() => setDrawBoxOpen(true)}>Draw Character</button>
