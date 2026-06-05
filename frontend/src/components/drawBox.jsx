@@ -52,7 +52,7 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
 
 
     const finish = async () => {
-        const canvas = canvasRef.current
+        const canvas = document.getElementById("canvasID")
 
         canvas.toBlob((blob) => {
             const file = new file(
@@ -88,6 +88,7 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
 
                 <canvas 
                     ref={canvasRef} 
+                    id={"canvasID"}
                     style={{ 
                         border: '1px solid #000;',
                         cursor: 'crosshair' 
