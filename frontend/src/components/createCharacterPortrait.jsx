@@ -165,9 +165,8 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
                         onSaveDrawing={(file) => {
                             console.log(file);
                             setImageFile(file);
-                            setTimeout(() => {
-                                createCharacter();
-                            }, 100); 
+                            const previewUrl = URL.createObjectURL(file);
+                            setPublicUrl(previewUrl);
                             setDrawBoxOpen(false);
                         }}
                     />
