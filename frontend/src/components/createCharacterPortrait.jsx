@@ -165,7 +165,7 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
                         onSaveDrawing={(file) => {
                             console.log(file);
                             setImageFile(file);
-                            createCharacter;
+                            createCharacter();
                             setDrawBoxOpen(false);
                         }}
                     />
