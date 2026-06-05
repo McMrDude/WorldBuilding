@@ -137,7 +137,6 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
                         name="character-image" 
                         accept="image/*"
                         value={imageFile ? undefined : ''}
-                        ref={imgInputRef}
                         onChange={(e) => {
                             const file = e.target.files[0];
                             setImageFile(file);
