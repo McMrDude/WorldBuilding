@@ -1,6 +1,6 @@
 import {useRef, useEffect, useState } from 'react';
 
-function Draw({ onClose, onDrawn }) {    
+function Draw({ onClose, onDrawn, onSaveDrawing }) {    
     const canvasRef = useRef(null);
     const ctxRef = useRef(null);
     const isDrawing = useRef(false);
@@ -50,6 +50,21 @@ function Draw({ onClose, onDrawn }) {
         isDrawing.current = false;
     };
 
+
+    const finish = async () => {
+        const canvas = canvasRef.current
+
+        canvas.toBlob((blob) => {
+            const file = new file(
+                [blob],
+                `drawing-${Date.now}.png`,
+                { type: "image/png" }
+            );
+
+            onSaveDrawing(file)
+        })
+    }
+
     return (
         <>
             <div style={{
@@ -82,6 +97,8 @@ function Draw({ onClose, onDrawn }) {
                     onMouseUp={stopDraw}
                     onMouseLeave={stopDraw}
                 ></canvas>
+
+                <button onClick={ finish }>Finish Drawing</button>
             </div>
         </>
     )

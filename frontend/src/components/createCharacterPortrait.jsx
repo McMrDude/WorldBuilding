@@ -162,6 +162,11 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
                 <>
                     <Draw
                         onClose={() => setDrawBoxOpen(false)}
+                        onSaveDrawing={(file) => {
+                            setImageFile(file);
+                            createCharacter;
+                            setDrawBoxOpen(false);
+                        }}
                     />
                 </>
                 )}
