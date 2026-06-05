@@ -12,7 +12,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
         if (!characterName) {
             alert("Please enter a character name.");
             return;
-        }
+        } 
         setImgBoxOpen(true);
     }
     return (
@@ -56,11 +56,12 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
 
                 <button onClick={createCharacter}>Create Character</button>
 
+                
                 {imgBoxOpen && (
                     <CreateCharacterPortrait
                         name={characterName}
                         description={description}
-                        onClose={setImgBoxOpen(false)}
+                        onClose={setImgBoxOpen(false), onClose}
                     />
                 )}
             </div>
