@@ -12,12 +12,14 @@ function CreatePortrait({ name, description, onClose }) {
     const { id } = useParams();
 
     const createCharacter = async () => {
+        /* den endelige bilde URLen som blir postet til databasen */
         let finalUrl = publicUrl;
 
         /* Changes the finalUrl if user uploads own image from pc */
         if (imageFile) {
             const fileName = `${Date.now()}-${imageFile.name}`;
 
+            /* Her henter vi en storage fra supabase som heter "character_portraits" og laster vi opp bilde fra pcen in i den storagen */
             const { error } = await supabase.storage
             .from("character_portraits")
             .upload(fileName, imageFile);
