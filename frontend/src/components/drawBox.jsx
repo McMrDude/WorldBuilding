@@ -57,7 +57,7 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
         canvas.toBlob((blob) => {
             const file = new File(
                 [blob],
-                `drawing-${Date.now}.png`,
+                `drawing-${Date.now()}.png`,
                 { type: "image/png" }
             );
 
