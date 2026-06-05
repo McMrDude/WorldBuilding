@@ -4,7 +4,7 @@ import supabase from "../supabase.js";
 import Draw from './drawBox.jsx';
 import "./character_portrait.css";
 
-function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
+function CreatePortrait({ name, description, onClose }) {
     const [imageFile, setImageFile] = useState(null);
     const [drawBoxOpen, setDrawBoxOpen] = useState(false);
     const [IconUrls, setIconUrls] = useState([]);
@@ -14,6 +14,7 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
     const createCharacter = async () => {
         let finalUrl = publicUrl;
 
+        /* Changes the finalUrl if user uploads own image from pc */
         if (imageFile) {
             const fileName = `${Date.now()}-${imageFile.name}`;
 
@@ -52,8 +53,7 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
                 description 
             })
         });
-
-        onCharacterCreated();
+        
         onClose();
         alert("Character created!");
     }
