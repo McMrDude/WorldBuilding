@@ -62,7 +62,8 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                     <CreateCharacterPortrait
                         name={characterName}
                         description={description}
-                        onClose={() => setImgBoxOpen(false), (onCharacterCreated, onClose)}
+                        onClose={() => setImgBoxOpen(false), onClose}
+                        onCharacterCreated={() => onCharacterCreated}
                     />
                 )}
             </div>
