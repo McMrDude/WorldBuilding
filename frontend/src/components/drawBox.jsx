@@ -52,10 +52,10 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
 
 
     const finish = async () => {
-        const canvas = document.getElementById("canvasID")
+        const canvas = canvasRef.current
 
         canvas.toBlob((blob) => {
-            const file = new file(
+            const file = new File(
                 [blob],
                 `drawing-${Date.now}.png`,
                 { type: "image/png" }
