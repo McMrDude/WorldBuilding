@@ -56,8 +56,9 @@ function CreatePortrait({ name, description, onClose }) {
             })
         });
 
-        alert("Character created!");
         onClose();
+
+        alert("Character created!");
     }
 
     const getIcons = async () => {

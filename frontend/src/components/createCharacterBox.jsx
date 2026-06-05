@@ -54,14 +54,15 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                     onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
 
+                {/* Knapp for å starte funksjonen som åpner "CreateCharacterPortrait" */}
                 <button onClick={createCharacter}>Create Character</button>
 
-                
+                {/* Her henter vi og renderer "CreateCharacterPortrait" komponenten men bare hvis imgBoxOpen er ekte */}
                 {imgBoxOpen && (
                     <CreateCharacterPortrait
                         name={characterName}
                         description={description}
-                        onClose={setImgBoxOpen(false)}
+                        onClose={setImgBoxOpen(false), onClose}
                     />
                 )}
             </div>
