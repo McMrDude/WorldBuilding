@@ -163,6 +163,7 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
                     <Draw
                         onClose={() => setDrawBoxOpen(false)}
                         onSaveDrawing={(file) => {
+                            console.log(file);
                             setImageFile(file);
                             createCharacter;
                             setDrawBoxOpen(false);
