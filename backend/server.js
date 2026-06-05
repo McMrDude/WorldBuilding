@@ -59,14 +59,14 @@ app.post("/api/characters", async (req, res) => {
     try {
         console.log(req.body);
 
-        if (!req.body.characterName) {
+        if (!req.body.name) {
             return res.status(400).json({ error: "Missing fields" });
         }
 
         await pool.query(`
             INSERT INTO characters (img, name, description, world_id)
             VALUES ($1, $2, $3, $4)
-            `, [req.body.imageUrl, req.body.characterName, req.body.description, req.body.id]);
+            `, [req.body.imageUrl, req.body.name, req.body.description, req.body.id]);
 
         res.json({ message: "Character created" });
     } catch (error) {
