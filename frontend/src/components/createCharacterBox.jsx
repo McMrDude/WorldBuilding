@@ -13,6 +13,9 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
     const [raceAge, setRaceAge] = useState('');
 
     const checkRace = (race) => {
+        if (race === null) {
+            setRaceAge(null)
+        }
         if (race === "Human") {
             setRaceAge("Humans have an average lifespan of 74 years")
         }
