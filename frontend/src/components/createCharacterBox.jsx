@@ -12,7 +12,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
 
     const [raceAge, setRaceAge] = useState('');
 
-    const checkRace = () => {
+    const checkRace = (race) => {
         if (race === "Human") {
             setRaceAge("Humans have an average lifespan of 74 years")
         }
@@ -83,9 +83,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                     onChange={(e) => {
                         setRace(e.target.value);
                         
-                        setTimeout(() => {
-                            checkRace();
-                        }, 1000);
+                        checkRace(e.target.value);
                     }}
                 >
                     <option>Human</option>
@@ -105,7 +103,6 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                     value={age}
                     onChange={(e) => {
                         setAge(e.target.value);
-
                     }}
                 />
 
