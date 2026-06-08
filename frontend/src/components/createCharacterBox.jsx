@@ -80,8 +80,10 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                 <label>Race (optional)</label>
                 <select
                     value={race}
-                    onChange={(e) => setRace(e.target.value)
-                    }
+                    onChange={(e) => {
+                        setRace(e.target.value);
+                        checkRace();
+                    }}
                 >
                     <option>Human</option>
                     <option>Assmuncher</option>
