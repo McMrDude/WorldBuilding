@@ -14,28 +14,28 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
 
     const checkRace = () => {
         if (race === "Human") {
-            raceAge = "Humans have an average lifespan of 74 years"
+            setRaceAge("Humans have an average lifespan of 74 years")
         }
         if (race === "Assmuncher") {
-            raceAge = "Assmunchers usually live from 3 - 88 years depending on how much rump they munch"
+            setRaceAge("Assmunchers usually live from 3 - 88 years depending on how much rump they munch")
         }
         if (race === "Ratfolk") {
-            raceAge = "Ratfolk have an average lifespan of 4"
+            setRaceAge("Ratfolk have an average lifespan of 4")
         }
         if (race === "Avesian") {
-            raceAge = "Avesians have an average lifespan of 12 years"
+            setRaceAge("Avesians have an average lifespan of 12 years")
         }
         if (race === "Sludge") {
-            raceAge = "Sludge have an average lifespan of 5 months"
+            setRaceAge("Sludge have an average lifespan of 5 months")
         }
         if (race === "German") {
-            raceAge = "Germans have an average lifespan of 82 years"
+            setRaceAge("Germans have an average lifespan of 82 years")
         }
         if (race === "Router") {
-            raceAge = "An average router has a lifespan of 5 years before having to be replaced"
+            setRaceAge("An average router has a lifespan of 5 years before having to be replaced")
         }
         if (race === "Cirrius") {
-            raceAge = "The average Cirrius lifespan is about 1 hour"
+            setRaceAge("The average Cirrius lifespan is about 1 hour")
         }
     }
 
