@@ -6,6 +6,8 @@ function SpecificCharacter() {
 
     const { name } = useParams();
 
+    console.log("THE NAME: ", name)
+
     const fetchCharacters = () => {
         fetch("/api/characters", {credentials: 'include'})
         .then(res => res.json())
