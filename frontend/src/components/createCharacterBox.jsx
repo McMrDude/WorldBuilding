@@ -53,7 +53,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                 <label>Race (optional)</label>
                 <select
                     value={race}
-                    onChange={(e) => setCharacterName(e.target.value)}
+                    onChange={(e) => setRace(e.target.value)}
                 >
                     <option>Human</option>
                     <option>Assmuncher</option>
@@ -70,7 +70,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                 <input
                     type='text'
                     value={age}
-                    onChange={(e) => setCharacterName(e.target.value)}
+                    onChange={(e) => setAge(e.target.value)}
                 />
 
                 <label htmlFor="character-description">Description (optional):</label>
