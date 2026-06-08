@@ -64,9 +64,9 @@ app.post("/api/characters", async (req, res) => {
         }
 
         await pool.query(`
-            INSERT INTO characters (img, name, description, world_id)
-            VALUES ($1, $2, $3, $4)
-            `, [req.body.imageUrl, req.body.name, req.body.description, req.body.id]);
+            INSERT INTO characters (img, name, race, age, description, world_id)
+            VALUES ($1, $2, $3, $4, $5, $6)
+            `, [req.body.imageUrl, req.body.name, req.body.race, req.body.age, req.body.description, req.body.id]);
 
         res.json({ message: "Character created" });
     } catch (error) {
