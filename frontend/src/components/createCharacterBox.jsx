@@ -85,7 +85,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                         
                         setTimeout(() => {
                             checkRace();
-                        }, 10000);
+                        }, 1000);
                     }}
                 >
                     <option>Human</option>
