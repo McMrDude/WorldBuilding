@@ -86,6 +86,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                         checkRace(e.target.value);
                     }}
                 >
+                    <option value={null} selected>-none-</option>
                     <option>Human</option>
                     <option>Assmuncher</option>
                     <option>Ratfolk</option>
