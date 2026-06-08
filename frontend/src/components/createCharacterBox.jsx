@@ -12,6 +12,33 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
 
     const [raceAge, setRaceAge] = useState('');
 
+    const checkRace = () => {
+        if (race === "Human") {
+            raceAge = "Humans have an average lifespan of 74 years"
+        }
+        if (race === "Assmuncher") {
+            raceAge = "Assmunchers usually live from 3 - 88 years depending on how much rump they munch"
+        }
+        if (race === "Ratfolk") {
+            raceAge = "Ratfolk have an average lifespan of 4"
+        }
+        if (race === "Avesian") {
+            raceAge = "Avesians have an average lifespan of 12 years"
+        }
+        if (race === "Sludge") {
+            raceAge = "Sludge have an average lifespan of 5 months"
+        }
+        if (race === "German") {
+            raceAge = "Germans have an average lifespan of 82 years"
+        }
+        if (race === "Router") {
+            raceAge = "An average router has a lifespan of 5 years before having to be replaced"
+        }
+        if (race === "Cirrius") {
+            raceAge = "The average Cirrius lifespan is about 1 hour"
+        }
+    }
+
     const createCharacter = async () => {
         if (!characterName) {
             alert("Please enter a character name.");
@@ -53,7 +80,8 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                 <label>Race (optional)</label>
                 <select
                     value={race}
-                    onChange={(e) => setRace(e.target.value)}
+                    onChange={(e) => setRace(e.target.value)
+                    }
                 >
                     <option>Human</option>
                     <option>Assmuncher</option>
@@ -70,7 +98,10 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                 <input
                     type='text'
                     value={age}
-                    onChange={(e) => setAge(e.target.value)}
+                    onChange={(e) => {
+                        setAge(e.target.value);
+
+                    }}
                 />
 
                 <label htmlFor="character-description">Description (optional):</label>
