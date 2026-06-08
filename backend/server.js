@@ -88,7 +88,7 @@ app.get("/api/characters/:name", async (req, res) => {
     );
 
     res.json(result.rows[0]);
-})
+});
 
 /*SERVER START*/
 app.use(express.static(path.join(__dirname, '../frontend/dist')));

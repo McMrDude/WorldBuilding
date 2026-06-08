@@ -18,7 +18,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/create-character" element={<CreateCharacter />} />
         <Route path="/world/:id" element={<WorldPage />} />
         <Route path="/world/:id/characters" element={<CharacterPage />} />
-        <Route path="/world/:id/characters/:character" element={<SpecificCharacter />} />
+        <Route path="/world/:id/characters/:name" element={<SpecificCharacter />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
