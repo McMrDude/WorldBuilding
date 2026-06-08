@@ -29,7 +29,9 @@ function CharacterPage() {
                         <div key={character.id} className="character-card">
                             <img src={character.img} alt={character.name} style={{ width: '200px', height: '200px' }} />
                             <h2>Name: {character.name}</h2>
-                            <p>Description: {character.description}</p>
+                            {character.race ? <p>{character.race}</p> : null }
+                            {character.age ? <p>{character.age}</p> : null }
+                            {character.description ? <p>Description: {character.description}</p> : null}
                         </div>
                     )
                 ))}

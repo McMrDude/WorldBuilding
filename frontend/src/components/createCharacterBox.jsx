@@ -5,8 +5,12 @@ import CreateCharacterPortrait from './createCharacterPortrait.jsx';
 
 function CreateCharacter({ onClose, onCharacterCreated }) {
     const [characterName, setCharacterName] = useState('');
+    const [race, setRace] = useState('');
+    const [age, setAge] = useState('');
     const [description, setDescription] = useState('');
     const [imgBoxOpen, setImgBoxOpen] = useState(false);    
+
+    const [raceAge, setRaceAge] = useState('');
 
     const createCharacter = async () => {
         if (!characterName) {
@@ -46,6 +50,29 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                     required 
                 />
 
+                <label>Race (optional)</label>
+                <select
+                    value={race}
+                    onChange={(e) => setCharacterName(e.target.value)}
+                >
+                    <option>Human</option>
+                    <option>Assmuncher</option>
+                    <option>Ratfolk</option>
+                    <option>Avesian</option>
+                    <option>Sludge</option>
+                    <option>German</option>
+                    <option>Router</option>
+                    <option>Cirrius</option>
+                </select>
+
+                <label>Age (optional)</label>
+                {race ? <label>{raceAge}</label> : null}
+                <input
+                    type='text'
+                    value={age}
+                    onChange={(e) => setCharacterName(e.target.value)}
+                />
+
                 <label htmlFor="character-description">Description (optional):</label>
                 <textarea 
                     id="character-description" 
@@ -61,6 +88,8 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                 {imgBoxOpen && (
                     <CreateCharacterPortrait
                         name={characterName}
+                        race={race}
+                        age={age}
                         description={description}
                         onClose={() => setImgBoxOpen(false), onClose}
                         onCharacterCreated={onCharacterCreated}

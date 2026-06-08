@@ -4,7 +4,7 @@ import supabase from "../supabase.js";
 import Draw from './drawBox.jsx';
 import "./character_portrait.css";
 
-function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
+function CreatePortrait({ name, race, age, description, onClose, onCharacterCreated }) {
     const [imageFile, setImageFile] = useState(null);
     const [drawBoxOpen, setDrawBoxOpen] = useState(false);
     const [IconUrls, setIconUrls] = useState([]);
@@ -51,6 +51,8 @@ function CreatePortrait({ name, description, onClose, onCharacterCreated }) {
             body: JSON.stringify({ 
                 id,
                 name, 
+                race,
+                age,
                 imageUrl:finalUrl,
                 description 
             })
