@@ -8,19 +8,15 @@ function SpecificCharacter() {
 
     console.log("THE NAME: ", name)
 
-    const fetchCharacters = () => {
-        fetch("/api/characters", {credentials: 'include'})
-        .then(res => res.json())
-        .then(data => setCharacter(Array.isArray(data) ? data : []))
-    };
-
     useEffect(() => {
-        fetchCharacters();
-    }, []);
+        fetch(`/api/characters/${name}`)
+            .then(res => res.json())
+            .then(data => setCharacter(data));
+    }, [name]);
 
     return (
         <>
-            <h1>{name}</h1>
+            <h1>{character.name}</h1>
         </>
     )
 }
