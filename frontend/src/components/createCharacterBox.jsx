@@ -85,6 +85,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                     value={race}
                     onChange={(e) => {
                         setRace(e.target.value);
+                        console.log(race)
                         
                         checkRace(e.target.value);
                     }}
