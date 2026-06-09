@@ -6,8 +6,6 @@ function SpecificCharacter() {
 
     const { characterID } = useParams();
 
-    console.log("THE NAME: ", name)
-
     useEffect(() => {
         fetch(`/api/characters/${characterID}`)
             .then(res => res.json())
