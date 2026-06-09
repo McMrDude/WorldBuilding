@@ -17,8 +17,11 @@ function SpecificCharacter() {
             .then(data => setCharacter(data));
     }, [characterID]);
 
-    const changeLore = (event) => {
-        setLore(event.target.value)
+    const changeLore = () => {
+        if (loreArea.current) {
+            setLore(loreArea.current.value);
+            updateLore();
+        }
     }
 
     const updateLore = async () => {
@@ -42,7 +45,7 @@ function SpecificCharacter() {
                     <img style={{ maxWidth: "800px", maxHeight: "70vh"}} src={character.img}></img>
 
                     <div>
-                        { editState ? <textarea value={lore} onChange={changeLore} placeholder='Write your awsome pogchamp sigma lore you dweeb'></textarea> : <p>{character.lore}</p>}
+                        { editState ? <textarea value={lore} ref={loreArea} placeholder='Write your awsome pogchamp sigma lore you dweeb'></textarea> : <p>{character.lore}</p>}
                     </div>
                     <div>
                         { editState ? (<button onClick={changeLore()}>Save</button>, <button onClick={setEditState(false)}>Cancel</button>) : <button onClick={setEditState(true)}>Edit</button>}
