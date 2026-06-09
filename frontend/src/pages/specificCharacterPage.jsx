@@ -45,10 +45,10 @@ function SpecificCharacter() {
                     <img style={{ maxWidth: "800px", maxHeight: "70vh"}} src={character.img}></img>
 
                     <div>
-                        { editState ? <textarea value={lore} ref={loreArea} placeholder='Write your awsome pogchamp sigma lore you dweeb'></textarea> : <p>{character.lore}</p>}
+                        { editState ? <p>{character.lore}</p> : <textarea value={lore} ref={loreArea} placeholder='Write your awsome pogchamp sigma lore you dweeb'></textarea>}
                     </div>
                     <div>
-                        { editState ? (<> <button onClick={changeLore}>Save</button> <button onClick={() => setEditState(false)}>Cancel</button> </>) : <button onClick={setEditState(true)}>Edit</button>}
+                        { editState ? <button onClick={setEditState(true)}>Edit</button> : (<> <button onClick={changeLore}>Save</button> <button onClick={() => setEditState(false)}>Cancel</button> </>)}
                     </div>
                 </div>
             )}
