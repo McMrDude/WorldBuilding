@@ -15,11 +15,11 @@ function SpecificCharacter() {
         fetch(`/api/characters/${characterID}`)
             .then(res => res.json())
             .then(data => setCharacter(data));
-    }, [characterID];
+    };
 
     useEffect(() => {
         fetchCharacter();
-    })
+    }, [characterID])
     
     setLore(character.lore)
 
