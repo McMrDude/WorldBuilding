@@ -48,7 +48,7 @@ function SpecificCharacter() {
                         { editState ? <p>{character.lore}</p> : <textarea value={lore} ref={loreArea} placeholder='Write your awsome pogchamp sigma lore you dweeb'></textarea>}
                     </div>
                     <div>
-                        { editState ? <button onClick={setEditState(true)}>Edit</button> : (<> <button onClick={changeLore}>Save</button> <button onClick={() => setEditState(false)}>Cancel</button> </>)}
+                        { editState ? <button onClick={() => setEditState(true)}>Edit</button> : (<> <button onClick={changeLore}>Save</button> <button onClick={() => setEditState(false)}>Cancel</button> </>)}
                     </div>
                 </div>
             )}
