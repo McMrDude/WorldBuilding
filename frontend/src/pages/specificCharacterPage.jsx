@@ -14,10 +14,11 @@ function SpecificCharacter() {
 
     return (
         <>
-            <h1>{character.name}</h1>
-
             {character && (
-                <img style={{ maxWidth: "800px", maxHeight: "70vh"}} src={character.img}></img>
+                <div>
+                    <h1>{character.name}</h1>
+                    <img style={{ maxWidth: "800px", maxHeight: "70vh"}} src={character.img}></img>
+                </div>
             )}
         </>
     )
