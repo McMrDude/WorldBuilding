@@ -83,7 +83,7 @@ app.get("/api/characters", async (req, res) => {
 });
 app.get("/api/characters/:characterID", async (req, res) => {
     const result = await pool.query(
-        'SELECT * FROM characters WHERE name = $1',
+        'SELECT * FROM characters WHERE id = $1',
         [req.params.characterID]
     );
 
