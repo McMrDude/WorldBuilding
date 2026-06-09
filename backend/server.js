@@ -90,16 +90,21 @@ app.get("/api/characters/:characterID", async (req, res) => {
     res.json(result.rows[0]);
 });
 app.put("/api/characters/:characterID", async (req, res) => {
-    await pool.query(
-        `UPDATE characters
-        SET lore = $1
-        WHERE id = $2`,
-        [req.body.lore, req.params.id]
-    );
+    try {
+        await pool.query(
+            `UPDATE characters
+            SET lore = $1
+            WHERE id = $2`,
+            [req.body.lore, req.params.id]
+        );
 
-    console.log(req.body.lore);
+        console.log(req.body.lore);
 
-    res.json({ success: true });
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Big error altsa:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 });
 
 /*SERVER START*/

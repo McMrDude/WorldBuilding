@@ -34,7 +34,6 @@ function SpecificCharacter() {
                 lore
             })
         })
-        console.log("got past updateLore, wowi")
     }
 
 
