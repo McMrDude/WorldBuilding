@@ -97,6 +97,8 @@ app.put("/api/characters/:characterID", async (req, res) => {
         [req.body.lore, req.params.id]
     );
 
+    console.log(req.body.lore);
+
     res.json({ success: true });
 });
 
