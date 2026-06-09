@@ -87,6 +87,9 @@ app.get("/api/characters/:id", async (req, res) => {
         [req.params.id]
     );
 
+    console.log(req.params.id);
+    console.log(result.rows);
+
     res.json(result.rows[0]);
 });
 
