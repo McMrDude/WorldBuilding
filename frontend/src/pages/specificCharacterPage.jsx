@@ -7,7 +7,7 @@ function SpecificCharacter() {
     const [character, setCharacter] = useState(null);
     const [lore, setLore] = useState('');
 
-    const [editState, setEditState] = useState(false);
+    const [editState, setEditState] = useState(true);
 
     const { characterID } = useParams();
 
