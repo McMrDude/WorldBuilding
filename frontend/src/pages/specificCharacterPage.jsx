@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 function SpecificCharacter() {
     const [character, setCharacter] = useState('');
 
+    const { id } = useParams();
     const { name } = useParams();
 
     console.log("THE NAME: ", name)
@@ -12,7 +13,7 @@ function SpecificCharacter() {
         fetch(`/api/characters/${name}`)
             .then(res => res.json())
             .then(data => setCharacter(data));
-    }, [name]);
+    }, [id]);
 
     return (
         <>
