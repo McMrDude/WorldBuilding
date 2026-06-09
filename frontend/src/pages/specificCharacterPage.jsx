@@ -10,7 +10,7 @@ function SpecificCharacter() {
     console.log("THE NAME: ", name)
 
     useEffect(() => {
-        fetch(`/api/characters/${name}`)
+        fetch(`/api/characters/${id}`)
             .then(res => res.json())
             .then(data => setCharacter(data));
     }, [id]);
