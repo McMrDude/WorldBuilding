@@ -26,7 +26,7 @@ function CharacterPage() {
             <div className="characters-container">
                 {characters.map(character => (
                     character.world_id === id && (
-                        <Link style={{ all: 'unset' }} to={`/world/${id}/characters/${character.name}`}>
+                        <Link style={{ all: 'unset' }} to={`/world/${id}/characters/${character.id}`}>
                             <div key={character.id} className="character-card">
                                 <img src={character.img} alt={character.name} style={{ width: '200px', height: '200px' }} />
                                 <h2>Name: {character.name}</h2>

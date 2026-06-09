@@ -81,14 +81,11 @@ app.get("/api/characters", async (req, res) => {
 
     res.json(result.rows);
 });
-app.get("/api/characters/:name", async (req, res) => {
+app.get("/api/characters/:characterID", async (req, res) => {
     const result = await pool.query(
         'SELECT * FROM characters WHERE name = $1',
-        [req.params.name]
+        [req.params.characterID]
     );
-
-    console.log(req.params.id);
-    console.log(result.rows);
 
     res.json(result.rows[0]);
 });
