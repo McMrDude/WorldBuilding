@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 
 function SpecificCharacter() {
-    const [character, setCharacter] = useState('');
+    const [character, setCharacter] = useState(null);
 
     const { id } = useParams();
     const { name } = useParams();
