@@ -32,7 +32,6 @@ function SpecificCharacter() {
             },
             body: JSON.stringify({
                 lore,
-                id
             })
         })
     }
