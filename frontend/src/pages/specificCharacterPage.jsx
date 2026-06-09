@@ -5,7 +5,7 @@ function SpecificCharacter() {
     const loreArea = useRef('');
 
     const [character, setCharacter] = useState(null);
-    const [lore, setLore] = useState('');
+    const [lore, setLore] = useState(null);
 
     const [editState, setEditState] = useState(true);
 
@@ -18,11 +18,13 @@ function SpecificCharacter() {
     }, [characterID]);
 
     const changeLore = async () => {
+        console.log("Got to change lore")
         await updateLore();
         setEditState(true);
     }
 
     const updateLore = async () => {
+        console.log("got to updateLore")
         await fetch(`/api/characters/${characterID}`, {
             method: "PUT",
             headers: {
@@ -32,6 +34,7 @@ function SpecificCharacter() {
                 lore
             })
         })
+        console.log("got past updateLore, wowi")
     }
 
 
@@ -43,7 +46,7 @@ function SpecificCharacter() {
                     <img style={{ maxWidth: "800px", maxHeight: "70vh"}} src={character.img}></img>
 
                     <div>
-                        { editState ? <p>{character.lore}</p> : <textarea value={lore} onChange={(e) => setLore(e.target.value)} placeholder='Write your awsome pogchamp sigma lore you dweeb'></textarea>}
+                        { editState ? <p>{character.lore}</p> : <textarea name='loreField' value={lore} onChange={(e) => setLore(e.target.value)} placeholder='Write your awsome pogchamp sigma lore you dweeb'></textarea>}
                     </div>
                     <div>
                         { editState ? <button onClick={() => setEditState(false)}>Edit</button> : (<> <button onClick={changeLore}>Save</button> <button onClick={() => setEditState(true)}>Cancel</button> </>)}
