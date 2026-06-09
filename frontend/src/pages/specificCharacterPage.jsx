@@ -19,7 +19,9 @@ function SpecificCharacter() {
         <>
             <h1>{name}</h1>
 
-            <img src={character.img}></img>
+            {character && (
+                <img src={character.img}></img>
+            )}
         </>
     )
 }
