@@ -24,7 +24,7 @@ function SpecificCharacter() {
         updateLore();
     }
 
-    const updateLore = () => {
+    const updateLore = async () => {
         await fetch(`/api/characters/${characterID}`, {
             method: "PUT",
             headers: {
