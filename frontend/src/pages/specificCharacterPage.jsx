@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom'
 
 function SpecificCharacter() {
-    const loreArea = useRef(null);
+    const loreArea = useRef('');
 
     const [character, setCharacter] = useState(null);
     const [lore, setLore] = useState('');
