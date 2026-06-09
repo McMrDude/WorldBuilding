@@ -11,11 +11,17 @@ function SpecificCharacter() {
 
     const { characterID } = useParams();
 
-    useEffect(() => {
+    const fetchCharacter = () => {
         fetch(`/api/characters/${characterID}`)
             .then(res => res.json())
             .then(data => setCharacter(data));
-    }, [characterID]);
+    }, [characterID];
+
+    useEffect(() => {
+        fetchCharacter();
+    })
+    
+    setLore(character.lore)
 
     const changeLore = async () => {
         console.log("Got to change lore")
@@ -34,6 +40,7 @@ function SpecificCharacter() {
                 lore,
             })
         })
+        fetchCharacter();
     }
 
 
@@ -45,7 +52,7 @@ function SpecificCharacter() {
                     <img style={{ maxWidth: "800px", maxHeight: "70vh"}} src={character.img}></img>
 
                     <div>
-                        { editState ? <p>{character.lore}</p> : <textarea name='loreField' value={lore} onChange={(e) => setLore(e.target.value)} placeholder='Write your awsome pogchamp sigma lore you dweeb'></textarea>}
+                        { editState ? <p width="500px" height="700px">{character.lore}</p> : <textarea width="500px" height="700px" name='loreField' value={lore} onChange={(e) => setLore(e.target.value)} placeholder='Write your awsome pogchamp sigma lore you dweeb'></textarea>}
                     </div>
                     <div>
                         { editState ? <button onClick={() => setEditState(false)}>Edit</button> : (<> <button onClick={changeLore}>Save</button> <button onClick={() => setEditState(true)}>Cancel</button> </>)}
