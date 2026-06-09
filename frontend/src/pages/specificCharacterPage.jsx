@@ -9,7 +9,7 @@ function SpecificCharacter() {
 
     const [editState, setEditState] = useState(true);
 
-    const { characterID } = useParams();
+    const { id, characterID } = useParams();
 
     useEffect(() => {
         fetch(`/api/characters/${characterID}`)
@@ -31,7 +31,7 @@ function SpecificCharacter() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                lore
+                lore,
             })
         })
     }
