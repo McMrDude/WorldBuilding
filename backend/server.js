@@ -95,7 +95,7 @@ app.put("/api/characters/:characterID", async (req, res) => {
             `UPDATE characters
             SET lore = $1
             WHERE id = $2`,
-            [req.body.lore, req.params.id]
+            [req.body.lore, req.params.characterID]
         );
 
         console.log(req.body.lore);
