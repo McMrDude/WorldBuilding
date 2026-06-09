@@ -10,7 +10,7 @@ function SpecificCharacter() {
         fetch(`/api/characters/${characterID}`)
             .then(res => res.json())
             .then(data => setCharacter(data));
-    }, [name]);
+    }, [characterID]);
 
     return (
         <>
