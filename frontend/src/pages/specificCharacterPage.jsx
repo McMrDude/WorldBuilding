@@ -15,13 +15,13 @@ function SpecificCharacter() {
         fetch(`/api/characters/${characterID}`)
             .then(res => res.json())
             .then(data => setCharacter(data));
+        
+        setLore(character.lore)
     };
 
     useEffect(() => {
         fetchCharacter();
     }, [characterID])
-    
-    setLore(character.lore)
 
     const changeLore = async () => {
         console.log("Got to change lore")
