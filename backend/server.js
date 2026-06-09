@@ -89,6 +89,16 @@ app.get("/api/characters/:characterID", async (req, res) => {
 
     res.json(result.rows[0]);
 });
+app.put("/api/characters/:characterID", async (req, res) => {
+    await pool.query(
+        `UPDATE characters
+        SET lore = $1
+        WHERE id = $2`,
+        [req.body.lore, req.params.id]
+    );
+
+    res.json({ success: true });
+});
 
 /*SERVER START*/
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
