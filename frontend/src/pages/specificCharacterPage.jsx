@@ -19,7 +19,7 @@ function SpecificCharacter() {
 
     const changeLore = () => {
         if (loreArea.current) {
-            setEditState(false);
+            setEditState(true);
             setLore(loreArea.current.value);
             updateLore();
         }
