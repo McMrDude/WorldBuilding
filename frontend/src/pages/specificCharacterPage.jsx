@@ -19,7 +19,7 @@ function SpecificCharacter() {
             <h1>{character.name}</h1>
 
             {character && (
-                <img style={{ maxWidth="800px", maxHeight="70vh"}} src={character.img}></img>
+                <img style={{ maxWidth: "800px", maxHeight: "70vh"}} src={character.img}></img>
             )}
         </>
     )
