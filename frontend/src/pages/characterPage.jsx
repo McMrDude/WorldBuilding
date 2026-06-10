@@ -57,6 +57,18 @@ function CharacterPage() {
                 left: pos.x,
                 top: pos.y,
             }}>RUB-A-DUB-DUB!!</div>
+            <div className='draggable-box' onPointerDown={onPointerDown} style={{
+                left: pos.x,
+                top: pos.y,
+            }}>YEAH YEAH!!</div>
+            <div className='draggable-box' onPointerDown={onPointerDown} style={{
+                left: pos.x,
+                top: pos.y,
+            }}>TOO LATE, MY BABY!!</div>
+            <div className='draggable-box' onPointerDown={onPointerDown} style={{
+                left: pos.x,
+                top: pos.y,
+            }}>OH HALLELUJA!!</div>
 
             <button onClick={() => setCharacterBoxOpen(true)}>Create Character</button>
 
