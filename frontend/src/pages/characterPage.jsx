@@ -26,12 +26,12 @@ function CharacterPage() {
 
         if (!box) return;
 
-        box.addEventListener("pointerDown", (event) => {
+        box.addEventListener("pointerdown", (event) => {
             console.log("click")
             box.setPointerCapture(event.pointerId);
 
-            box.addEventListener("pointerMove", onPointerMove);
-            box.addEventListener("pointerUp", onPointerUp);
+            box.addEventListener("pointermove", onPointerMove);
+            box.addEventListener("pointerup", onPointerUp);
         });
 
         function onPointerMove(event) {
@@ -46,8 +46,8 @@ function CharacterPage() {
         function onPointerUp(event) {
             console.log("WATER BUCKET RELEASE!!!!!")
             box.releasePointerCapture(event.pointerId);
-            box.removeEventListener("pointerMove", onPointerMove);
-            box.removeEventListener("pointerUp", onPointerUp);
+            box.removeEventListener("pointermove", onPointerMove);
+            box.removeEventListener("pointerup", onPointerUp);
         };
     }, []);
 
