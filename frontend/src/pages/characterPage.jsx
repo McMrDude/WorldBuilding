@@ -39,8 +39,8 @@ function CharacterPage() {
         if (!dragging.current) return;
 
         setPos({
-            x: e.clientX - offset.x,
-            y: e.clientY - offset.y
+            x: e.clientX - offset.current.x,
+            y: e.clientY - offset.current.y
         });
     };
 
