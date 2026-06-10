@@ -19,41 +19,41 @@ function CharacterPage() {
         fetchCharacters();
     }, []);
 
-    const boxRef = useRef(null);
+    const [pos, setPos] = useState({ x: 100, y: 100});
+    const dragging = useRef(false)
+    const offset = useRef({ x: 0, y: 0});
 
-    useEffect(() => {
-        const box = boxRef.current;
+    const onPointerDown = (e) => {
+        dragging.current = true;
 
-        if (!box) return;
+        offset.current = {
+            x: e.clientX - pos.x,
+            y: e.clientY - pos.y
+        };
 
-        box.addEventListener("pointerdown", (event) => {
-            console.log("click")
-            box.setPointerCapture(event.pointerId);
+        window.addEventListener("pointermove", onPointerMove);
+        window.addEventListener("pointerup", onPointerUp);
+    };
 
-            box.addEventListener("pointermove", onPointerMove);
-            box.addEventListener("pointerup", onPointerUp);
+    const onPointerMove = (e) => {
+        if (!dragging.current) return;
+
+        setPos = ({
+            x: e.clientX - offset.x,
+            y: e.clientY - offset.y
         });
+    };
 
-        function onPointerMove(event) {
-            console.log("move")
-            const currentLeft = parseInt(box.style.left) || box.offsetLeft;
-            const currentTop = parseInt(box.style.top) || box.offsetTop;
+    const onPointerUp = () => {
+        dragging.current = false
 
-            box.style.left = `${currentLeft + event.movementX}px`;
-            box.style.top = `${currentTop + event.movementY}px`;
-        };
-
-        function onPointerUp(event) {
-            console.log("WATER BUCKET RELEASE!!!!!")
-            box.releasePointerCapture(event.pointerId);
-            box.removeEventListener("pointermove", onPointerMove);
-            box.removeEventListener("pointerup", onPointerUp);
-        };
-    }, []);
+        window.removeEventListener("pointermove", onPointerMove);
+        window.removeEventListener("pointerup", onPointerUp);
+    };
 
     return (
         <div>
-            <div className='draggable-box' ref={boxRef}>RUB-A-DUB-DUB!!</div>
+            <div className='draggable-box' onPointerDown={onPointerDown}>RUB-A-DUB-DUB!!</div>
 
             <button onClick={() => setCharacterBoxOpen(true)}>Create Character</button>
 
