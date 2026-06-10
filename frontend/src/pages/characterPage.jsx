@@ -38,7 +38,7 @@ function CharacterPage() {
     const onPointerMove = (e) => {
         if (!dragging.current) return;
 
-        setPos = ({
+        setPos({
             x: e.clientX - offset.x,
             y: e.clientY - offset.y
         });
