@@ -19,8 +19,33 @@ function CharacterPage() {
         fetchCharacters();
     }, []);
 
+    const box = document.getElementById("box");
+
+    box.addEventListener("pointerDown", (event) => {
+        box.setPointerCapture(event.pointerId);
+
+        box.addEventListener("pointerMove", onPointerMove);
+        box.addEventListener("pointerUp", onPointerUp);
+    });
+
+    function onPointerMove(event) {
+        const currentLeft = parseInt(box.style.left) || box.offsetLeft;
+        const currentTop = parseInt(box.style.top) || box.offsetTop;
+
+        box.style.left = `${currentLeft + event.movementX}px`;
+        box.style.top = `${currentTop + event.movementY}px`;
+    };
+
+    function onPointerUp(event) {
+        box.releasePointerCapture(event.pointerId);
+        box.removeEventListener("pointerMove", onPointerMove);
+        box.removeEventListener("pointerUp", onpointerup)
+    }
+
     return (
         <div>
+            <div className='draggable-box' id="box">RUB-A-DUB-DUB!!</div>
+
             <button onClick={() => setCharacterBoxOpen(true)}>Create Character</button>
 
             <div className="characters-container">
