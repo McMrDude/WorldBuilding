@@ -19,16 +19,21 @@ function CharacterPage() {
         fetchCharacters();
     }, []);
 
-    const [pos, setPos] = useState({ x: 100, y: 100});
-    const dragging = useRef(false)
+    const [boxes, setBoxes] = useState([
+        { id: 1, x: 100, y: 100, text: "RUB-A-DUB-DUB!!" },
+        { id: 2, x: 200, y: 150, text: "YEAH YEAH!!" },
+        { id: 3, x: 300, y: 200, text: "TOO LATE, MY BABY!!" },
+        { id: 4, x: 400, y: 250, text: "OH HALLELUJA!!" },
+    ]);
+    const draggingId = useRef(null)
     const offset = useRef({ x: 0, y: 0});
 
-    const onPointerDown = (e) => {
-        dragging.current = true;
+    const onPointerDown = (e, box) => {
+        draggingId.current = box.id;
 
         offset.current = {
-            x: e.clientX - pos.x,
-            y: e.clientY - pos.y
+            x: e.clientX - box.x,
+            y: e.clientY - box.y
         };
 
         window.addEventListener("pointermove", onPointerMove);
@@ -36,16 +41,23 @@ function CharacterPage() {
     };
 
     const onPointerMove = (e) => {
-        if (!dragging.current) return;
+        if (!draggingId.current) return;
 
-        setPos({
-            x: e.clientX - offset.current.x,
-            y: e.clientY - offset.current.y
-        });
+        setBoxes((prev) =>
+            prev.map((box) =>
+                box.id === draggingId.current
+                    ? {
+                        ...box,
+                        x: e.clientX - offset.current.x,
+                        y: e.clientY - offset.current.y
+                    }
+                    : box
+            )
+        );
     };
 
     const onPointerUp = () => {
-        dragging.current = false
+        draggingId.current = null;
 
         window.removeEventListener("pointermove", onPointerMove);
         window.removeEventListener("pointerup", onPointerUp);
@@ -53,22 +65,19 @@ function CharacterPage() {
 
     return (
         <div>
-            <div className='draggable-box' onPointerDown={onPointerDown} style={{
-                left: pos.x,
-                top: pos.y,
-            }}>RUB-A-DUB-DUB!!</div>
-            <div className='draggable-box' onPointerDown={onPointerDown} style={{
-                left: pos.x,
-                top: pos.y,
-            }}>YEAH YEAH!!</div>
-            <div className='draggable-box' onPointerDown={onPointerDown} style={{
-                left: pos.x,
-                top: pos.y,
-            }}>TOO LATE, MY BABY!!</div>
-            <div className='draggable-box' onPointerDown={onPointerDown} style={{
-                left: pos.x,
-                top: pos.y,
-            }}>OH HALLELUJA!!</div>
+            {boxes.map((box) => (
+                <div
+                    key={box.id}
+                    className='draggable-box'
+                    onPointerDown={(e) => onPointerDown(e, box)}
+                    style={{
+                        left: box.x,
+                        top: box.y
+                    }}
+                >
+                    {box.text}
+                </div>
+            ))}
 
             <button onClick={() => setCharacterBoxOpen(true)}>Create Character</button>
 
