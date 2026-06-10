@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import CreateCharacter from '../components/createCharacterBox.jsx';
 import { Link, useParams } from 'react-router-dom'
 import './characterPage.css';
