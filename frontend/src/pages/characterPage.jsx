@@ -19,32 +19,36 @@ function CharacterPage() {
         fetchCharacters();
     }, []);
 
-    const box = document.getElementById("box");
+    const boxRef = useRef(null);
 
-    box.addEventListener("pointerDown", (event) => {
-        box.setPointerCapture(event.pointerId);
+    useEffect(() => {
+        const box = boxRef
 
-        box.addEventListener("pointerMove", onPointerMove);
-        box.addEventListener("pointerUp", onPointerUp);
-    });
+        box.addEventListener("pointerDown", (event) => {
+            box.setPointerCapture(event.pointerId);
 
-    function onPointerMove(event) {
-        const currentLeft = parseInt(box.style.left) || box.offsetLeft;
-        const currentTop = parseInt(box.style.top) || box.offsetTop;
+            box.addEventListener("pointerMove", onPointerMove);
+            box.addEventListener("pointerUp", onPointerUp);
+        });
 
-        box.style.left = `${currentLeft + event.movementX}px`;
-        box.style.top = `${currentTop + event.movementY}px`;
-    };
+        function onPointerMove(event) {
+            const currentLeft = parseInt(box.style.left) || box.offsetLeft;
+            const currentTop = parseInt(box.style.top) || box.offsetTop;
 
-    function onPointerUp(event) {
-        box.releasePointerCapture(event.pointerId);
-        box.removeEventListener("pointerMove", onPointerMove);
-        box.removeEventListener("pointerUp", onPointerUp);
-    };
+            box.style.left = `${currentLeft + event.movementX}px`;
+            box.style.top = `${currentTop + event.movementY}px`;
+        };
+
+        function onPointerUp(event) {
+            box.releasePointerCapture(event.pointerId);
+            box.removeEventListener("pointerMove", onPointerMove);
+            box.removeEventListener("pointerUp", onPointerUp);
+        };
+    }, []);
 
     return (
         <div>
-            <div className='draggable-box' id="box">RUB-A-DUB-DUB!!</div>
+            <div className='draggable-box' ref={boxRef}>RUB-A-DUB-DUB!!</div>
 
             <button onClick={() => setCharacterBoxOpen(true)}>Create Character</button>
 
