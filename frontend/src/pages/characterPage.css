@@ -15,8 +15,6 @@
     height: 120px;
     background-color: red;
     position: absolute;
-    top: 100px;
-    left: 100px;
     cursor: grab;
     user-select: none;
     touch-action: none;

@@ -53,7 +53,10 @@ function CharacterPage() {
 
     return (
         <div>
-            <div className='draggable-box' onPointerDown={onPointerDown}>RUB-A-DUB-DUB!!</div>
+            <div className='draggable-box' onPointerDown={onPointerDown} style={{
+                left: pos.x,
+                top: pos.y,
+            }}>RUB-A-DUB-DUB!!</div>
 
             <button onClick={() => setCharacterBoxOpen(true)}>Create Character</button>
 
