@@ -22,7 +22,9 @@ function CharacterPage() {
     const boxRef = useRef(null);
 
     useEffect(() => {
-        const box = boxRef
+        const box = boxRef.current;
+
+        if (!box) return;
 
         box.addEventListener("pointerDown", (event) => {
             box.setPointerCapture(event.pointerId);
