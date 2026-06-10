@@ -39,8 +39,8 @@ function CharacterPage() {
     function onPointerUp(event) {
         box.releasePointerCapture(event.pointerId);
         box.removeEventListener("pointerMove", onPointerMove);
-        box.removeEventListener("pointerUp", onpointerup)
-    }
+        box.removeEventListener("pointerUp", onpointerup);
+    };
 
     return (
         <div>
