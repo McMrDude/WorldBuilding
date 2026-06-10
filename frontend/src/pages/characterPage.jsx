@@ -27,6 +27,7 @@ function CharacterPage() {
         if (!box) return;
 
         box.addEventListener("pointerDown", (event) => {
+            console.log("click")
             box.setPointerCapture(event.pointerId);
 
             box.addEventListener("pointerMove", onPointerMove);
@@ -34,6 +35,7 @@ function CharacterPage() {
         });
 
         function onPointerMove(event) {
+            console.log("move")
             const currentLeft = parseInt(box.style.left) || box.offsetLeft;
             const currentTop = parseInt(box.style.top) || box.offsetTop;
 
@@ -42,6 +44,7 @@ function CharacterPage() {
         };
 
         function onPointerUp(event) {
+            console.log("WATER BUCKET RELEASE!!!!!")
             box.releasePointerCapture(event.pointerId);
             box.removeEventListener("pointerMove", onPointerMove);
             box.removeEventListener("pointerUp", onPointerUp);
