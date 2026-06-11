@@ -66,7 +66,7 @@ function MapPage() {
     };
 
     return(
-        <div>
+        <div style={{ display: 'flex', justifyContent: 'center'}}>
             <h1>MAP</h1>
 
             <div ref={mapRef} style={{ border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT}}/>
@@ -78,7 +78,8 @@ function MapPage() {
                     onPointerDown={(e) => onPointerDown(e, box)}
                     style={{
                         left: box.x,
-                        top: box.y
+                        top: box.y,
+                        transform: "translate(-50%, -50%)"
                     }}
                 >
                     {box.text}
