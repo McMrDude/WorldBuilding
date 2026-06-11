@@ -71,7 +71,7 @@ function MapPage() {
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
             <h1>MAP</h1>
 
-            <div ref={mapRef} style={{ border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT}}> 
+            <div ref={mapRef} style={{ position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT}}> 
                 {boxes.map((box) => (
                 <div
                     key={box.id}
