@@ -11,6 +11,9 @@ function MapPage() {
     const draggingId = useRef(null)
     const offset = useRef({ x: 0, y: 0});
 
+    const MAP_WIDTH = 1000;
+    const MAP_HEIGHT = 600;
+
     const onPointerDown = (e, box) => {
         draggingId.current = box.id;
 
@@ -26,13 +29,25 @@ function MapPage() {
     const onPointerMove = (e) => {
         if (!draggingId.current) return;
 
+        const newX = e.clientX - offset.current.x;
+        const newY = e.clientY - offset.current.y;
+
+        const clampedX = Math.max(
+            0,
+            Math.min(newX - MAP_WIDTH - 50)
+        );
+        const clampedY = Math.max(
+            0,
+            Math.min(newY - MAP_HEIGHT - 50)
+        );
+
         setBoxes((prev) =>
             prev.map((box) =>
                 box.id === draggingId.current
                     ? {
                         ...box,
-                        x: e.clientX - offset.current.x,
-                        y: e.clientY - offset.current.y
+                        x: clampedX,
+                        y: clampedY
                     }
                     : box
             )
@@ -49,6 +64,8 @@ function MapPage() {
     return(
         <div>
             <h1>MAP</h1>
+
+            <div style={{ border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT}}/>
 
             {boxes.map((box) => (
                 <div
