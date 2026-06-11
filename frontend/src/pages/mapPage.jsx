@@ -43,7 +43,7 @@ function MapPage() {
 
         const clampedX = Math.max(
             PIN_SIZE / 2,
-            Math.min(newX, (mapRect.width - PIN_SIZE / 2))
+            Math.min(newX, (mapRect.width - PIN_SIZE / 2) - 2)
         );
         const clampedY = Math.max(
             PIN_SIZE / 2,
