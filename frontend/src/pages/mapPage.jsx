@@ -42,11 +42,11 @@ function MapPage() {
         const newY = e.clientY - mapRect.top - offset.current.y;
 
         const clampedX = Math.max(
-            PIN_SIZE,
-            Math.min(newX, (mapRect.width - PIN_SIZE / 2) - 2)
+            PIN_SIZE / 2,
+            Math.min(newX, (mapRect.width - PIN_SIZE / 2))
         );
         const clampedY = Math.max(
-            PIN_SIZE,
+            PIN_SIZE / 2,
             Math.min(newY, (mapRect.height - PIN_SIZE / 2) - 1)
         );
 
