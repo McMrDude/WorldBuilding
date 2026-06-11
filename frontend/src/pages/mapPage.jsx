@@ -41,7 +41,7 @@ function MapPage() {
 
         const clampedX = Math.max(
             60,
-            Math.min(newX, (mapRect.width - 60) - 1)
+            Math.min(newX, (mapRect.width - 60) - 2)
         );
         const clampedY = Math.max(
             60,
