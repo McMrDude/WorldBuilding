@@ -40,11 +40,11 @@ function MapPage() {
         const newY = e.clientY - mapRect.top - offset.current.y;
 
         const clampedX = Math.max(
-            0,
+            60,
             Math.min(newX, mapRect.width - 60)
         );
         const clampedY = Math.max(
-            0,
+            60,
             Math.min(newY, mapRect.height - 60)
         );
 
@@ -53,8 +53,8 @@ function MapPage() {
                 box.id === draggingId.current
                     ? {
                         ...box,
-                        x: clampedX + 60,
-                        y: clampedY +60
+                        x: clampedX,
+                        y: clampedY
                     }
                     : box
             )
