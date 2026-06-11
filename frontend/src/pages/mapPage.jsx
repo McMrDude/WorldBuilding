@@ -19,9 +19,11 @@ function MapPage() {
     const onPointerDown = (e, box) => {
         draggingId.current = box.id;
 
+        const mapRect = mapRef.current.getBoundingClientRect();
+
         offset.current = {
-            x: e.clientX - box.x,
-            y: e.clientY - box.y
+            x: e.clientX - mapRect.left - box.x,
+            y: e.clientY - mapRect.top - box.y
         };
 
         window.addEventListener("pointermove", onPointerMove);
@@ -31,12 +33,10 @@ function MapPage() {
     const onPointerMove = (e) => {
         if (!draggingId.current) return;
 
-        const newX = e.clientX - offset.current.x;
-        const newY = e.clientY - offset.current.y;
-
         const mapRect = mapRef.current.getBoundingClientRect();
-        const centeredX = mapRect.width / 2;
-        const centeredY = mapRect.height / 2;
+
+        const newX = e.clientX - mapRect.left - offset.current.x;
+        const newY = e.clientY - mapRect.top - offset.current.y;
 
         const clampedX = Math.max(
             0,
@@ -71,9 +71,8 @@ function MapPage() {
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
             <h1>MAP</h1>
 
-            <div ref={mapRef} style={{ border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT}}/>
-
-            {boxes.map((box) => (
+            <div ref={mapRef} style={{ border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT}}> 
+                {boxes.map((box) => (
                 <div
                     key={box.id}
                     className='draggable-box'
@@ -87,6 +86,7 @@ function MapPage() {
                     {box.text}
                 </div>
             ))}
+            </div>
         </div>
     );
 };
