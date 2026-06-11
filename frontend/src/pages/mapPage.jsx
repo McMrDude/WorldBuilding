@@ -35,14 +35,16 @@ function MapPage() {
         const newY = e.clientY - offset.current.y;
 
         const mapRect = mapRef.current.getBoundingClientRect();
+        const centeredX = mapRect.width / 2;
+        const centeredY = mapRect.height / 2;
 
         const clampedX = Math.max(
             0,
-            Math.min(newX, mapRect.width - 120)
+            Math.min(newX, centeredX - 120)
         );
         const clampedY = Math.max(
             0,
-            Math.min(newY, mapRect.height - 120)
+            Math.min(newY, centeredY - 120)
         );
 
         setBoxes((prev) =>
