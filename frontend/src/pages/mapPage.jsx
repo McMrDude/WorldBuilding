@@ -93,7 +93,7 @@ function MapPage() {
                         </div>
                     ))}
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', flexBasis: "10%" }}>
+                <div style={{ display: 'flex', flexDirection: 'column', flexBasis: "7%" }}>
                     <button className='pin_button'>Forest</button>
                     <button className='pin_button'>River</button>
                     <button className='pin_button'>Town</button>
