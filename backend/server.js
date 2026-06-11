@@ -107,6 +107,24 @@ app.put("/api/characters/:characterID", async (req, res) => {
     }
 });
 
+app.get("/api/pins", async (req, res) => {
+    const result = await pool.query(
+        'SELECT * FROM pins WHERE world_id = $1',
+        [req.body.world_id]
+    );
+
+    res.json(result.rows[0]);
+});
+app.post("/api/pins", async (req, res) => {
+    await pool.query(
+        `INSERT INTO pins (pin_id, world_id, positionX, positionY, text)
+        VALUES ($1, $2, $3, $4, $5)
+        `, [req.body.id, req.body.world_id, req.body.x, req.body.y, req.body.text]);
+    
+    res.json({ message: "map updated" });
+});
+
+
 /*SERVER START*/
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 

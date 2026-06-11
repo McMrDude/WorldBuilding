@@ -3,6 +3,9 @@ import { Link, useParams } from 'react-router-dom'
 import './mapPage.css'
 
 function MapPage() {
+    const { id } = useParams();
+
+    const [pins, setPins] = useState([])
     const [boxes, setBoxes] = useState([
         /* { id: 1, x: 100, y: 100, text: "RUB-A-DUB-DUB!!" },
         { id: 2, x: 200, y: 150, text: "YEAH YEAH!!" },
@@ -18,6 +21,36 @@ function MapPage() {
     const MAP_HEIGHT = 600;
 
     const PIN_SIZE = 60;
+
+
+    const fetchPins = () => {
+        fetch("/api/pins", {credentials: 'include'})
+        .then(res => res.json())
+        .then(data => setPins(Array.isArray(data) ? data : []))
+    };
+
+    const loadPins = () => {
+        pins.map((pin) => {
+            setBoxes(prev => [
+                ...prev,
+                {
+                    id: nextId.current++,
+                    x: pin.positionX,
+                    y: pin.positionY,
+                    text: pin.text
+                }
+            ])
+        })
+    }
+
+    useEffect(() => {
+        fetchPins();
+
+        if (!pins) return
+
+        loadPins();
+    }, [])
+
 
     const onPointerDown = (e, box) => {
         draggingId.current = box.id;
@@ -63,6 +96,13 @@ function MapPage() {
         );
     };
 
+    const onPointerUp = () => {
+        draggingId.current = null;
+
+        window.removeEventListener("pointermove", onPointerMove);
+        window.removeEventListener("pointerup", onPointerUp);
+    };
+
     const nextId = useRef(1)
 
     const addBox = (text) => {
@@ -77,12 +117,24 @@ function MapPage() {
         ])
     }
 
-    const onPointerUp = () => {
-        draggingId.current = null;
-
-        window.removeEventListener("pointermove", onPointerMove);
-        window.removeEventListener("pointerup", onPointerUp);
-    };
+    const updateMap = () => {
+        boxes.map((box) => {
+            await fetch("/api/pins", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "include",
+                body: JSON.stringify({ 
+                    id: box.id,
+                    x: box.x,
+                    y: box.y,
+                    text: box.text,
+                    world_id: 
+                })
+            });
+        })
+    }
 
     return(
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
@@ -115,6 +167,7 @@ function MapPage() {
                     <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>Mountain</button>
                 </div>
             </div>
+            <button onClick={updateMap}>Save map</button>
         </div>
     );
 };
