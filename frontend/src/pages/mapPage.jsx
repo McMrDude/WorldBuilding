@@ -4,10 +4,10 @@ import './mapPage.css'
 
 function MapPage() {
     const [boxes, setBoxes] = useState([
-        { id: 1, x: 100, y: 100, text: "RUB-A-DUB-DUB!!" },
+        /* { id: 1, x: 100, y: 100, text: "RUB-A-DUB-DUB!!" },
         { id: 2, x: 200, y: 150, text: "YEAH YEAH!!" },
         { id: 3, x: 300, y: 200, text: "TOO LATE, MY BABY!!" },
-        { id: 4, x: 400, y: 250, text: "OH HALLELUJA!!" },
+        { id: 4, x: 400, y: 250, text: "OH HALLELUJA!!" }, */
     ]);
     const draggingId = useRef(null)
     const offset = useRef({ x: 0, y: 0});
