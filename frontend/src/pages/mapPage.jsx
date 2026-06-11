@@ -63,7 +63,7 @@ function MapPage() {
         );
     };
 
-    const nextId = useRef(0)
+    const nextId = useRef(1)
 
     const addBox = (text) => {
         setBoxes(prev => [
