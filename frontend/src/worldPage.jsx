@@ -19,7 +19,10 @@ function WorldPage() {
         <div>
             <div>
                 <Link to={`/world/${id}/characters`}>
-                    <button>Karakterer</button>
+                    <button>Character</button>
+                </Link>
+                <Link to={`/world/${id}/map`}>
+                    <buton>Map</buton>
                 </Link>
             </div>
             <h1>World {id}</h1>
