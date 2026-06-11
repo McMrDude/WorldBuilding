@@ -66,7 +66,7 @@ function MapPage() {
     };
 
     return(
-        <div style={{ display: 'flex', flexDirection, justifyContent: 'center', alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
             <h1>MAP</h1>
 
             <div ref={mapRef} style={{ border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT}}/>
