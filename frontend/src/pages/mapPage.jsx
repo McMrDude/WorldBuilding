@@ -38,11 +38,11 @@ function MapPage() {
 
         const clampedX = Math.max(
             0,
-            Math.min(newX, mapRect.width - 50)
+            Math.min(newX, mapRect.width - 120)
         );
         const clampedY = Math.max(
             0,
-            Math.min(newY, mapRect.height - 50)
+            Math.min(newY, mapRect.height - 120)
         );
 
         setBoxes((prev) =>
