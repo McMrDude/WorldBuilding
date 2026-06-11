@@ -52,8 +52,8 @@ function MapPage() {
                 box.id === draggingId.current
                     ? {
                         ...box,
-                        x: centeredX,
-                        y: centeredY
+                        x: clampedX,
+                        y: clampedY
                     }
                     : box
             )
