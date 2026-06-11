@@ -74,24 +74,25 @@ function MapPage() {
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
             <h1>MAP</h1>
 
-            <div ref={mapRef} style={{ display: 'flex', position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT}}> 
-                {boxes.map((box) => (
-                    <div
-                        key={box.id}
-                        className='draggable-box'
-                        onPointerDown={(e) => onPointerDown(e, box)}
-                        style={{
-                            width: PIN_SIZE,
-                            height: PIN_SIZE,
-                            left: box.x,
-                            top: box.y,
-                            transform: "translate(-50%, -50%)"
-                        }}
-                    >
-                        {box.text}
-                    </div>
-                ))};
-
+            <div style={{ display: 'flex' }}>
+                <div ref={mapRef} style={{ position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT}}> 
+                    {boxes.map((box) => (
+                        <div
+                            key={box.id}
+                            className='draggable-box'
+                            onPointerDown={(e) => onPointerDown(e, box)}
+                            style={{
+                                width: PIN_SIZE,
+                                height: PIN_SIZE,
+                                left: box.x,
+                                top: box.y,
+                                transform: "translate(-50%, -50%)"
+                            }}
+                        >
+                            {box.text}
+                        </div>
+                    ))}
+                </div>
                 <div style={{ flexBasis: "10%" }}>
                     <button className='pin_button'>Forest</button>
                     <button className='pin_button'>River</button>
