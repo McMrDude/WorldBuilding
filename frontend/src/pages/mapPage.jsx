@@ -63,6 +63,20 @@ function MapPage() {
         );
     };
 
+    const nextId = useRef(0)
+
+    const addBox = (text) => {
+        setBoxes(prev => [
+            ...prev,
+            {
+                id: nextId.current++,
+                x: MAP_WIDTH / 2,
+                y: MAP_HEIGHT / 2,
+                text: text
+            }
+        ])
+    }
+
     const onPointerUp = () => {
         draggingId.current = null;
 
@@ -93,12 +107,12 @@ function MapPage() {
                         </div>
                     ))}
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', flexBasis: "7%" }}>
-                    <button className='pin_button'>Forest</button>
-                    <button className='pin_button'>River</button>
-                    <button className='pin_button'>Town</button>
-                    <button className='pin_button'>Castle</button>
-                    <button className='pin_button'>Mountain</button>
+                <div style={{ display: 'flex', flexDirection: 'column', flexBasis: "7%", border: "1px solid black" }}>
+                    <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>Forest</button>
+                    <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>River</button>
+                    <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>Town</button>
+                    <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>Castle</button>
+                    <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>Mountain</button>
                 </div>
             </div>
         </div>
