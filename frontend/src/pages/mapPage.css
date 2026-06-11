@@ -8,3 +8,8 @@
 .draggable-box:active {
     cursor: grabbing;
 }
+
+.pin_button {
+    width: 30px;
+    height: 30px;
+}
