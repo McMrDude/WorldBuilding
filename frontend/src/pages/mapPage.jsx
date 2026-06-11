@@ -36,8 +36,8 @@ function MapPage() {
 
         const mapRect = mapRef.current.getBoundingClientRect();
 
-        const newX = e.clientX - mapRect.left - offset.current.x;
-        const newY = e.clientY - mapRect.top - offset.current.y;
+        const newX = e.clientX - mapRect.left - (offset.current.x + 60);
+        const newY = e.clientY - mapRect.top - (offset.current.y + 60);
 
         const clampedX = Math.max(
             0,
