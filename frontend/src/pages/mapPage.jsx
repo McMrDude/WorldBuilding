@@ -17,6 +17,8 @@ function MapPage() {
     const MAP_WIDTH = 1000;
     const MAP_HEIGHT = 600;
 
+    const PIN_SIZE = 60;
+
     const onPointerDown = (e, box) => {
         draggingId.current = box.id;
 
@@ -40,12 +42,12 @@ function MapPage() {
         const newY = e.clientY - mapRect.top - offset.current.y;
 
         const clampedX = Math.max(
-            60,
-            Math.min(newX, (mapRect.width - 60) - 2)
+            PIN_SIZE,
+            Math.min(newX, (mapRect.width - PIN_SIZE / 2) - 2)
         );
         const clampedY = Math.max(
-            60,
-            Math.min(newY, (mapRect.height - 60) - 1)
+            PIN_SIZE,
+            Math.min(newY, (mapRect.height - PIN_SIZE / 2) - 1)
         );
 
         setBoxes((prev) =>
@@ -79,6 +81,8 @@ function MapPage() {
                     className='draggable-box'
                     onPointerDown={(e) => onPointerDown(e, box)}
                     style={{
+                        width: PIN_SIZE,
+                        height: PIN_SIZE,
                         left: box.x,
                         top: box.y,
                         transform: "translate(-50%, -50%)"
