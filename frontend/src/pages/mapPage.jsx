@@ -48,6 +48,8 @@ function MapPage() {
 
     return(
         <div>
+            <h1>MAP</h1>
+
             {boxes.map((box) => (
                 <div
                     key={box.id}
