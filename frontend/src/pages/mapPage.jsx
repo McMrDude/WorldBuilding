@@ -29,7 +29,7 @@ function MapPage() {
         .then(data => {
             setBoxes(
                 data.map( pin => ({
-                    id: nextId.current++,
+                    id: pin.pin_id,
                     x: pin.position_x,
                     y: pin.position_y,
                     text: pin.text
