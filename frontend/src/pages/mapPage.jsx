@@ -12,6 +12,8 @@ function MapPage() {
         { id: 3, x: 300, y: 200, text: "TOO LATE, MY BABY!!" },
         { id: 4, x: 400, y: 250, text: "OH HALLELUJA!!" }, */
     ]);
+    const [pins, setPins] = useState([]);
+
     const draggingId = useRef(null)
     const offset = useRef({ x: 0, y: 0});
 
@@ -27,6 +29,7 @@ function MapPage() {
         fetch(`/api/pins/${id}`, { credentials: 'include' })
         .then(res => res.json())
         .then(data => {
+            setPins(Array.isArray(data) ? data : []),
             setBoxes(
                 data.map( pin => ({
                     id: pin.id,
@@ -97,16 +100,28 @@ function MapPage() {
     /* const nextId = useRef(1) */
 
     const addBox = (text) => {
-        setBoxes(prev => [
-            ...prev,
-            {
-                id: null,
-                x: MAP_WIDTH / 2,
-                y: MAP_HEIGHT / 2,
-                text: text
-            }
-        ])
-    }
+        if (pins) {
+            setBoxes(prev => [
+                ...prev,
+                {
+                    id: pins.length,
+                    x: MAP_WIDTH / 2,
+                    y: MAP_HEIGHT / 2,
+                    text: text
+                }
+            ]);
+        } else {
+            setBoxes(prev => [
+                ...prev,
+                {
+                    id: 1,
+                    x: MAP_WIDTH / 2,
+                    y: MAP_HEIGHT / 2,
+                    text: text
+                }
+            ]);
+        }
+    };
 
     const updateMap = async () => {
         await fetch("/api/pins", {
