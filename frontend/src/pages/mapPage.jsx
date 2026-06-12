@@ -138,7 +138,7 @@ function MapPage() {
 
             <div style={{ display: 'flex' }}>
                 <div ref={mapRef} style={{ position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT }}> 
-                    <img src={map} alt='map'></img>
+                    <img src={map} alt='map' style={{ width: "100%", height: "100%"}}></img>
                     {boxes.map((box) => (
                         <div
                             key={box.id}
