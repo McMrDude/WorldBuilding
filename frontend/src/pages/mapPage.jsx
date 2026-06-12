@@ -130,7 +130,7 @@ function MapPage() {
                     x: box.x,
                     y: box.y,
                     text: box.text,
-                    world_id: 
+                    world_id: id,
                 })
             });
         })
@@ -141,7 +141,8 @@ function MapPage() {
             <h1>MAP</h1>
 
             <div style={{ display: 'flex' }}>
-                <div ref={mapRef} style={{ position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT}}> 
+                <div ref={mapRef} style={{ position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT }}> 
+                    <img src='../img/map.png'></img>
                     {boxes.map((box) => (
                         <div
                             key={box.id}
