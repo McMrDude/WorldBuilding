@@ -107,10 +107,10 @@ app.put("/api/characters/:characterID", async (req, res) => {
     }
 });
 
-app.get("/api/pins", async (req, res) => {
+app.get("/api/pins/:world_id", async (req, res) => {
     const result = await pool.query(
         'SELECT * FROM pins WHERE world_id = $1',
-        [req.body.world_id]
+        [req.params.world_id]
     );
 
     res.json(result.rows[0]);

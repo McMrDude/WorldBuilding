@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import './mapPage.css'
 import map from "../img/map.png"
+import border from "../img/wood_border.png"
 
 function MapPage() {
     const { id } = useParams();
@@ -25,7 +26,7 @@ function MapPage() {
 
 
     const fetchPins = () => {
-        fetch("/api/pins", {credentials: 'include', body: JSON.stringify({ world_id: id})})
+        fetch(`/api/pins/${id}`, { credentials: 'include' })
         .then(res => res.json())
         .then(data => setPins(Array.isArray(data) ? data : []))
 
@@ -158,7 +159,7 @@ function MapPage() {
                         </div>
                     ))}
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', flexBasis: "7%", border: "1px solid black" }}>
+                <div style={{ display: 'flex', flexDirection: 'column', flexBasis: "7%", borderImage: `url(${border}) 30 round` }}>
                     <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>Forest</button>
                     <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>River</button>
                     <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>Town</button>
