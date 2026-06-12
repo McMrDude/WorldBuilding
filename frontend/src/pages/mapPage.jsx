@@ -35,6 +35,7 @@ function MapPage() {
     const loadPins = () => {
         if (!pins) return
 
+        console.log(pins)
         console.log("Nå burde det være noe pins her altså");
         pins.map((pin) => {
             setBoxes(prev => [
