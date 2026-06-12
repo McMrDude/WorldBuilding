@@ -28,6 +28,10 @@ function MapPage() {
         fetch("/api/pins", {credentials: 'include'})
         .then(res => res.json())
         .then(data => setPins(Array.isArray(data) ? data : []))
+
+        if (!pins) return
+
+        loadPins();
     };
 
     const loadPins = () => {
@@ -46,10 +50,6 @@ function MapPage() {
 
     useEffect(() => {
         fetchPins();
-
-        if (!pins) return
-
-        loadPins();
     }, [])
 
 
