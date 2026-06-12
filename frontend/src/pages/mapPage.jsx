@@ -118,22 +118,17 @@ function MapPage() {
     }
 
     const updateMap = async () => {
-        boxes.map((box) => {
-            await fetch("/api/pins", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                credentials: "include",
-                body: JSON.stringify({ 
-                    id: box.id,
-                    x: box.x,
-                    y: box.y,
-                    text: box.text,
-                    world_id: id,
-                })
-            });
-        })
+        await fetch("/api/pins", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "include",
+            body: JSON.stringify({ 
+                pins: box,
+                world_id: id,
+            })
+        });
     }
 
     return(
