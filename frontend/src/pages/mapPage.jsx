@@ -29,12 +29,12 @@ function MapPage() {
         .then(res => res.json())
         .then(data => setPins(Array.isArray(data) ? data : []))
 
-        if (!pins) return
-
         loadPins();
     };
 
     const loadPins = () => {
+        if (!pins) return
+        
         pins.map((pin) => {
             setBoxes(prev => [
                 ...prev,
