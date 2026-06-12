@@ -121,14 +121,13 @@ app.post("/api/pins", async (req, res) => {
     try {
         for (const pin of req.body.pins) {
             await pool.query(
-                `INSERT INTO pins (
-                    pin_id, 
+                `INSERT INTO pins ( 
                     world_id, 
                     position_x, 
                     position_y, 
                     text
                 )
-                VALUES ($1, $2, $3, $4, $5)
+                VALUES ($1, $2, $3, $4)
 
                 ON CONFLICT (id)
                 DO UPDATE SET
@@ -138,7 +137,6 @@ app.post("/api/pins", async (req, res) => {
                     world_id = EXCLUDED.world_id
                 `, 
                 [
-                    pin.id, 
                     req.body.world_id, 
                     pin.x, 
                     pin.y, 

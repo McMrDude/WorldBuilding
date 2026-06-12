@@ -29,7 +29,7 @@ function MapPage() {
         .then(data => {
             setBoxes(
                 data.map( pin => ({
-                    id: pin.pin_id,
+                    id: pin.id,
                     x: pin.position_x,
                     y: pin.position_y,
                     text: pin.text
@@ -94,13 +94,12 @@ function MapPage() {
         window.removeEventListener("pointerup", onPointerUp);
     };
 
-    const nextId = useRef(1)
+    /* const nextId = useRef(1) */
 
     const addBox = (text) => {
         setBoxes(prev => [
             ...prev,
             {
-                id: nextId.current++,
                 x: MAP_WIDTH / 2,
                 y: MAP_HEIGHT / 2,
                 text: text
