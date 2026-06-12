@@ -146,7 +146,7 @@ function MapPage() {
                         </div>
                     ))}
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', flexBasis: "7%", borderImage: `url(${border}) 30 round` }}>
+                <div style={{ display: 'flex', flexDirection: 'column', flexBasis: "7%", border: "10px solid transparent", borderImage: `url(${border}) 30 round` }}>
                     <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>Forest</button>
                     <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>River</button>
                     <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>Town</button>
