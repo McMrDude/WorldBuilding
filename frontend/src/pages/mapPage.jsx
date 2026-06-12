@@ -126,7 +126,7 @@ function MapPage() {
             },
             credentials: "include",
             body: JSON.stringify({ 
-                pins: box,
+                pins: boxes,
                 world_id: id,
             })
         });
