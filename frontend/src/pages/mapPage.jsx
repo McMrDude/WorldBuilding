@@ -6,8 +6,6 @@ import border from "../img/wood_border.png"
 
 function MapPage() {
     const { id } = useParams();
-
-    const [pins, setPins] = useState([])
     const [boxes, setBoxes] = useState([
         /* { id: 1, x: 100, y: 100, text: "RUB-A-DUB-DUB!!" },
         { id: 2, x: 200, y: 150, text: "YEAH YEAH!!" },
@@ -37,23 +35,6 @@ function MapPage() {
                     text: pin.text
                 }))
             );
-        });
-
-        loadPins();
-    };
-
-    const loadPins = () => {
-        if (!pins) return
-
-        console.log(pins)
-        console.log("Nå burde det være noe pins her altså");
-        pins.map((pin) => {
-            setBoxes(prev => [
-                ...prev,
-                {
-                    
-                }
-            ])
         });
     };
 
