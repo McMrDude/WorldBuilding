@@ -130,7 +130,7 @@ app.post("/api/pins", async (req, res) => {
                 )
                 VALUES ($1, $2, $3, $4, $5)
 
-                ON CONFLICT (pin_id)
+                ON CONFLICT (id)
                 DO UPDATE SET
                     position_x = EXCLUDED.position_x,
                     position_y = EXCLUDED.position_y,
