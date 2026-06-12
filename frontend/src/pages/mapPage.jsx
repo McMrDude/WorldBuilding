@@ -25,7 +25,7 @@ function MapPage() {
 
 
     const fetchPins = () => {
-        fetch("/api/pins", {credentials: 'include'})
+        fetch("/api/pins", {credentials: 'include', body: JSON.stringify({ world_id: id})})
         .then(res => res.json())
         .then(data => setPins(Array.isArray(data) ? data : []))
 
