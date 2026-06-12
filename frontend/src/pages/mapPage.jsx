@@ -117,7 +117,7 @@ function MapPage() {
         ])
     }
 
-    const updateMap = () => {
+    const updateMap = async () => {
         boxes.map((box) => {
             await fetch("/api/pins", {
                 method: "POST",
