@@ -116,14 +116,19 @@ app.get("/api/pins", async (req, res) => {
     res.json(result.rows[0]);
 });
 app.post("/api/pins", async (req, res) => {
-    for (const pin of req.body.pins) {
-        await pool.query(
-            `INSERT INTO pins (pin_id, world_id, positionX, positionY, text)
-            VALUES ($1, $2, $3, $4, $5)
-            `, [pin.id, req.body.world_id, pin.x, pin.y, pin.text]);
-        }
-    
-    res.json({ message: "map updated" });
+    try {
+        for (const pin of req.body.pins) {
+            await pool.query(
+                `INSERT INTO pins (pin_id, world_id, positionX, positionY, text)
+                VALUES ($1, $2, $3, $4, $5)
+                `, [pin.id, req.body.world_id, pin.x, pin.y, pin.text]);
+            }
+        
+        res.json({ message: "map updated" });
+    } catch (error) {
+        console.error("HOLY BALLER, DETTE ER DÅRLIG!: ", error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 });
 
 
