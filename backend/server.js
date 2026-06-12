@@ -119,7 +119,7 @@ app.post("/api/pins", async (req, res) => {
     try {
         for (const pin of req.body.pins) {
             await pool.query(
-                `INSERT INTO pins (pin_id, world_id, positionX, positionY, text)
+                `INSERT INTO pins (pin_id, world_id, position_x, position_y, text)
                 VALUES ($1, $2, $3, $4, $5)
                 `, [pin.id, req.body.world_id, pin.x, pin.y, pin.text]);
             }

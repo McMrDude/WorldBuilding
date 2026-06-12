@@ -36,8 +36,8 @@ function MapPage() {
                 ...prev,
                 {
                     id: nextId.current++,
-                    x: pin.positionX,
-                    y: pin.positionY,
+                    x: pin.position_x,
+                    y: pin.position_y,
                     text: pin.text
                 }
             ])
