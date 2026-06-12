@@ -115,7 +115,7 @@ app.get("/api/pins/:world_id", async (req, res) => {
 
     console.log("the results from the backend ", result);
 
-    res.json(result.rows[0]);
+    res.json(result.rows);
 });
 app.post("/api/pins", async (req, res) => {
     try {
