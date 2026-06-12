@@ -28,7 +28,16 @@ function MapPage() {
     const fetchPins = () => {
         fetch(`/api/pins/${id}`, { credentials: 'include' })
         .then(res => res.json())
-        .then(data => setPins(Array.isArray(data) ? data : []))
+        .then(data => {
+            setBoxes(
+                data.map( pin => ({
+                    id: nextId.current++,
+                    x: pin.position_x,
+                    y: pin.position_y,
+                    text: pin.text
+                }))
+            );
+        });
 
         loadPins();
     };
@@ -42,10 +51,7 @@ function MapPage() {
             setBoxes(prev => [
                 ...prev,
                 {
-                    id: nextId.current++,
-                    x: pin.position_x,
-                    y: pin.position_y,
-                    text: pin.text
+                    
                 }
             ])
         });
