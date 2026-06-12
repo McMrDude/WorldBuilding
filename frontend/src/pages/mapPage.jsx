@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import './mapPage.css'
+import map from "../img/map.png"
 
 function MapPage() {
     const { id } = useParams();
@@ -137,7 +138,7 @@ function MapPage() {
 
             <div style={{ display: 'flex' }}>
                 <div ref={mapRef} style={{ position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT }}> 
-                    <img src='../img/map.png'></img>
+                    <img src={map} alt='map'></img>
                     {boxes.map((box) => (
                         <div
                             key={box.id}
