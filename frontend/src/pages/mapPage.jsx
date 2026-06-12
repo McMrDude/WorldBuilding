@@ -53,7 +53,7 @@ function MapPage() {
 
     useEffect(() => {
         fetchPins();
-    }, []);
+    }, [id]);
 
 
     const onPointerDown = (e, box) => {
