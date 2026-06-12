@@ -34,7 +34,8 @@ function MapPage() {
 
     const loadPins = () => {
         if (!pins) return
-        
+
+        console.log("Nå burde det være noe pins her altså");
         pins.map((pin) => {
             setBoxes(prev => [
                 ...prev,
@@ -45,12 +46,12 @@ function MapPage() {
                     text: pin.text
                 }
             ])
-        })
-    }
+        });
+    };
 
     useEffect(() => {
         fetchPins();
-    }, [])
+    }, []);
 
 
     const onPointerDown = (e, box) => {
