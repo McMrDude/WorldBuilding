@@ -32,7 +32,7 @@ function MapPage() {
             setPins(Array.isArray(data) ? data : []),
             setBoxes(
                 data.map( pin => ({
-                    id: boxes.length + 1,
+                    dragId: boxes.length + 1,
                     x: pin.position_x,
                     y: pin.position_y,
                     text: pin.text
@@ -54,7 +54,7 @@ function MapPage() {
 
 
     const onPointerDown = (e, box) => {
-        draggingId.current = box.id;
+        draggingId.current = box.dragId;
 
         const mapRect = mapRef.current.getBoundingClientRect();
 
@@ -111,6 +111,7 @@ function MapPage() {
             ...prev,
             {
                 id: null,
+                dragId: boxes.length + 1,
                 x: MAP_WIDTH / 2,
                 y: MAP_HEIGHT / 2,
                 text: text
@@ -141,7 +142,7 @@ function MapPage() {
                     <img src={map} alt='map' style={{ width: "100%", height: "100%"}}></img>
                     {boxes.map((box) => (
                         <div
-                            key={box.id}
+                            key={box.dragId}
                             className='draggable-box'
                             onPointerDown={(e) => onPointerDown(e, box)}
                             style={{
@@ -152,7 +153,7 @@ function MapPage() {
                                 transform: "translate(-50%, -50%)"
                             }}
                         >
-                            {box.id}
+                            {box.text}
                         </div>
                     ))}
                 </div>
