@@ -119,25 +119,31 @@ app.get("/api/pins/:world_id", async (req, res) => {
 });
 app.post("/api/pins", async (req, res) => {
     try {
-        for (const pin of req.body.pins) {
-            if (pin.id) {
-                await pool.query(`
-                    UPDATE pins
-                    SET position_x = $1,
-                        position_y = $2,
-                        text = $3
-                    WHERE id = $4
-                `, [pin.x, pin.y, pin.text, pin.id]);
-            } else {
-                const result = await pool.query(`
-                    INSERT INTO pins (world_id, position_x, position_y, text)
-                    VALUES ($1, $2, $3, $4)
-                    RETURNING id
-                `, [req.body.world_id, pin.x, pin.y, pin.text]);
+        for (const pin of req.body.pins) {`
+            await pool.query(
+                INSERT INTO pins (
+                    world_id,
+                    position_x,
+                    position_y,
+                    text
+                ),
+                VALUES($1, $2, $3, $4)
 
-                pin.id = result.rows[0].id;
-            };
-        };
+                ON CONFLICT (id)
+                DO UPDATE SET
+                    position_x = EXCLUDED.position_x, 
+                    position_y = EXCLUDED.position_y, 
+                    text = EXCLUDED.text, 
+                    world_id = EXCLUDED.world_id
+                ,
+                [
+                    req.body.world_id,
+                    pin.x,
+                    pin.y,
+                    pin.text
+                ]
+            )
+        `};
         
         res.json({ message: "map updated" });
     } catch (error) {
