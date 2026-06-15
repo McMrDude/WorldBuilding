@@ -121,7 +121,7 @@ function MapPage() {
             setBoxes(prev => [
                 ...prev,
                 {
-                    id: 1,
+                    id: null,
                     x: MAP_WIDTH / 2,
                     y: MAP_HEIGHT / 2,
                     text: text
