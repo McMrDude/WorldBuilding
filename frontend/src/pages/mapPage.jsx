@@ -104,7 +104,7 @@ function MapPage() {
             setBoxes(prev => [
                 ...prev,
                 {
-                    id: pins.length + 1,
+                    id: pins.length,
                     x: MAP_WIDTH / 2,
                     y: MAP_HEIGHT / 2,
                     text: text
