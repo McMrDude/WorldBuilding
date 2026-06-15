@@ -29,6 +29,7 @@ function MapPage() {
         fetch(`/api/pins/${id}`, { credentials: 'include' })
         .then(res => res.json())
         .then(data => {
+            setPins(Array.isArray(data) ? data : []),
             setBoxes(
                 data.map( pin => ({
                     id: pin.id,
