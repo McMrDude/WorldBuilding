@@ -86,7 +86,7 @@ function MapPage() {
 
         setBoxes((prev) =>
             prev.map((box) =>
-                box.id === draggingId.current
+                box.dragId === draggingId.current
                     ? {
                         ...box,
                         x: clampedX,
