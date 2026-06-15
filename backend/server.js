@@ -125,7 +125,7 @@ app.post("/api/pins", async (req, res) => {
             console.log("PROCESSING:", pin);
 
             if (pin.id) {
-                await pool.query(`
+                const result = await pool.query(`
                     UPDATE pins
                     SET position_x = $1,
                         position_y = $2,
