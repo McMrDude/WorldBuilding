@@ -141,6 +141,8 @@ app.post("/api/pins", async (req, res) => {
                 `, [req.body.world_id, pin.x, pin.y, pin.text]);
 
                 console.log("INSERTED:", result.rows[0]);
+
+                pin.id = result.rows[0].id;
             };
         };
         
