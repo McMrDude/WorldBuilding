@@ -104,7 +104,7 @@ function MapPage() {
             setBoxes(prev => [
                 ...prev,
                 {
-                    id: pins.length,
+                    id: pins.length + 1,
                     x: MAP_WIDTH / 2,
                     y: MAP_HEIGHT / 2,
                     text: text
@@ -157,7 +157,7 @@ function MapPage() {
                                 transform: "translate(-50%, -50%)"
                             }}
                         >
-                            {box.text}
+                            {box.id}
                         </div>
                     ))}
                 </div>
