@@ -107,12 +107,11 @@ function MapPage() {
     /* const nextId = useRef(1) */
 
     const addBox = (text) => {
-        fetchPins();
-        if (pins) {
+        if (boxes) {
             setBoxes(prev => [
                 ...prev,
                 {
-                    id: pins.length + 1,
+                    id: boxes.length + 1,
                     x: MAP_WIDTH / 2,
                     y: MAP_HEIGHT / 2,
                     text: text
