@@ -25,11 +25,10 @@ function MapPage() {
     const PIN_SIZE = 60;
 
 
-    const fetchPins = () => {
+    const fetchBoxes = () => {
         fetch(`/api/pins/${id}`, { credentials: 'include' })
         .then(res => res.json())
         .then(data => {
-            setPins(Array.isArray(data) ? data : []),
             setBoxes(
                 data.map( pin => ({
                     id: pin.id,
@@ -41,8 +40,15 @@ function MapPage() {
         });
     };
 
+    const fetchPins = () => {
+        fetch(`/api/pins/${id}`, { credentials: 'include' })
+        .then(res => res.json())
+        .then(data => setPins(Array.isArray(data) ? data : []),
+        );
+    };
+
     useEffect(() => {
-        fetchPins();
+        fetchBoxes();
     }, [id]);
 
 
@@ -100,6 +106,7 @@ function MapPage() {
     /* const nextId = useRef(1) */
 
     const addBox = (text) => {
+        fetchPins();
         if (pins) {
             setBoxes(prev => [
                 ...prev,
