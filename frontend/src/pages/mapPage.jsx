@@ -154,7 +154,7 @@ function MapPage() {
     return(
         <title>Map Maker</title>,
         <div className='bigAssDiv' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>
-            <h1 style={{ fontFamily: "myFont", fontSize: "32px", color: "red", WebkitTextStroke: "2px black", }}>MAP</h1>
+            <h1 style={{ fontFamily: "myFont", fontSize: "86px", color: "red", WebkitTextStroke: "1px darkRed", margin: 0 }}>MAP</h1>
 
             <div style={{ display: 'flex' }}>
                 <div ref={mapRef} style={{ position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT }}> 
