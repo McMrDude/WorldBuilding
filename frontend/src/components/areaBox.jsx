@@ -1,6 +1,6 @@
 
 
-function areaBox(onClose) {
+function areaBox({ onClose }) {
 
 
     return(
