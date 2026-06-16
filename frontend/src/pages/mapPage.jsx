@@ -152,7 +152,7 @@ function MapPage() {
     }
 
     return(
-        <div className='bigAssDiv' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', }}>
+        <div className='bigAssDiv' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>
             <h1>MAP</h1>
 
             <div style={{ display: 'flex' }}>
