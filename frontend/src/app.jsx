@@ -4,6 +4,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from "./assets/vite.svg"
 import './App.css'
 import CreateWorld from './components/createWorldBox.jsx'
+import logo from "./img/B&B_big_logo.png"
 
 function App() {
   const [worldBoxOpen, setWorldBoxOpen] = useState(false);
@@ -23,6 +24,7 @@ function App() {
   
   return (
     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>
+        <img src="./img/B&B_big_logo.png"></img>
         <h1>Welcome to World Building!</h1>
         <p>This is a platform for creating and sharing your own worlds.</p>
         <button onClick={() => setWorldBoxOpen(true)}>
