@@ -152,8 +152,9 @@ function MapPage() {
     }
 
     return(
-        <title>Map Maker</title>,
         <div className='bigAssDiv' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>
+            <title>Map Maker</title>
+
             <h1 style={{ fontFamily: "myFont", fontSize: "86px", color: "red", WebkitTextStroke: "1px darkRed", margin: 0 }}>MAP</h1>
 
             <div style={{ display: 'flex' }}>
