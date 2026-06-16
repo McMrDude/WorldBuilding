@@ -167,7 +167,7 @@ function MapPage() {
                         <div
                             key={box.dragId}
                             className='draggable-box'
-                            /* onClick={setAreaBoxOpen(true)} */
+                            onClick={() => setAreaBoxOpen(true)}
                             onPointerDown={(e) => onPointerDown(e, box)}
                             style={{
                                 width: PIN_SIZE,
