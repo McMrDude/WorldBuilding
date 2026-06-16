@@ -32,6 +32,7 @@ function MapPage() {
             setPins(Array.isArray(data) ? data : []),
             setBoxes(
                 data.map( pin => ({
+                    id: pin.id,
                     dragId: pin.dragging_id,
                     x: pin.position_x,
                     y: pin.position_y,
