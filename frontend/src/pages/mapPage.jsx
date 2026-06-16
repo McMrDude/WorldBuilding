@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import './mapPage.css'
 import map from "../img/map.png"
 import border from "../img/wood_border.png"
-import background from "../img/mapBackground.png"
+import background from "../img/mapBackground.jpg"
 import paper from "../img/paper.jpg"
 
 function MapPage() {
