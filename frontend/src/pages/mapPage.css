@@ -25,6 +25,11 @@
     cursor: grabbing;
 }
 
+@font-face {
+  font-family: "myFont";
+  src: url("/font/DragonHunter.otf")
+}
+
 /* .pin_button {
     width: 30px;
     height: 30px;
