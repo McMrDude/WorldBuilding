@@ -1,3 +1,11 @@
+body {
+    background-image: url('../img/mapBackground.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 .draggable-box {
     background-color: red;
     position: absolute;
