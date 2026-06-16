@@ -47,9 +47,9 @@ function SpecificCharacter() {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>
+            <title>Character: {character.name}</title>
             {character && (
                 <div>
-                    <title>Character: {character.name}</title>
                     <h1>{character.name}</h1>
                     <img style={{ maxWidth: "800px", maxHeight: "70vh"}} src={character.img}></img>
 

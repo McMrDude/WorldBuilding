@@ -17,6 +17,7 @@ function WorldPage() {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>
+            <title>World: {world.worldname}</title>
             <div>
                 <Link to={`/world/${id}/characters`}>
                     <button>Character</button>
@@ -28,7 +29,6 @@ function WorldPage() {
             <h1>World {id}</h1>
             {world && (
                 <div>
-                    <title>World: {world.worldname}</title>
                     <h2>{world.worldname}</h2>
                     <p>{world.description}</p>
                 </div>
