@@ -1,8 +1,4 @@
 .bigAssDiv {
-    display: 'flex'; 
-    flex-Direction: 'column'; 
-    justify-Content: 'center';
-    align-Items: 'center';
     background-image: url('../img/mapBackground.jpg');
     background-repeat: no-repeat;
     background-position: center;
