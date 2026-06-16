@@ -27,7 +27,7 @@
 
 @font-face {
   font-family: "myFont";
-  src: url("/font/DragonHunter.otf")
+  src: url("../font/DragonHunter.otf")
 }
 
 /* .pin_button {
