@@ -46,7 +46,7 @@ function SpecificCharacter() {
 
 
     return (
-        <>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>
             {character && (
                 <div>
                     <h1>{character.name}</h1>
@@ -60,7 +60,7 @@ function SpecificCharacter() {
                     </div>
                 </div>
             )}
-        </>
+        </div>
     )
 }
 

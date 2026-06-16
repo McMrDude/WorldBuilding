@@ -16,7 +16,7 @@ function WorldPage() {
     }
 
     return (
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>
             <div>
                 <Link to={`/world/${id}/characters`}>
                     <button>Character</button>

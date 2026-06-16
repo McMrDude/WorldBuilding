@@ -22,7 +22,7 @@ function App() {
   }, []);
   
   return (
-    <>
+    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>
         <h1>Welcome to World Building!</h1>
         <p>This is a platform for creating and sharing your own worlds.</p>
         <button onClick={() => setWorldBoxOpen(true)}>
@@ -56,7 +56,7 @@ function App() {
             />
           </>
         )}
-    </>
+    </div>
   )
 }
 

@@ -10,3 +10,8 @@ body,
 body {
   overflow-x: hidden;
 }
+
+@font-face {
+  font-family: "myFont";
+  src: url("/font/DragonHunter.otf")
+}
