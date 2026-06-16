@@ -11,15 +11,15 @@ function WorldPage() {
             .then(data => setWorld(data));
     }, [id]);
 
-    if (!world) {
-        return <div>Loading...</div>;
-    }
-
     useEffect(() => {
         if(world) {
             document.title = `World: ${world.worldname}`;
         };
     }, [world]);
+
+    if (!world) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>

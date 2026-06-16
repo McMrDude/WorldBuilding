@@ -50,7 +50,6 @@ function SpecificCharacter() {
         };
     }, [character]);
 
-
     return (
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>
             <title>Character: {character.name}</title>
