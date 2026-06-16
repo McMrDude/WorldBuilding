@@ -15,6 +15,12 @@ function WorldPage() {
         return <div>Loading...</div>;
     }
 
+    useEffect(() => {
+        if(world) {
+            document.title = `World: ${world.worldname}`;
+        };
+    }, [world]);
+
     return (
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>
             <title>World: {world.worldname}</title>
