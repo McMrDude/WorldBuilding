@@ -22,7 +22,7 @@ function MapPage() {
 
     const mapRef = useRef(null);
     
-    const [areaBoxOpen, setAreaBoxOpen] = useState(false)
+    /* const [areaBoxOpen, setAreaBoxOpen] = useState(false) */
 
     const MAP_WIDTH = 1000;
     const MAP_HEIGHT = 600;
@@ -167,7 +167,7 @@ function MapPage() {
                         <div
                             key={box.dragId}
                             className='draggable-box'
-                            onClick={setAreaBoxOpen(true)}
+                            /* onClick={setAreaBoxOpen(true)} */
                             onPointerDown={(e) => onPointerDown(e, box)}
                             style={{
                                 width: PIN_SIZE,
@@ -191,13 +191,13 @@ function MapPage() {
             </div>
             <button onClick={updateMap}>Save map</button>
 
-            { areaBoxOpen && (
+            {/* { areaBoxOpen && (
                 <>
                     <areaBox
                         onClose={() => setAreaBoxOpen(false)}
                     />
                 </>
-            )}
+            )} */}
         </div>
     );
 };
