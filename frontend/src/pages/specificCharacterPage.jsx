@@ -52,7 +52,6 @@ function SpecificCharacter() {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>
-            <title>Character: {character.name}</title>
             {character && (
                 <div>
                     <h1>{character.name}</h1>
