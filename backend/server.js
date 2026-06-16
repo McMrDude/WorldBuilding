@@ -136,7 +136,7 @@ app.post("/api/pins", async (req, res) => {
             } else {
                 const result = await pool.query(`
                     INSERT INTO pins (world_id, dragging_id, position_x, position_y, text)
-                    VALUES ($1, $2, $3, $4)
+                    VALUES ($1, $2, $3, $4, $5)
                     RETURNING id
                 `, [req.body.world_id, pin.dragId, pin.x, pin.y, pin.text]);
 
