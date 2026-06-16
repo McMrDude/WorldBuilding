@@ -107,16 +107,29 @@ function MapPage() {
     /* const nextId = useRef(1) */
 
     const addBox = (text) => {
-        setBoxes(prev => [
-            ...prev,
-            {
-                id: null,
-                dragId: boxes.length + 1,
-                x: MAP_WIDTH / 2,
-                y: MAP_HEIGHT / 2,
-                text: text
-            }
-        ]);
+        if (boxes) {
+            setBoxes(prev => [
+                ...prev,
+                {
+                    id: null,
+                    dragId: boxes.length + 1,
+                    x: MAP_WIDTH / 2,
+                    y: MAP_HEIGHT / 2,
+                    text: text
+                }
+            ]);
+        } else {
+            setBoxes(prev => [
+                ...prev,
+                {
+                    id: null,
+                    dragId: null,
+                    x: MAP_WIDTH / 2,
+                    y: MAP_HEIGHT / 2,
+                    text: text
+                }
+            ]);
+        }
     };
 
     const updateMap = async () => {
