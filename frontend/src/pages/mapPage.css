@@ -1,5 +1,17 @@
-body {
+.bigAssDiv {
+    display: 'flex'; 
+    flex-Direction: 'column'; 
+    justify-Content: 'center';
+    align-Items: 'center';
     background-image: url('../img/mapBackground.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.pinDiv {
+    background-image: url('../img/paper.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
