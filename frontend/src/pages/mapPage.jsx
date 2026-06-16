@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import './mapPage.css'
+import areaBox from "../components/areaBox.jsx"
 import map from "../img/map.png"
 import border from "../img/wood_border.png"
 import background from "../img/mapBackground.jpg"
@@ -20,6 +21,8 @@ function MapPage() {
     const offset = useRef({ x: 0, y: 0});
 
     const mapRef = useRef(null);
+    
+    const [areaBoxOpen, setAreaBoxOpen] = useState(false)
 
     const MAP_WIDTH = 1000;
     const MAP_HEIGHT = 600;
@@ -164,6 +167,7 @@ function MapPage() {
                         <div
                             key={box.dragId}
                             className='draggable-box'
+                            onClick={}
                             onPointerDown={(e) => onPointerDown(e, box)}
                             style={{
                                 width: PIN_SIZE,
@@ -186,6 +190,14 @@ function MapPage() {
                 </div>
             </div>
             <button onClick={updateMap}>Save map</button>
+
+            { areaBoxOpen && (
+                <>
+                    <areaBox
+                        onClose={() => setAreaBoxOpen(false)}
+                    />
+                </>
+            )}
         </div>
     );
 };
