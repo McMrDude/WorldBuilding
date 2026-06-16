@@ -145,6 +145,8 @@ function MapPage() {
                 world_id: id,
             })
         });
+
+        fetchBoxes();
     }
 
     return(
