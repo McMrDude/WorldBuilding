@@ -168,8 +168,8 @@ function MapPage() {
                             key={box.dragId}
                             className='draggable-box'
                             onClick={() => {
-                                console.log("Pin clicked now");
                                 setAreaBoxOpen(true);
+                                console.log(areaBoxOpen);
                             }}
                             onPointerDown={(e) => onPointerDown(e, box)}
                             style={{
