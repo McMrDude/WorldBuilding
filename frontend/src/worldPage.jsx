@@ -28,6 +28,7 @@ function WorldPage() {
             <h1>World {id}</h1>
             {world && (
                 <div>
+                    <title>World: {world.worldname}</title>
                     <h2>{world.worldname}</h2>
                     <p>{world.description}</p>
                 </div>

@@ -65,6 +65,7 @@ function CharacterPage() {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>
+            <title>Character Page</title>
             {boxes.map((box) => (
                 <div
                     key={box.id}
