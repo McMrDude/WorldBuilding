@@ -205,7 +205,7 @@ function MapPage() {
             <img src={sideSign} style={{ width: "100px", heigt: "100px", position: "absolute", top: 0, left: 0, cursor: "pointer" }}/>
 
             <div style={{ display: 'flex', border: "10px solid transparent", borderImage: `url(${border}) 30 round` }}>
-                <div ref={mapRef} style={{ position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT, onWheel={handleWheel} }}> 
+                <div ref={mapRef} style={{ position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT }} onWheel={handleWheel}> 
                     <div style={{
                             position: "absolute",
                             transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
