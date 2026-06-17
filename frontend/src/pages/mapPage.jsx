@@ -121,19 +121,19 @@ function MapPage() {
     const addBox = (text) => {
         console.log("This is what text is when the button is made: ", text)
         let image = null;
-        if (text = "Forest") {
+        if (text === "Forest") {
             image = forestPin;
         }
-        if (text = "Dungeon") {
+        else if (text === "Dungeon") {
             image = dungeonPin;
         }
-        if (text = "Town") {
+        else if (text === "Town") {
             image = townPin;
         }
-        if (text = "River") {
+        else if (text === "River") {
             image = riverPin;
         }
-        if (text = "Mountain") {
+        else if (text === "Mountain") {
             image = mountainPin;
         }
 
