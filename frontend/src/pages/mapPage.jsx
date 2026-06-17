@@ -187,7 +187,8 @@ function MapPage() {
         <div className='bigAssDiv' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>
             <title>Map Maker</title>
 
-            <h1 style={{ fontFamily: "myFont", fontSize: "76px", color: "red", WebkitTextStroke: "1px darkRed", margin: 0, position: "absolute", top: 0, zIndex: "1" }}>MAP</h1>
+            <h1 style={{ fontFamily: "myFont", fontSize: "76px", color: "red", WebkitTextStroke: "1px darkRed", margin: 0, position: "absolute", top: 0, right: "20px", zIndex: "1" }}>MAP</h1>
+            <img src={sideSign} style={{ width: "80px", heigt: "80px", position: "absolute", top: 0, left: 0, cursor: "pointer" }}/>
 
             <div style={{ display: 'flex', border: "10px solid transparent", borderImage: `url(${border}) 30 round` }}>
                 <div ref={mapRef} style={{ position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT }}> 
@@ -222,7 +223,7 @@ function MapPage() {
                     <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>Mountain</button>
                 </div>
             </div>
-            <img src={hangingSign} onClick={updateMap} style={{ height: "120px", width: "100px" }}/>
+            <img src={hangingSign} onClick={updateMap} style={{ height: "100px", width: "100px", cursor: "pointer" }}/>
 
             { areaBoxOpen && (
                 <>
