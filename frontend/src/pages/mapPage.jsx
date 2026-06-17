@@ -195,7 +195,7 @@ function MapPage() {
                             className='draggable-box'
                             onClick={() => {
                                 setAreaBoxOpen(true);
-                                console.log(areaBoxOpen);
+                                console.log(box.image);
                             }}
                             onPointerDown={(e) => onPointerDown(e, box)}
                             style={{
