@@ -7,6 +7,7 @@ import border from "../img/wood_border.png"
 import background from "../img/mapBackground.jpg"
 import paper from "../img/paper.jpg"
 import hangingSign from "../img/hanging_sign.png"
+import sideSign from "../img/side_sign.png"
 
 import forestPin from "../img/forest_pin.png"
 import mountainPin from "../img/mountain_pin.png"
