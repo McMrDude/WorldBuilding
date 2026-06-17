@@ -193,6 +193,7 @@ function MapPage() {
                         <img
                             src={box.image}
                             key={box.dragId}
+                            draggable="false"
                             className='draggable-box'
                             onClick={() => {
                                 setAreaBoxOpen(true);
