@@ -6,6 +6,7 @@ import map from "../img/elden_map.png"
 import border from "../img/wood_border.png"
 import background from "../img/mapBackground.jpg"
 import paper from "../img/paper.jpg"
+import hangingSign from "../img/hanging_sign.png"
 
 import forestPin from "../img/forest_pin.png"
 import mountainPin from "../img/mountain_pin.png"
@@ -186,7 +187,7 @@ function MapPage() {
         <div className='bigAssDiv' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>
             <title>Map Maker</title>
 
-            <h1 style={{ fontFamily: "myFont", fontSize: "76px", color: "red", WebkitTextStroke: "1px darkRed", margin: 0, position: "absolute", transform: "translate(-50%, -50%)", top: "50%", left: "50%" }}>MAP</h1>
+            <h1 style={{ fontFamily: "myFont", fontSize: "76px", color: "red", WebkitTextStroke: "1px darkRed", margin: 0, position: "fixed", zIndex: "1" }}>MAP</h1>
 
             <div style={{ display: 'flex', border: "10px solid transparent", borderImage: `url(${border}) 30 round` }}>
                 <div ref={mapRef} style={{ position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT }}> 
@@ -221,7 +222,7 @@ function MapPage() {
                     <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>Mountain</button>
                 </div>
             </div>
-            <button onClick={updateMap}>Save map</button>
+            <img src={hangingSign} onClick={updateMap}/>
 
             { areaBoxOpen && (
                 <>
