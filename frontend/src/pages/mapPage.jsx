@@ -119,24 +119,23 @@ function MapPage() {
     /* const nextId = useRef(1) */
 
     const addBox = (text) => {
-        let image = null;
-        if (text = "Forest") {
-            image = forestPin;
-        }
-        else if (text = "Dungeon") {
-            image = dungeonPin;
-        }
-        else if (text = "Town") {
-            image = townPin;
-        }
-        else if (text = "River") {
-            image = riverPin;
-        }
-        else if (text = "Mountain") {
-            image = mountainPin;
-        }
-
         if (boxes) {
+            let image = null;
+            if (text = "Forest") {
+                image = forestPin;
+            }
+            if (text = "Dungeon") {
+                image = dungeonPin;
+            }
+            if (text = "Town") {
+                image = townPin;
+            }
+            if (text = "River") {
+                image = riverPin;
+            }
+            if (text = "Mountain") {
+                image = mountainPin;
+            }
             setBoxes(prev => [
                 ...prev,
                 {
@@ -149,6 +148,22 @@ function MapPage() {
                 }
             ]);
         } else {
+            let image = null;
+            if (text = "Forest") {
+                image = forestPin;
+            }
+            if (text = "Dungeon") {
+                image = dungeonPin;
+            }
+            if (text = "Town") {
+                image = townPin;
+            }
+            if (text = "River") {
+                image = riverPin;
+            }
+            if (text = "Mountain") {
+                image = mountainPin;
+            }
             setBoxes(prev => [
                 ...prev,
                 {
