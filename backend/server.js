@@ -139,6 +139,12 @@ app.post("/api/pins", async (req, res) => {
                     VALUES ($1, $2, $3, $4, $5, $6)
                     RETURNING id
                 `, [req.body.world_id, pin.dragId, pin.x, pin.y, pin.text, pin.image]);
+                
+                await pool.query(`
+                    INSERT INTO areas (world_id, type)
+                    VALUES ($1, $2)
+                    RETURNING id
+                `, [req.body.world_id, pin.text]);
 
                 console.log("INSERTED:", result.rows[0]);
 
@@ -160,34 +166,6 @@ app.get("/api/area/:pin", async (req, res) => {
     );
     
     res.json(result.rows[0]);
-})
-app.post("/api/area", async (req, res) => {
-    try {
-        console.log("BODY:", req.body);
-
-        for (const pin of req.body.pins) {
-            console.log("PROCESSING:", pin);
-
-            if (pin.id) {
-                return
-            } else {
-                const result = await pool.query(`
-                    INSERT INTO areas (world_id, type)
-                    VALUES ($1, $2)
-                    RETURNING id
-                `, [req.body.world_id, pin.text]);
-
-                console.log("INSERTED:", result.rows[0]);
-
-                pin.id = result.rows[0].id;
-            };
-        };
-        
-        res.json({ message: "map updated" });
-    } catch (error) {
-        console.error("HOLY BALLER, DETTE ER DÅRLIG!: ", error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
 })
 
 

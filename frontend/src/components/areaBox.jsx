@@ -7,10 +7,14 @@ function areaBox({ onClose, pinID }) {
     const [area, setArea] = useState(null)
 
     const loadArea = () => {
-        fetch(`/api/areas/${pin}`, { credentials: 'include' })
+        fetch(`/api/areas/${pinID}`, { credentials: 'include' })
         .then(res => res.json())
         .then( data => setArea(data) );
     };
+
+    useEffect(() => {
+        loadArea();
+    }, [pinID]);
 
     return(
         <div style={{

@@ -179,18 +179,6 @@ function MapPage() {
             })
         });
 
-        await fetch("/api/area", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            credentials: "include",
-            body: JSON.stringify({
-                pins: boxes,
-                world_id: id,
-            })
-        });
-
         fetchBoxes();
     }
 
