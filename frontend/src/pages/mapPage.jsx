@@ -45,6 +45,7 @@ function MapPage() {
                 data.map( pin => ({
                     id: pin.id,
                     dragId: pin.dragging_id,
+                    image: pin.image,
                     x: pin.position_x,
                     y: pin.position_y,
                     text: pin.text
