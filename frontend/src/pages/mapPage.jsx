@@ -184,37 +184,58 @@ function MapPage() {
         fetchBoxes();
     }
 
+    const [zoom, setZoom] = useState(1);
+
+    const handleWheel = (e) => {
+        e.preventDefault();
+
+        setZoom(prev =>
+            Math.max(
+                0.5,
+                Math.min(4, prev - e.deltaY * 0.001)
+            )
+        );
+    };
+
     return(
         <div className='bigAssDiv' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>
             <title>Map Maker</title>
 
             <h1 style={{ fontFamily: "myFont", fontSize: "76px", color: "red", WebkitTextStroke: "1px darkRed", margin: 0, position: "absolute", top: 0, right: "20px", zIndex: "1" }}>MAP</h1>
-            <img src={sideSign} style={{ width: "80px", heigt: "80px", position: "absolute", top: 0, left: 0, cursor: "pointer" }}/>
+            <img src={sideSign} style={{ width: "100px", heigt: "100px", position: "absolute", top: 0, left: 0, cursor: "pointer" }}/>
 
             <div style={{ display: 'flex', border: "10px solid transparent", borderImage: `url(${border}) 30 round` }}>
-                <div ref={mapRef} style={{ position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT }}> 
-                    <img src={map} alt='map' style={{ width: "100%", height: "100%"}}></img>
-                    {boxes.map((box) => (
-                        <img
-                            src={box.image}
-                            key={box.dragId}
-                            draggable="false"
-                            className='draggable-box'
-                            onClick={() => {
-                                setCurrentPin(box.id)
-                                setAreaBoxOpen(true);
-                                console.log(box.image);
-                            }}
-                            onPointerDown={(e) => onPointerDown(e, box)}
-                            style={{
-                                width: PIN_SIZE,
-                                height: PIN_SIZE,
-                                left: box.x,
-                                top: box.y,
-                                transform: "translate(-50%, -50%)"
-                            }}
-                        />
-                    ))}
+                <div ref={mapRef} style={{ position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT. onWheel={handleWheel} }}> 
+                    <div style={{
+                            position: "absolute",
+                            transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
+                            transformOrigin: "top left"
+                        }}
+                    >
+                        <img src={map} alt='map' style={{ width: MAP_WIDTH, height: MAP_HEIGHT, display: "block"}}></img>
+                        {boxes.map((box) => (
+                            <img
+                                src={box.image}
+                                key={box.dragId}
+                                draggable="false"
+                                className='draggable-box'
+                                onClick={() => {
+                                    setCurrentPin(box.id)
+                                    setAreaBoxOpen(true);
+                                    console.log(box.image);
+                                }}
+                                onPointerDown={(e) => onPointerDown(e, box)}
+                                style={{
+                                    width: PIN_SIZE,
+                                    height: PIN_SIZE,
+                                    left: box.x,
+                                    top: box.y,
+                                    transform: 
+                                        `translate(-50%, -50%) scale(${1 / zoom})`
+                                }}
+                            />
+                        ))}
+                    </div>
                 </div>
                 <div className='pinDiv' style={{ display: 'flex', flexDirection: 'column', flexBasis: "7%", border: "10px solid transparent", borderImage: `url(${border}) 30 round` }}>
                     <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>Forest</button>
