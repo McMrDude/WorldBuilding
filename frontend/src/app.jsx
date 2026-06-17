@@ -24,7 +24,7 @@ function App() {
   
   return (
     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>
-        <title>Bungeon & Bragons</title>
+        <title>Bungeons & Bragons</title>
         <img src={logo}></img>
         <h1>Welcome to World Building!</h1>
         <p>This is a platform for creating and sharing your own worlds.</p>

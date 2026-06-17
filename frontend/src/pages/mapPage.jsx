@@ -119,7 +119,7 @@ function MapPage() {
     /* const nextId = useRef(1) */
 
     const addBox = (text) => {
-        const image = null;
+        let image = null;
         if (text = "Forest") {
             image = forestPin;
         }
