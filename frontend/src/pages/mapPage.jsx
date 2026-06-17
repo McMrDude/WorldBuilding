@@ -7,6 +7,12 @@ import border from "../img/wood_border.png"
 import background from "../img/mapBackground.jpg"
 import paper from "../img/paper.jpg"
 
+import forestPin from "../img/forest_pin.png"
+import mountainPin from "../img/mountain_pin.png"
+import riverPin from "../img/river_pin.png"
+import townPin from "../img/city_pin.png"
+import dungeonPin from "../img/dungeon_pin.png"
+
 function MapPage() {
     const { id } = useParams();
     const [boxes, setBoxes] = useState([
@@ -113,12 +119,30 @@ function MapPage() {
     /* const nextId = useRef(1) */
 
     const addBox = (text) => {
+        const image;
+        if (text = "Forest") {
+            image = forestPin;
+        }
+        else if (text = "Dungeon") {
+            image = dungeonPin;
+        }
+        else if (text = "Town") {
+            image = townPin;
+        }
+        else if (text = "River") {
+            image = riverPin;
+        }
+        else if (text = "Mountain") {
+            image = mountainPin;
+        }
+
         if (boxes) {
             setBoxes(prev => [
                 ...prev,
                 {
                     id: null,
                     dragId: boxes.length + 1,
+                    image: image,
                     x: MAP_WIDTH / 2,
                     y: MAP_HEIGHT / 2,
                     text: text
@@ -130,6 +154,7 @@ function MapPage() {
                 {
                     id: null,
                     dragId: null,
+                    image: image,
                     x: MAP_WIDTH / 2,
                     y: MAP_HEIGHT / 2,
                     text: text
@@ -164,7 +189,8 @@ function MapPage() {
                 <div ref={mapRef} style={{ position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT }}> 
                     <img src={map} alt='map' style={{ width: "100%", height: "100%"}}></img>
                     {boxes.map((box) => (
-                        <div
+                        <image
+                            src={box.image}
                             key={box.dragId}
                             className='draggable-box'
                             onClick={() => {
@@ -179,16 +205,14 @@ function MapPage() {
                                 top: box.y,
                                 transform: "translate(-50%, -50%)"
                             }}
-                        >
-                            {box.text}
-                        </div>
+                        />
                     ))}
                 </div>
                 <div className='pinDiv' style={{ display: 'flex', flexDirection: 'column', flexBasis: "7%", border: "10px solid transparent", borderImage: `url(${border}) 30 round` }}>
                     <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>Forest</button>
                     <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>River</button>
                     <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>Town</button>
-                    <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>Castle</button>
+                    <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>Dungeon</button>
                     <button className='pin_button' onClick={(e) => addBox(e.target.innerHTML)}>Mountain</button>
                 </div>
             </div>
