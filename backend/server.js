@@ -153,6 +153,14 @@ app.post("/api/pins", async (req, res) => {
     }
 });
 
+app.get("/api/area/:pin", async (req, res) => {
+    const result = await pool.query(
+        "SELECT * FROM areas WHERE id = $1",
+        [req.params.pin]
+    );
+    
+    res.json(result.rows[0]);
+})
 app.post("/api/area", async (req, res) => {
     try {
         console.log("BODY:", req.body);
