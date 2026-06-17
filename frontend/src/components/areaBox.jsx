@@ -1,7 +1,16 @@
+import { useState, useEffect, useRef } from 'react';
+import { Link, useParams } from 'react-router-dom'
 
+function areaBox({ onClose, pinID }) {
+    const { id } = useParams()
 
-function areaBox({ onClose }) {
+    const [area, setArea] = useState(null)
 
+    const loadArea = () => {
+        fetch(`/api/areas/${id}`, { credentials: 'include' })
+        .then(res => res.json())
+        .then( data => setArea(data) );
+    };
 
     return(
         <div style={{
@@ -21,6 +30,12 @@ function areaBox({ onClose }) {
             <button className="closeBtn" onClick={onClose}>
                     ✕
             </button>
+
+            { area && (
+                <div>
+                    <h1>{area.type}</h1>
+                </div>
+            )}
             <h1>shit</h1>
         </div>
     );

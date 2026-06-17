@@ -22,6 +22,7 @@ function MapPage() {
         { id: 4, x: 400, y: 250, text: "OH HALLELUJA!!" }, */
     ]);
     const [pins, setPins] = useState([]);
+    const [currentPin, setCurrentPin] = useState(null);
 
     const draggingId = useRef(null)
     const offset = useRef({ x: 0, y: 0});
@@ -178,6 +179,18 @@ function MapPage() {
             })
         });
 
+        await fetch("/api/area", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                pins: boxes,
+                world_id: id,
+            })
+        });
+
         fetchBoxes();
     }
 
@@ -197,6 +210,7 @@ function MapPage() {
                             draggable="false"
                             className='draggable-box'
                             onClick={() => {
+                                setCurrentPin(box.id)
                                 setAreaBoxOpen(true);
                                 console.log(box.image);
                             }}
@@ -225,6 +239,7 @@ function MapPage() {
                 <>
                     <AreaBox
                         onClose={() => setAreaBoxOpen(false)}
+                        pinID={currentPin}
                     />
                 </>
             )}
