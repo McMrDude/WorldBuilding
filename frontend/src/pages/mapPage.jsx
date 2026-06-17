@@ -208,7 +208,8 @@ function MapPage() {
                 <div ref={mapRef} style={{ position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT }} onWheel={handleWheel}> 
                     <div style={{
                             position: "absolute",
-                            transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
+                            transform: `scale(${zoom})`,
+                            border: "lime 5px solid",
                             transformOrigin: "top left"
                         }}
                     >
