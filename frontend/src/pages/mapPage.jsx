@@ -190,7 +190,7 @@ function MapPage() {
                 <div ref={mapRef} style={{ position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT }}> 
                     <img src={map} alt='map' style={{ width: "100%", height: "100%"}}></img>
                     {boxes.map((box) => (
-                        <image
+                        <img
                             src={box.image}
                             key={box.dragId}
                             className='draggable-box'
