@@ -144,8 +144,8 @@ function MapPage() {
                     id: null,
                     dragId: boxes.length + 1,
                     image: image,
-                    x: MAP_WIDTH / 2,
-                    y: MAP_HEIGHT / 2,
+                    x: (MAP_WIDTH / 2) + Math.floor(Math.random() * 21) - 10,
+                    y: (MAP_HEIGHT / 2) + Math.floor(Math.random() * 21) - 10,
                     text: text
                 }
             ]);
