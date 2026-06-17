@@ -119,23 +119,25 @@ function MapPage() {
     /* const nextId = useRef(1) */
 
     const addBox = (text) => {
+        console.log("This is what text is when the button is made: ", text)
+        let image = null;
+        if (text = "Forest") {
+            image = forestPin;
+        }
+        if (text = "Dungeon") {
+            image = dungeonPin;
+        }
+        if (text = "Town") {
+            image = townPin;
+        }
+        if (text = "River") {
+            image = riverPin;
+        }
+        if (text = "Mountain") {
+            image = mountainPin;
+        }
+
         if (boxes) {
-            let image = null;
-            if (text = "Forest") {
-                image = forestPin;
-            }
-            if (text = "Dungeon") {
-                image = dungeonPin;
-            }
-            if (text = "Town") {
-                image = townPin;
-            }
-            if (text = "River") {
-                image = riverPin;
-            }
-            if (text = "Mountain") {
-                image = mountainPin;
-            }
             setBoxes(prev => [
                 ...prev,
                 {
@@ -148,22 +150,6 @@ function MapPage() {
                 }
             ]);
         } else {
-            let image = null;
-            if (text = "Forest") {
-                image = forestPin;
-            }
-            if (text = "Dungeon") {
-                image = dungeonPin;
-            }
-            if (text = "Town") {
-                image = townPin;
-            }
-            if (text = "River") {
-                image = riverPin;
-            }
-            if (text = "Mountain") {
-                image = mountainPin;
-            }
             setBoxes(prev => [
                 ...prev,
                 {
