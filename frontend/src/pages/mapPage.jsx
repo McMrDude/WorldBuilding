@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import './mapPage.css'
-import areaBox from "../components/areaBox.jsx"
+import AreaBox from "../components/areaBox.jsx"
 import map from "../img/elden_map.png"
 import border from "../img/wood_border.png"
 import background from "../img/mapBackground.jpg"
@@ -223,7 +223,7 @@ function MapPage() {
 
             { areaBoxOpen && (
                 <>
-                    <areaBox
+                    <AreaBox
                         onClose={() => setAreaBoxOpen(false)}
                     />
                 </>
