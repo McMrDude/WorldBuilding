@@ -213,25 +213,25 @@ function MapPage() {
                     x: 0,
                     y: 0
                 });
-            } else {
-                const clampPan = (panX, panY, zoomLevel) => {
-                    const scaleWidth = MAP_WIDTH * zoomLevel;
-                    const scaleHeight = MAP_HEIGHT * zoomLevel;
-
-                    const minX = Math.min(0, MAP_WIDTH - scaleWidth);
-                    const minY = Math.min(0, MAP_HEIGHT - scaleHeight);
-
-                    return {
-                        x: Math.max(minX, Math.min(0, panX)),
-                        y: Math.max(minY, Math.min(0, panY))
-                    };
-                };
-
-                const clamped =
-                    clampPan(newPanX, newPanY, newZoom);
-
-                setPan(clamped);
             };
+
+            const clampPan = (panX, panY, zoomLevel) => {
+                const scaleWidth = MAP_WIDTH * zoomLevel;
+                const scaleHeight = MAP_HEIGHT * zoomLevel;
+
+                const minX = Math.min(0, MAP_WIDTH - scaleWidth);
+                const minY = Math.min(0, MAP_HEIGHT - scaleHeight);
+
+                return {
+                    x: Math.max(minX, Math.min(0, panX)),
+                    y: Math.max(minY, Math.min(0, panY))
+                };
+            };
+
+            const clamped =
+                clampPan(newPanX, newPanY, newZoom);
+
+            setPan(clamped);
 
             setZoom(newZoom);
     };
