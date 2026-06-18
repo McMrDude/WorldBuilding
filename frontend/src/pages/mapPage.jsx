@@ -275,7 +275,8 @@ function MapPage() {
                         border: "1px solid black", 
                         overflow: "hidden",
                         width: MAP_WIDTH, 
-                        height: MAP_HEIGHT }} 
+                        height: MAP_HEIGHT 
+                    }} 
                     onPointerDown={startPan}
                     onPointerMove={movePan}
                     onPointerUp={() => setIsPanning(false)}
@@ -293,7 +294,7 @@ function MapPage() {
                             transformOrigin: "top left"
                         }}
                     >
-                        <img src={map} alt='map' style={{ width: MAP_WIDTH, height: MAP_HEIGHT, display: "block", }}></img>
+                        <img src={map} alt='map' style={{ width: MAP_WIDTH, height: MAP_HEIGHT, display: "block", draggable="false" }}></img>
                         {boxes.map((box) => (
                             <img
                                 src={box.image}
