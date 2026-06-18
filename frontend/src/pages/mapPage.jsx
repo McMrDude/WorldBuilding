@@ -185,16 +185,78 @@ function MapPage() {
     }
 
     const [zoom, setZoom] = useState(1);
+    const [pan, setPan] = useState({
+        x: 0,
+        y: 0
+    });
 
     const handleWheel = (e) => {
         e.preventDefault();
 
-        setZoom(prev =>
-            Math.max(
-                0.5,
-                Math.min(4, prev - e.deltaY * 0.001)
-            )
-        );
+        const rect =
+            mapRef.current.getBoundingClientRect();
+
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            const zoomFactor =
+                e.deltaY < 0 ? 1.1 : 0.9;
+
+            const newZoom =
+                Math.max(
+                    0.5,
+                    Math.min(4, zoom * zoomFactor)
+                );
+
+            setPan(prev => ({
+                x:
+                    mouseX -
+                    ((mouseX - prev.x) * newZoom) /
+                        zoom,
+
+                y:
+                    mouseY -
+                    ((mouseY - prev.y) * newZoom) /
+                        zoom
+            }));
+
+            setZoom(newZoom);
+    };
+
+    const [isPanning, setIsPanning] =
+        useState(false);
+
+    const panStart = useRef({
+        x: 0,
+        y: 0
+    });
+
+    const startPan = (e) => {
+        setIsPanning(true);
+
+        panStart.current = {
+            mouseX: e.clientX,
+            mouseY: e.clientY,
+
+            panX: pan.x,
+            panY: pan.y
+        };
+    };
+
+    const movePan = (e) => {
+        if (!isPanning) return;
+
+        setPan({
+            x:
+                panStart.current.panX +
+                (e.clientX -
+                        panStart.current.mouseX),
+
+            y:
+                panStart.current.panY +
+                (e.clientY -
+                        panStart.current.mouseY)                
+        });
     };
 
     return(
@@ -205,14 +267,33 @@ function MapPage() {
             <img src={sideSign} style={{ width: "100px", heigt: "100px", position: "absolute", top: 0, left: 0, cursor: "pointer" }}/>
 
             <div style={{ display: 'flex', border: "10px solid transparent", borderImage: `url(${border}) 30 round` }}>
-                <div ref={mapRef} style={{ position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT }} onWheel={handleWheel}> 
-                    <div style={{
+                <div 
+                    ref={mapRef} 
+                    onWheel={handleWheel}
+                    style={{ 
+                        position: 'relative', 
+                        border: "1px solid black", 
+                        overflow: "hidden",
+                        width: MAP_WIDTH, 
+                        height: MAP_HEIGHT }} 
+                    onPointerDown={startPan}
+                    onPointerMove={movePan}
+                    onPointerUp={() => setIsPanning(false)}
+                >
+                    <div
+                        style={{
                             position: "absolute",
-                            border: "lime 5px solid",
+                            width: MAP_WIDTH,
+                            height: MAP_HEIGHT,
+
+                            transform:
+                                `translate(${pan.x}px, ${pan.y}px)
+                                scale(${zoom})`,
+
                             transformOrigin: "top left"
                         }}
                     >
-                        <img src={map} alt='map' style={{ width: MAP_WIDTH, height: MAP_HEIGHT, display: "block", transform: `scale(${zoom})`,}}></img>
+                        <img src={map} alt='map' style={{ width: MAP_WIDTH, height: MAP_HEIGHT, display: "block", }}></img>
                         {boxes.map((box) => (
                             <img
                                 src={box.image}
