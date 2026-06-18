@@ -75,8 +75,8 @@ function MapPage() {
         const mapRect = mapRef.current.getBoundingClientRect();
 
         offset.current = {
-            x: e.clientX - mapRect.left - box.x,
-            y: e.clientY - mapRect.top - box.y
+            x: (e.clientX - mapRect.left - pan.x) / zoom - box.x,
+            y: (e.clientY - mapRect.top - pan.y) / zoom - box.y
         };
 
         window.addEventListener("pointermove", onPointerMove);
@@ -88,8 +88,8 @@ function MapPage() {
 
         const mapRect = mapRef.current.getBoundingClientRect();
 
-        const newX = e.clientX - mapRect.left - offset.current.x;
-        const newY = e.clientY - mapRect.top - offset.current.y;
+        const newX = (e.clientX - mapRect.left - pan.x) / zoom - offset.current.x;
+        const newY = (e.clientY - mapRect.top - pan.y) / zoom - offset.current.y;
 
         const clampedX = Math.max(
             PIN_SIZE / 2,
@@ -208,17 +208,30 @@ function MapPage() {
                     Math.min(4, zoom * zoomFactor)
                 );
 
-            setPan(prev => ({
-                x:
-                    mouseX -
-                    ((mouseX - prev.x) * newZoom) /
-                        zoom,
+            if (newZoom === 1) {
+                setPan({
+                    x: 0,
+                    y: 0
+                });
+            } else {
+                const clampPan = (panX, panY, zoomLevel) => {
+                    const scaleWidth = MAP_WIDTH * zoomLevel;
+                    const scaleHeight = MAP_HEIGHT * zoomLevel;
 
-                y:
-                    mouseY -
-                    ((mouseY - prev.y) * newZoom) /
-                        zoom
-            }));
+                    const minX = Math.min(0, MAP_WIDTH - scaleWidth);
+                    const minY = Math.min(0, MAP_HEIGHT - scaleHeight);
+
+                    return {
+                        x: Math.max(minX, Math.min(0, panX)),
+                        y: Math.max(minY, Math.min(0, panY))
+                    };
+                };
+
+                const clamped =
+                    clampPan(newPanX, newPanY, newZoom);
+
+                setPan(clamped);
+            };
 
             setZoom(newZoom);
     };
