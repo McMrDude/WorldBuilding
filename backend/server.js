@@ -165,7 +165,7 @@ app.put("/api/area/:pin", async (req, res) => {
         SET name = $2,
             lore = $3
         WHERE id = $1
-        `, [req.params.pin, req.body.areaName, req.body.lore]
+        `, [req.params.pin, req.body.name, req.body.lore]
     );
 });
 app.get("/api/area/:pin", async (req, res) => {
