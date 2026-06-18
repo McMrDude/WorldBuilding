@@ -294,7 +294,7 @@ function MapPage() {
                             transformOrigin: "top left"
                         }}
                     >
-                        <img src={map} alt='map' style={{ width: MAP_WIDTH, height: MAP_HEIGHT, display: "block", draggable="false" }}></img>
+                        <img src={map} alt='map' draggable="false" style={{ width: MAP_WIDTH, height: MAP_HEIGHT, display: "block", }}></img>
                         {boxes.map((box) => (
                             <img
                                 src={box.image}
