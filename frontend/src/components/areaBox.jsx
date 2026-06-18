@@ -2,9 +2,12 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom'
 
 function areaBox({ onClose, pinID }) {
-    const { id } = useParams()
+    const { id } = useParams();
 
-    const [area, setArea] = useState(null)
+    const [area, setArea] = useState(null);
+
+    const [name, setName] = useState(null);
+    const [lore, setLore] = useState(null);
 
     const loadArea = () => {
         fetch(`/api/area/${pinID}`, { credentials: 'include' })
@@ -15,6 +18,19 @@ function areaBox({ onClose, pinID }) {
     useEffect(() => {
         loadArea();
     }, [pinID]);
+
+    const updateArea = async () => {
+        await fetch(`/api/area/${pinID}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name,
+                lore,
+            })
+        })
+    }
 
     return(
         <div style={{
@@ -37,7 +53,24 @@ function areaBox({ onClose, pinID }) {
 
             { area && (
                 <div>
+                    { area.name ? 
+                        <p>{area.name}</p> : 
+                        <textarea 
+                            placeholder='The name of the place, stupid...'
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                    }
                     <h1>{area.type}</h1>
+                    { area.lore ? 
+                        <p>{area.lore}</p> : 
+                        <textarea 
+                            placeholder='The epic lore and description of the place...'
+                            value={lore}
+                            onChange={(e) => setLore(e.target.value)}
+                        />
+                    }
+                    <button onClick={updateArea}>Update Place</button>
                 </div>
             )}
             <h1>shit</h1>

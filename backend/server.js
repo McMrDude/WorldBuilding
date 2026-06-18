@@ -159,6 +159,15 @@ app.post("/api/pins", async (req, res) => {
     }
 });
 
+app.put("/api/area/:pin", async (req, res) => {
+    await pool.query(`
+        UPDATE areas 
+        SET name = $2,
+            lore = $3
+        WHERE id = $1
+        `, [req.params.pin, req.body.areaName, req.body.lore]
+    );
+});
 app.get("/api/area/:pin", async (req, res) => {
     const result = await pool.query(
         "SELECT * FROM areas WHERE id = $1",
