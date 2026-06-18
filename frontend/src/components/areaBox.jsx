@@ -29,8 +29,10 @@ function areaBox({ onClose, pinID }) {
                 name,
                 lore,
             })
-        })
-    }
+        });
+
+        loadArea();
+    };
 
     return(
         <div style={{
