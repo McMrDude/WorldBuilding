@@ -37,7 +37,6 @@ function areaBox({ onClose, pinID }) {
 
             { area && (
                 <div>
-                    {console.log(area)}
                     <h1>{area.type}</h1>
                 </div>
             )}
