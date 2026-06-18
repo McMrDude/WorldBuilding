@@ -208,12 +208,12 @@ function MapPage() {
                     Math.min(4, zoom * zoomFactor)
                 );
 
-            if (newZoom === 1) {
+            /* if (newZoom === 1) {
                 setPan({
                     x: 0,
                     y: 0
                 });
-            };
+            }; */
 
             const clampPan = (panX, panY, zoomLevel) => {
                 const scaleWidth = MAP_WIDTH * zoomLevel;
