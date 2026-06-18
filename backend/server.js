@@ -165,7 +165,7 @@ app.get("/api/area/:pin", async (req, res) => {
         [req.params.pin]
     );
     
-    res.json(result.rows);
+    res.json(result.rows[0]);
 })
 
 
