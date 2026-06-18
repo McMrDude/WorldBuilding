@@ -246,16 +246,27 @@ function MapPage() {
     const movePan = (e) => {
         if (!isPanning) return;
 
-        setPan({
-            x:
-                panStart.current.panX +
-                (e.clientX -
-                        panStart.current.mouseX),
+        const scaledWidth = MAP_WIDTH * zoom;
+        const scaledHeight = MAP_HEIGHT * zoom;
 
-            y:
-                panStart.current.panY +
-                (e.clientY -
-                        panStart.current.mouseY)                
+        const maxX = 0;
+        const maxY = 0;
+
+        const minX = MAP_WIDTH - scaledWidth;
+        const minY = MAP_HEIGHT - scaledHeight;
+
+
+        const newX =
+            panStart.current.panX +
+            (e.clientX - panStart.current.mouseX);
+
+        const newY =
+            panStart.current.panY +
+            (e.clientY - panStart.current.mouseY);
+
+        setPan({
+            x: Math.max(minX, Math.min(maxX, newX)),
+            y: Math.max(minY, Math.min(maxY, newY))
         });
     };
 
@@ -306,14 +317,18 @@ function MapPage() {
                                     setAreaBoxOpen(true);
                                     console.log(box.image);
                                 }}
-                                onPointerDown={(e) => onPointerDown(e, box)}
+                                onPointerDown={(e) => {
+                                    e.stopPropagation();
+                                    onPointerDown(e, box)
+                                }}
                                 style={{
                                     width: PIN_SIZE,
                                     height: PIN_SIZE,
                                     left: box.x,
                                     top: box.y,
                                     transform: 
-                                        `translate(-50%, -50%) scale(${1 / zoom})`
+                                        `translate(-50%, -100%) scale(${1 / zoom})`,
+                                    transformOrigin: "bottom center",
                                 }}
                             />
                         ))}
