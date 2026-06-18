@@ -208,12 +208,11 @@ function MapPage() {
                 <div ref={mapRef} style={{ position: 'relative', border: "1px solid black", width: MAP_WIDTH, height: MAP_HEIGHT }} onWheel={handleWheel}> 
                     <div style={{
                             position: "absolute",
-                            transform: `scale(${zoom})`,
                             border: "lime 5px solid",
                             transformOrigin: "top left"
                         }}
                     >
-                        <img src={map} alt='map' style={{ width: MAP_WIDTH, height: MAP_HEIGHT, display: "block"}}></img>
+                        <img src={map} alt='map' style={{ width: MAP_WIDTH, height: MAP_HEIGHT, display: "block", transform: `scale(${zoom})`,}}></img>
                         {boxes.map((box) => (
                             <img
                                 src={box.image}
