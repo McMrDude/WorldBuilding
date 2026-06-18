@@ -204,7 +204,7 @@ function MapPage() {
 
             const newZoom =
                 Math.max(
-                    0.5,
+                    1,
                     Math.min(4, zoom * zoomFactor)
                 );
 
