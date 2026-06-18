@@ -46,4 +46,4 @@ function areaBox({ onClose, pinID }) {
     );
 };
 
-export default areaBox
+export default areaBox;
