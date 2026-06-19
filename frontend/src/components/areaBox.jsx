@@ -78,7 +78,7 @@ function AreaBox({ onClose, pinID, }) {
                         setEdit(false);
                         area.name = prevName;
                         area.lore = prevLore;
-                        console.log(prevArea)
+                        /* console.log(prevArea) */
                     }}
                 >
                     Cancel
