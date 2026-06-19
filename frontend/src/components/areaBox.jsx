@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom'
 
-function areaBox({ onClose, pinID, key }) {
+function AreaBox({ onClose, pinID, }) {
     const { id } = useParams();
 
     const [area, setArea] = useState(null);
@@ -10,9 +10,13 @@ function areaBox({ onClose, pinID, key }) {
     const [lore, setLore] = useState(null);
 
     const loadArea = () => {
+        console.log("Loading area:", pinID);
+
         fetch(`/api/area/${pinID}`)
         .then(res => res.json())
         .then(data => {
+            console.log("AREA DATA:", data);
+
             setArea(data)
             setName(data.name)
             setLore(data.lore)
@@ -86,4 +90,4 @@ function areaBox({ onClose, pinID, key }) {
     );
 };
 
-export default areaBox;
+export default AreaBox;
