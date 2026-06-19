@@ -369,6 +369,7 @@ function MapPage() {
                 <>
                     <AreaBox
                         onClose={() => setAreaBoxOpen(false)}
+                        key={currentPin}
                         pinID={currentPin}
                     />
                 </>

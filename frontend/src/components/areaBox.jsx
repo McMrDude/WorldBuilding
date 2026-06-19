@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom'
 
-function areaBox({ onClose, pinID }) {
+function areaBox({ onClose, pinID, key }) {
     const { id } = useParams();
 
     const [area, setArea] = useState(null);
@@ -24,7 +24,7 @@ function areaBox({ onClose, pinID }) {
     }, [pinID]);
 
     const updateArea = async () => {
-        await fetch(`/api/area/${pinID}`, {
+        const res = await fetch(`/api/area/${pinID}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -34,6 +34,8 @@ function areaBox({ onClose, pinID }) {
                 lore,
             })
         });
+
+        console.log(await res.text());
 
         loadArea();
     };
