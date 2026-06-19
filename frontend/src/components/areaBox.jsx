@@ -88,7 +88,8 @@ function AreaBox({ onClose, pinID, }) {
                     }} 
                     onClick={() => {
                         setEdit(true);
-                        setArea(null);
+                        area.name = null;
+                        area.lore = null;
                         setPrevArea(area);
                     }}
                 >
