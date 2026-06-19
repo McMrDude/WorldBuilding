@@ -167,6 +167,8 @@ app.put("/api/area/:pin", async (req, res) => {
         WHERE id = $1
         `, [req.params.pin, req.body.name, req.body.lore]
     );
+
+    res.json({ success: true });
 });
 app.get("/api/area/:pin", async (req, res) => {
     const result = await pool.query(
