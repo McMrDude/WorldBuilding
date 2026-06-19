@@ -99,7 +99,7 @@ function AreaBox({ onClose, pinID, }) {
 
             { area && (
                 <div>
-                    {setPrevArea(area)}
+                    
                     { area.name ? 
                         <p>{area.name}</p> : 
                         <textarea 
