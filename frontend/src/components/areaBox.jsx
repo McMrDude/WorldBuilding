@@ -80,7 +80,9 @@ function AreaBox({ onClose, pinID, }) {
                             ...area,
                             name: prevName.current,
                             lore: prevLore.current
-                        })
+                        });
+                        setName(prevName.current);
+                        setLore(prevLore.current);
                         /* console.log(prevArea) */
                     }}
                 >
