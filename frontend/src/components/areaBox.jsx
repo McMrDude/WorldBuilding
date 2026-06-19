@@ -9,6 +9,9 @@ function AreaBox({ onClose, pinID, }) {
     const [name, setName] = useState(null);
     const [lore, setLore] = useState(null);
 
+    const [edit, setEdit] = useState(false);
+    const [prevArea, setPrevArea] = useState(null)
+
     const loadArea = () => {
         console.log("Loading area:", pinID);
 
@@ -58,9 +61,40 @@ function AreaBox({ onClose, pinID, }) {
             alignItems: "center",
             backgroundColor: "#fff",}}
         >
-            <button className="closeBtn" onClick={onClose}>
-                    ✕
+            <button className="closeBtn" style={{ position: "absolute", top: "5px", left: "5px"}} onClick={onClose}>
+                ✕
             </button>
+            { edit ?
+                <button
+                    style={{ 
+                        position: "absolute", 
+                        top: "5px", 
+                        right: "5px" 
+                    }} 
+                    onClick={() => {
+                        setEdit(false);
+                        setArea(prevArea);
+                        setPrevArea(null)
+                    }}
+                >
+                    Cancel
+                </button> :
+
+                <button 
+                    style={{ 
+                        position: "absolute", 
+                        top: "5px", 
+                        right: "5px" 
+                    }} 
+                    onClick={() => {
+                        setEdit(true);
+                        setArea(null);
+                        setPrevArea(area);
+                    }}
+                >
+                    Edit
+                </button>
+            }
 
             { area && (
                 <div>
