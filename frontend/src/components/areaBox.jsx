@@ -23,6 +23,7 @@ function AreaBox({ onClose, pinID, }) {
             setArea(data)
             setName(data.name)
             setLore(data.lore)
+            setPrevArea(data)
         });
     };
 
@@ -74,7 +75,6 @@ function AreaBox({ onClose, pinID, }) {
                     onClick={() => {
                         setEdit(false);
                         setArea(prevArea);
-                        setPrevArea(null)
                         console.log(prevArea)
                     }}
                 >
@@ -90,8 +90,7 @@ function AreaBox({ onClose, pinID, }) {
                     onClick={() => {
                         setEdit(true);
                         area.name = null;
-                        area.lore = null
-                        setPrevArea(area);
+                        area.lore = null;
                     }}
                 >
                     Edit
@@ -100,6 +99,7 @@ function AreaBox({ onClose, pinID, }) {
 
             { area && (
                 <div>
+                    {setPrevArea(area)}
                     { area.name ? 
                         <p>{area.name}</p> : 
                         <textarea 
