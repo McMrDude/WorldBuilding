@@ -42,6 +42,7 @@ function AreaBox({ onClose, pinID, }) {
                 lore,
             })
         })
+        setEdit(false)
         loadArea();
         console.log("ABOUT TO LOAD AREA")
     };
