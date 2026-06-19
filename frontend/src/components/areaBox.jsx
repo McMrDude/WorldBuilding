@@ -28,7 +28,7 @@ function AreaBox({ onClose, pinID, }) {
     }, []);
 
     const updateArea = async () => {
-        console.log("UPDATE BUTTON CLICKED");
+        console.log("UPDATE BUTTON CLICKED")
         const res = await fetch(`/api/area/${pinID}`, {
             method: "PUT",
             headers: {
@@ -38,11 +38,9 @@ function AreaBox({ onClose, pinID, }) {
                 name,
                 lore,
             })
-        });
-
-        console.log("ABOUT TO LOAD AREA");
-
+        })
         loadArea();
+        console.log("ABOUT TO LOAD AREA")
     };
 
     return(
