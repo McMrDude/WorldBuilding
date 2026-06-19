@@ -73,9 +73,9 @@ function AreaBox({ onClose, pinID, }) {
                     }} 
                     onClick={() => {
                         setEdit(false);
-                        area.name = prevArea.name;
-                        area.lore = prevArea.lore;
+                        setArea(prevArea);
                         setPrevArea(null)
+                        console.log(prevArea)
                     }}
                 >
                     Cancel
@@ -89,10 +89,10 @@ function AreaBox({ onClose, pinID, }) {
                     }} 
                     onClick={() => {
                         setEdit(true);
-                        setPrevArea(area);
                         area.name = null;
-                        area.lore = null;
-                        }}
+                        area.lore = null
+                        setPrevArea(area);
+                    }}
                 >
                     Edit
                 </button>
