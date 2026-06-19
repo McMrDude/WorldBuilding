@@ -23,7 +23,6 @@ function AreaBox({ onClose, pinID, }) {
             setArea(data)
             setName(data.name)
             setLore(data.lore)
-            setPrevArea(data)
         });
     };
 
@@ -46,6 +45,9 @@ function AreaBox({ onClose, pinID, }) {
         loadArea();
         console.log("ABOUT TO LOAD AREA")
     };
+
+    let prevName = null;
+    let prevLore = null;
 
     return(
         <div style={{
@@ -74,7 +76,8 @@ function AreaBox({ onClose, pinID, }) {
                     }} 
                     onClick={() => {
                         setEdit(false);
-                        setArea(prevArea);
+                        area.name = prevName;
+                        area.lore = prevLore;
                         console.log(prevArea)
                     }}
                 >
@@ -89,6 +92,8 @@ function AreaBox({ onClose, pinID, }) {
                     }} 
                     onClick={() => {
                         setEdit(true);
+                        prevName = area.name;
+                        prevLore = area.lore;
                         area.name = null;
                         area.lore = null;
                     }}
