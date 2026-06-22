@@ -361,7 +361,7 @@ function MapPage() {
                                         transform: 
                                             `translate(-50%, -100%) scale(${1 / zoom})`,
                                         transformOrigin: "bottom center",
-                                        backgroundImage: url(box.image),
+                                        backgroundImage: `url(${box.image})`,
                                     }}
                                 >
                                     <button 
