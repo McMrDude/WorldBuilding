@@ -359,7 +359,9 @@ function MapPage() {
                                         `translate(-50%, -100%) scale(${1 / zoom})`,
                                     transformOrigin: "bottom center",
                                 }}
-                            />
+                            >
+                                <button style={{ width: "10px", height: "10px", border: "1px solid red", borderRadius: "50px" }}>X</button>
+                            </img>
                         ))}
                     </div>
                 </div>
