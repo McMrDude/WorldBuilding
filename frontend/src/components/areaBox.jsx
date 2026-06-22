@@ -57,6 +57,8 @@ function AreaBox({ onClose, pinID, }) {
             top: "50%",
             left: "50%",
             display: "flex",
+            minWidth: "250px",
+            minHeight: "300px",
             flexDirection: "column",
             boxShadow: "0 0 15px 5px rgba(0, 0, 0, 0.2)",
             padding: "10px",
