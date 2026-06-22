@@ -375,8 +375,12 @@ function MapPage() {
                                             right: "-16px",
                                             fontSize: "6px",
                                             color: "red",
+                                            cursor: "pointer"
                                         }}
-                                        onClick={() => deletePin(box.id)}                               
+                                        onClick={() => {
+                                            e.stopPropagation();
+                                            deletePin(box.id)
+                                        }}                               
                                     >
                                         X
                                     </button>
