@@ -335,8 +335,7 @@ function MapPage() {
                     >
                         <img src={map} alt='map' draggable="false" style={{ width: MAP_WIDTH, height: MAP_HEIGHT, display: "block", }}></img>
                         {boxes.map((box) => (
-                            <div>
-                                <img
+                                <div
                                     src={box.image}
                                     key={box.dragId}
                                     draggable="false"
@@ -363,22 +362,23 @@ function MapPage() {
                                         transform: 
                                             `translate(-50%, -100%) scale(${1 / zoom})`,
                                         transformOrigin: "bottom center",
+                                        backgroundImage: url('your-image.jpg'),
                                     }}
-                                />
-                                <button 
-                                    style={{ 
-                                        width: "10px", 
-                                        height: "10px", 
-                                        border: "1px solid red", 
-                                        borderRadius: "50px",
-                                        top: 0,
-                                        right: 0,
-                                    }}
-                                    onClick={() => deletePin(box.id)}                               
                                 >
-                                    X
-                                </button>
-                            </div>
+                                    <button 
+                                        style={{ 
+                                            width: "10px", 
+                                            height: "10px", 
+                                            border: "1px solid red", 
+                                            borderRadius: "50px",
+                                            top: 0,
+                                            right: 0,
+                                        }}
+                                        onClick={() => deletePin(box.id)}                               
+                                    >
+                                        X
+                                    </button>
+                                </div>
                         ))}
                     </div>
                 </div>
