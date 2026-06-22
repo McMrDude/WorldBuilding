@@ -336,7 +336,6 @@ function MapPage() {
                         <img src={map} alt='map' draggable="false" style={{ width: MAP_WIDTH, height: MAP_HEIGHT, display: "block", }}></img>
                         {boxes.map((box) => (
                                 <div
-                                    src={box.image}
                                     key={box.dragId}
                                     draggable="false"
                                     className='draggable-box'
@@ -362,7 +361,7 @@ function MapPage() {
                                         transform: 
                                             `translate(-50%, -100%) scale(${1 / zoom})`,
                                         transformOrigin: "bottom center",
-                                        backgroundImage: url('your-image.jpg'),
+                                        backgroundImage: url(box.image),
                                     }}
                                 >
                                     <button 
