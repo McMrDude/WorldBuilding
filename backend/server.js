@@ -141,10 +141,10 @@ app.post("/api/pins", async (req, res) => {
                 `, [req.body.world_id, pin.dragId, pin.x, pin.y, pin.text, pin.image]);
                 
                 await pool.query(`
-                    INSERT INTO areas (world_id, type)
-                    VALUES ($1, $2)
+                    INSERT INTO areas (pin_id, world_id, type)
+                    VALUES ($1, $2, $3)
                     RETURNING id
-                `, [req.body.world_id, pin.text]);
+                `, [result.rows[0].id, req.body.world_id, pin.text]);
 
                 console.log("INSERTED:", result.rows[0]);
 
