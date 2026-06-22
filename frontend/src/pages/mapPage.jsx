@@ -366,12 +366,15 @@ function MapPage() {
                                 >
                                     <button 
                                         style={{ 
-                                            width: "10px", 
-                                            height: "10px", 
+                                            width: "15px", 
+                                            height: "15px", 
                                             border: "1px solid red", 
                                             borderRadius: "50px",
-                                            top: 0,
-                                            right: 0,
+                                            position: "relative",
+                                            top: "-7px",
+                                            right: "-16px",
+                                            fontSize: "6px",
+                                            color: "red",
                                         }}
                                         onClick={() => deletePin(box.id)}                               
                                     >
