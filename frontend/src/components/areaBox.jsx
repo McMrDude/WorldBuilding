@@ -146,9 +146,14 @@ function AreaBox({ onClose, pinID, }) {
                         />
                     }
 
-                    { characters.map((character) => (
-                        <img src={character.img}/>
-                    ))}
+                    <div style={{ display: "flex", flexDirection: "row"}}>
+                        { characters.map((character) => (
+                            <div style={{ display: "flex", flexDirection: "column"}}>
+                                <img src={character.img} style={{ width: "30px", height: "30px" }}/>
+                                <p>{character.name}</p>
+                            </div>
+                        ))}
+                    </div>
 
                     { edit || !area.name || !area.lore ? <button onClick={updateArea}>Update Place</button> : null}
                 </div>
