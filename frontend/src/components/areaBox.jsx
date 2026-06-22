@@ -10,9 +10,10 @@ function AreaBox({ onClose, pinID, }) {
     const [lore, setLore] = useState(null);
 
     const [characters, setCharacters] = useState([]);
+    const [chosenCharacters, setChosenCharacters] = useState([]);
 
     const [edit, setEdit] = useState(false);
-    const [prevArea, setPrevArea] = useState(null)
+    const [prevArea, setPrevArea] = useState(null);
 
     const loadArea = () => {
         console.log("Loading area:", pinID);
@@ -146,14 +147,27 @@ function AreaBox({ onClose, pinID, }) {
                         />
                     }
 
-                    <div style={{ display: "flex", flexDirection: "column"}}>
-                        { characters.map((character) => (
+                    { chosenCharacters ? 
+                        (
                             <div style={{ display: "flex", flexDirection: "row"}}>
-                                <img src={character.img} style={{ width: "30px", height: "30px" }}/>
-                                <p>{character.name}</p>
+                                { chosenCharacters.map((character) => (
+                                    <div style={{ display: "flex", flexDirection: "column"}}>
+                                        <img src={character.img} style={{ width: "30px", height: "30px" }}/>
+                                        <p>{character.name}</p>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
+                        ) : (
+                            <div style={{ display: "flex", flexDirection: "column"}}>
+                                { characters.map((character) => (
+                                    <div style={{ display: "flex", flexDirection: "row"}} key={character.id} onClick={() => setChosenCharacters(character.id)}>
+                                        <img src={character.img} style={{ width: "30px", height: "30px" }}/>
+                                        <p>{character.name}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        )
+                    }
 
                     { edit || !area.name || !area.lore ? <button onClick={updateArea}>Update Place</button> : null}
                 </div>
