@@ -9,6 +9,8 @@ function AreaBox({ onClose, pinID, }) {
     const [name, setName] = useState(null);
     const [lore, setLore] = useState(null);
 
+    const [characters, setCharacters] = useState([]);
+
     const [edit, setEdit] = useState(false);
     const [prevArea, setPrevArea] = useState(null)
 
@@ -26,8 +28,15 @@ function AreaBox({ onClose, pinID, }) {
         });
     };
 
+    const loadCharacters = () => {
+        fetch(`/api/area/characters/${id}`)
+        .then(res => res.json())
+        .then(data => setCharacters(data))
+    }
+
     useEffect(() => {
         loadArea();
+        loadCharacters();
     }, []);
 
     const updateArea = async () => {
@@ -133,6 +142,11 @@ function AreaBox({ onClose, pinID, }) {
                             onChange={(e) => setLore(e.target.value)}
                         />
                     }
+
+                    { characters.map((character) => {
+                        <img src={character.img}/>
+                    })}
+
                     { edit || !area.name || !area.lore ? <button onClick={updateArea}>Update Place</button> : null}
                 </div>
             )}

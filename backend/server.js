@@ -177,7 +177,7 @@ app.get("/api/area/:pin", async (req, res) => {
     );
     
     res.json(result.rows[0]);
-})
+});
 
 app.delete("/api/pins", async (req, res) => {
     await pool.query(`
@@ -190,6 +190,15 @@ app.delete("/api/pins", async (req, res) => {
     );
 
     res.json({ message: "Pin deleted" });
+});
+
+app.get("/api/area/characters/:id", async (req, res) => {
+    const result = await pool.query(
+        "SELECT * FROM characters WHERE world_id = $1",
+        [req.params.id]
+    );
+
+    res.json(result.rows);
 });
 
 
