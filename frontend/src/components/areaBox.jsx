@@ -117,16 +117,16 @@ function AreaBox({ onClose, pinID, }) {
                 <div>
                     
                     { area.name ? 
-                        <p>{area.name}</p> : 
+                        <h1>{area.name}</h1> : 
                         <textarea 
                             placeholder='The name of the place, stupid...'
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                         />
                     }
-                    <h1>{area.type}</h1>
+                    <p>| {area.type} |</p>
                     { area.lore ? 
-                        <p>{area.lore}</p> : 
+                        <h2>{area.lore}</h2> : 
                         <textarea 
                             placeholder='The epic lore and description of the place...'
                             value={lore}
