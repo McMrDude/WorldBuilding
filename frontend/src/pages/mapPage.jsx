@@ -293,6 +293,10 @@ function MapPage() {
             y: Math.max(minY, Math.min(maxY, newY))
         });
     };
+    
+    const deletePin = async () => {
+
+    }
 
     return(
         <div className='bigAssDiv' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>
@@ -359,9 +363,9 @@ function MapPage() {
                                         `translate(-50%, -100%) scale(${1 / zoom})`,
                                     transformOrigin: "bottom center",
                                 }}
-                            >
-                                <button style={{ width: "10px", height: "10px", border: "1px solid red", borderRadius: "50px" }}>X</button>
-                            </img>
+                            />
+                                /* <button style={{ width: "10px", height: "10px", border: "1px solid red", borderRadius: "50px" }} onClick={() => deletePin(box.id)}>X</button>
+                            </img> */
                         ))}
                     </div>
                 </div>
