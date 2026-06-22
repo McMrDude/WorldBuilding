@@ -31,8 +31,11 @@ function AreaBox({ onClose, pinID, }) {
     const loadCharacters = () => {
         fetch(`/api/area/characters/${id}`)
         .then(res => res.json())
-        .then(data => setCharacters(data))
-    }
+        .then(data => {
+            console.log("CHARACTERS DATA:", data);
+            setCharacters(data);
+        });
+    };
 
     useEffect(() => {
         loadArea();
