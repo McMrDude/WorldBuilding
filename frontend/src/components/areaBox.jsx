@@ -146,9 +146,9 @@ function AreaBox({ onClose, pinID, }) {
                         />
                     }
 
-                    { characters.map((character) => {
+                    { characters.map((character) => (
                         <img src={character.img}/>
-                    })}
+                    ))}
 
                     { edit || !area.name || !area.lore ? <button onClick={updateArea}>Update Place</button> : null}
                 </div>
