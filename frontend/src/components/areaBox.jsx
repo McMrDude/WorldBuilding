@@ -146,9 +146,9 @@ function AreaBox({ onClose, pinID, }) {
                         />
                     }
 
-                    <div style={{ display: "flex", flexDirection: "row"}}>
+                    <div style={{ display: "flex", flexDirection: "column"}}>
                         { characters.map((character) => (
-                            <div style={{ display: "flex", flexDirection: "column"}}>
+                            <div style={{ display: "flex", flexDirection: "row"}}>
                                 <img src={character.img} style={{ width: "30px", height: "30px" }}/>
                                 <p>{character.name}</p>
                             </div>
