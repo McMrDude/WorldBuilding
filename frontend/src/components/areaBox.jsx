@@ -133,7 +133,7 @@ function AreaBox({ onClose, pinID, }) {
                             onChange={(e) => setLore(e.target.value)}
                         />
                     }
-                    <button onClick={updateArea}>Update Place</button>
+                    { edit || !area.name || !area.lore ? <button onClick={updateArea}>Update Place</button> : null}
                 </div>
             )}
         </div>
