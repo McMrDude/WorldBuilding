@@ -294,9 +294,20 @@ function MapPage() {
         });
     };
     
-    const deletePin = async () => {
+    const deletePin = async (pin) => {
+        await fetch("/api/pins",  {
+            method: "DELETE",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                pin: pin
+            })
+        });
 
-    }
+        fetchBoxes();
+    };
 
     return(
         <div className='bigAssDiv' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: "100vh", }}>

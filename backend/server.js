@@ -179,6 +179,17 @@ app.get("/api/area/:pin", async (req, res) => {
     res.json(result.rows[0]);
 })
 
+app.delete("/api/pins", async (req, res) => {
+    await pool.query(`
+        DELETE FROM pins WHERE id = $1`,
+        [req.body.pin]
+    );
+    await pool.query(`
+        DELETE FROM area WHERE pin_id = $1`,
+        [req.body.pin]
+    );
+})
+
 
 /*SERVER START*/
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
