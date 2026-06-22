@@ -335,37 +335,50 @@ function MapPage() {
                     >
                         <img src={map} alt='map' draggable="false" style={{ width: MAP_WIDTH, height: MAP_HEIGHT, display: "block", }}></img>
                         {boxes.map((box) => (
-                            <img
-                                src={box.image}
-                                key={box.dragId}
-                                draggable="false"
-                                className='draggable-box'
-                                onClick={() => {
-                                    if (wasDragging.current) {
-                                        wasDragging.current = false;
-                                        return
-                                    };
+                            <div>
+                                <img
+                                    src={box.image}
+                                    key={box.dragId}
+                                    draggable="false"
+                                    className='draggable-box'
+                                    onClick={() => {
+                                        if (wasDragging.current) {
+                                            wasDragging.current = false;
+                                            return
+                                        };
 
-                                    setCurrentPin(box.id);
-                                    setAreaBoxOpen(true);
-                                    console.log(box.image);
-                                }}
-                                onPointerDown={(e) => {
-                                    e.stopPropagation();
-                                    onPointerDown(e, box)
-                                }}
-                                style={{
-                                    width: PIN_SIZE,
-                                    height: PIN_SIZE,
-                                    left: box.x,
-                                    top: box.y,
-                                    transform: 
-                                        `translate(-50%, -100%) scale(${1 / zoom})`,
-                                    transformOrigin: "bottom center",
-                                }}
-                            >
-                                {/* <button style={{ width: "10px", height: "10px", border: "1px solid red", borderRadius: "50px" }} onClick={() => deletePin(box.id)}>X</button> */}
-                            </img> 
+                                        setCurrentPin(box.id);
+                                        setAreaBoxOpen(true);
+                                        console.log(box.image);
+                                    }}
+                                    onPointerDown={(e) => {
+                                        e.stopPropagation();
+                                        onPointerDown(e, box)
+                                    }}
+                                    style={{
+                                        width: PIN_SIZE,
+                                        height: PIN_SIZE,
+                                        left: box.x,
+                                        top: box.y,
+                                        transform: 
+                                            `translate(-50%, -100%) scale(${1 / zoom})`,
+                                        transformOrigin: "bottom center",
+                                    }}
+                                />
+                                <button 
+                                    style={{ 
+                                        width: "10px", 
+                                        height: "10px", 
+                                        border: "1px solid red", 
+                                        borderRadius: "50px",
+                                        top: 0,
+                                        right: 0,
+                                    }}
+                                    onClick={() => deletePin(box.id)}                               
+                                >
+                                    X
+                                </button>
+                            </div>
                         ))}
                     </div>
                 </div>
