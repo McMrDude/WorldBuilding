@@ -147,7 +147,7 @@ function AreaBox({ onClose, pinID, }) {
                         />
                     }
 
-                    { chosenCharacters || edit ? 
+                    { chosenCharacters.length > 0 || !edit ? 
                         (
                             <div style={{ display: "flex", flexDirection: "row"}}>
                                 { chosenCharacters.map((character) => (
