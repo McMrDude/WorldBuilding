@@ -26,7 +26,8 @@ function MapPage() {
     const [pins, setPins] = useState([]);
     const [currentPin, setCurrentPin] = useState(null);
 
-    const draggingId = useRef(null)
+    const draggingId = useRef(null);
+    const wasDragging = useRef(false);
     const offset = useRef({ x: 0, y: 0});
 
     const mapRef = useRef(null);
@@ -71,6 +72,7 @@ function MapPage() {
 
     const onPointerDown = (e, box) => {
         draggingId.current = box.dragId;
+        wasDragging.current = false;
 
         const mapRect = mapRef.current.getBoundingClientRect();
 
@@ -85,6 +87,7 @@ function MapPage() {
 
     const onPointerMove = (e) => {
         if (!draggingId.current) return;
+        wasDragging.current = true;
 
         const mapRect = mapRef.current.getBoundingClientRect();
 
@@ -334,7 +337,12 @@ function MapPage() {
                                 draggable="false"
                                 className='draggable-box'
                                 onClick={() => {
-                                    setCurrentPin(box.id)
+                                    if (wasDragging.current) {
+                                        wasDragging.current = false;
+                                        return
+                                    };
+
+                                    setCurrentPin(box.id);
                                     setAreaBoxOpen(true);
                                     console.log(box.image);
                                 }}
