@@ -295,6 +295,7 @@ function MapPage() {
     };
     
     const deletePin = async (pin) => {
+        console.log("Should be deleting pins");
         await fetch("/api/pins",  {
             method: "DELETE",
             headers: {
@@ -388,7 +389,7 @@ function MapPage() {
                                             color: "red",
                                             cursor: "pointer"
                                         }}
-                                        onClick={() => {
+                                        onClick={(e) => {
                                             e.stopPropagation();
                                             deletePin(box.id)
                                         }}                               
