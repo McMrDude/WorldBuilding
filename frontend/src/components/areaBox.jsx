@@ -126,7 +126,7 @@ function AreaBox({ onClose, pinID, }) {
                     }
                     <p>| {area.type} |</p>
                     { area.lore ? 
-                        <h2>{area.lore}</h2> : 
+                        <h3>{area.lore}</h3> : 
                         <textarea 
                             placeholder='The epic lore and description of the place...'
                             value={lore}
