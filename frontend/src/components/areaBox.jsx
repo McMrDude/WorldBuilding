@@ -57,7 +57,7 @@ function AreaBox({ onClose, pinID, }) {
             top: "50%",
             left: "50%",
             display: "flex",
-            minWidth: "250px",
+            width: "250px",
             minHeight: "300px",
             flexDirection: "column",
             boxShadow: "0 0 15px 5px rgba(0, 0, 0, 0.2)",
@@ -136,7 +136,6 @@ function AreaBox({ onClose, pinID, }) {
                     <button onClick={updateArea}>Update Place</button>
                 </div>
             )}
-            <h1>shit</h1>
         </div>
     );
 };
