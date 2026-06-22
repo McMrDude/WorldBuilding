@@ -185,10 +185,12 @@ app.delete("/api/pins", async (req, res) => {
         [req.body.pin]
     );
     await pool.query(`
-        DELETE FROM area WHERE pin_id = $1`,
+        DELETE FROM areas WHERE pin_id = $1`,
         [req.body.pin]
     );
-})
+
+    res.json({ message: "Pin deleted" });
+});
 
 
 /*SERVER START*/
