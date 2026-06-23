@@ -172,22 +172,23 @@ function AreaBox({ onClose, pinID, }) {
                         />
                     }
 
-                    { haveCharacters ?
-                        (<>
                             { chosenCharacters.length > 0 ? 
-                                (
-                                    <div style={{ display: "flex", flexDirection: "column"}}>
-                                        { chosenCharacters.map((character) => (
-                                            <div style={{ display: "flex", flexDirection: "row"}}>
-                                                <img src={character.img} style={{ width: "30px", height: "30px" }}/>
-                                                <div style={{ display: "flex", flexDirection: "column" }}>
-                                                    <h4 style={{ margin: 0}}>{character.name}:</h4>
-                                                    <p style={{ margin: 0}}>{character.description}</p>
+                                <>
+                                    { haveCharacters ? (
+                                        <div style={{ display: "flex", flexDirection: "column"}}>
+                                            { chosenCharacters.map((character) => (
+                                                <div style={{ display: "flex", flexDirection: "row"}}>
+                                                    <img src={character.img} style={{ width: "30px", height: "30px" }}/>
+                                                    <div style={{ display: "flex", flexDirection: "column" }}>
+                                                        <h4 style={{ margin: 0}}>{character.name}:</h4>
+                                                        <p style={{ margin: 0}}>{character.description}</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                ) : (
+                                            ))}
+                                        </div>
+                                    ) : null
+                                    }
+                                </> : (
                                     <div style={{ display: "flex", flexDirection: "column"}}>
                                         <lable>Add characters?</lable>
                                         <input type="checkbox" switch id="characterCheck" onChange={(e) => {setHaveCharacters(e.target.checked), console.log(haveCharacters)}}/>
@@ -200,11 +201,6 @@ function AreaBox({ onClose, pinID, }) {
                                     </div>
                                 )
                             }
-                        </>) : (
-                            null
-                        )
-                    }
-
                     { edit || !area.name || !area.lore || chosenCharacters.length <= 0 ? <button onClick={updateArea}>Update Place</button> : null}
                 </div>
             )}
