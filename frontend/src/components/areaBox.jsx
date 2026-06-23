@@ -50,7 +50,7 @@ function AreaBox({ onClose, pinID, }) {
         loadCharacters();
     }, []);
 
-    const checkedIfCheckedBoxes = () => {
+    const checkIfCheckedBoxes = () => {
         if (haveCharacters === true) {
             document.getElementById("characterCheck").checked = true;
             console.log("checkbox should be checked");
