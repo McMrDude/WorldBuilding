@@ -159,7 +159,7 @@ function AreaBox({ onClose, pinID, }) {
                     }
 
                     <lable>Add characters?</lable>
-                    <input type="checkbox" onChange={(e) => setHaveCharacters(e.target.value)}/>
+                    <input type="checkbox" onChange={(e) => {setHaveCharacters(e.target.value), console.log(haveCharacters)}}/>
 
                     { haveCharacters ?
                         (<>
