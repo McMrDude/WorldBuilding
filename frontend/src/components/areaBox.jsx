@@ -48,19 +48,6 @@ function AreaBox({ onClose, pinID, }) {
         loadCharacters();
     }, []);
 
-    useEffect(() => {
-        checkIfCheckedBoxes();
-    }, [haveCharacters]);
-
-    const checkIfCheckedBoxes = () => {
-        if (haveCharacters === true) {
-            document.getElementById("characterCheck").checked = true;
-            console.log("checkbox should be checked");
-        } else {
-            console.log("Well fuck, no checking of the box for me");
-        };
-    }
-
     const updateArea = async () => {
         console.log("UPDATE BUTTON CLICKED")
         const res = await fetch(`/api/area/${pinID}`, {
@@ -198,8 +185,7 @@ function AreaBox({ onClose, pinID, }) {
 
                             <input
                                 type="checkbox"
-                                switch 
-                                id="characterCheck"
+                                checked={haveCharacters}
                                 onChange={(e) => setHaveCharacters(e.target.checked)}
                             />
 
