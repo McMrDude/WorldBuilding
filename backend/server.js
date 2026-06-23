@@ -163,9 +163,10 @@ app.put("/api/area/:pin", async (req, res) => {
     await pool.query(`
         UPDATE areas 
         SET name = $2,
-            lore = $3
+            lore = $3,
+            will_have_characters = $4,
         WHERE id = $1
-        `, [req.params.pin, req.body.name, req.body.lore]
+        `, [req.params.pin, req.body.name, req.body.lore, req.body.haveCharacters]
     );
 
     res.json({ success: true });

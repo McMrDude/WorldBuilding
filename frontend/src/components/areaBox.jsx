@@ -9,6 +9,8 @@ function AreaBox({ onClose, pinID, }) {
     const [name, setName] = useState(null);
     const [lore, setLore] = useState(null);
 
+    const [haveCharacters, setHaveCharacters] = useState(false);
+
     const [characters, setCharacters] = useState([]);
     const [chosenCharacters, setChosenCharacters] = useState([]);
     const [temporaryChosen, setTemporaryChosen] = useState([]);
@@ -55,6 +57,7 @@ function AreaBox({ onClose, pinID, }) {
             body: JSON.stringify({
                 name,
                 lore,
+                haveCharacters,
             })
         })
         temporaryChosen.map((chosen) => {
@@ -155,28 +158,37 @@ function AreaBox({ onClose, pinID, }) {
                         />
                     }
 
-                    { chosenCharacters.length > 0 ? 
-                        (
-                            <div style={{ display: "flex", flexDirection: "column"}}>
-                                { chosenCharacters.map((character) => (
-                                    <div style={{ display: "flex", flexDirection: "row"}}>
-                                        <img src={character.img} style={{ width: "30px", height: "30px" }}/>
-                                        <div style={{ display: "flex", flexDirection: "column" }}>
-                                            <h4 style={{ margin: 0}}>{character.name}:</h4>
-                                            <p style={{ margin: 0}}>{character.description}</p>
-                                        </div>
+                    <lable>Add characters?</lable>
+                    <input type="checkbox" onChange={(e) => setHaveCharacters(e.target.value)}/>
+
+                    { haveCharacters ?
+                        (<>
+                            { chosenCharacters.length > 0 ? 
+                                (
+                                    <div style={{ display: "flex", flexDirection: "column"}}>
+                                        { chosenCharacters.map((character) => (
+                                            <div style={{ display: "flex", flexDirection: "row"}}>
+                                                <img src={character.img} style={{ width: "30px", height: "30px" }}/>
+                                                <div style={{ display: "flex", flexDirection: "column" }}>
+                                                    <h4 style={{ margin: 0}}>{character.name}:</h4>
+                                                    <p style={{ margin: 0}}>{character.description}</p>
+                                                </div>
+                                            </div>
+                                        ))}
                                     </div>
-                                ))}
-                            </div>
-                        ) : (
-                            <div style={{ display: "flex", flexDirection: "column"}}>
-                                { characters.map((character) => (
-                                    <div style={{ display: "flex", flexDirection: "row", cursor: "pointer"}} key={character.id} onClick={() => setTemporaryChosen(prev => [...prev, character])}>
-                                        <img src={character.img} style={{ width: "30px", height: "30px" }}/>
-                                        <p>{character.name}</p>
+                                ) : (
+                                    <div style={{ display: "flex", flexDirection: "column"}}>
+                                        { characters.map((character) => (
+                                            <div style={{ display: "flex", flexDirection: "row", cursor: "pointer"}} key={character.id} onClick={() => setTemporaryChosen(prev => [...prev, character])}>
+                                                <img src={character.img} style={{ width: "30px", height: "30px" }}/>
+                                                <p>{character.name}</p>
+                                            </div>
+                                        ))}
                                     </div>
-                                ))}
-                            </div>
+                                )
+                            }
+                        </>) : (
+                            null
                         )
                     }
 
