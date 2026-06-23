@@ -32,12 +32,7 @@ function AreaBox({ onClose, pinID, }) {
             setHaveCharacters(data.will_have_characters)
         });
 
-        if (haveCharacters === true) {
-            document.getElementById("characterCheck").checked = true;
-            console.log("checkbox should be checked");
-        } else {
-            console.log("Well fuck, no checking of the box for me");
-        };
+        checkIfCheckedBoxes();
     };
 
     const loadCharacters = () => {
@@ -54,6 +49,15 @@ function AreaBox({ onClose, pinID, }) {
         loadArea();
         loadCharacters();
     }, []);
+
+    const checkedIfCheckedBoxes = () => {
+        if (haveCharacters === true) {
+            document.getElementById("characterCheck").checked = true;
+            console.log("checkbox should be checked");
+        } else {
+            console.log("Well fuck, no checking of the box for me");
+        };
+    }
 
     const updateArea = async () => {
         console.log("UPDATE BUTTON CLICKED")
