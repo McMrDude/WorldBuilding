@@ -34,6 +34,9 @@ function AreaBox({ onClose, pinID, }) {
 
         if (haveCharacters === true) {
             document.getElementById("characterCheck").checked = true;
+            console.log("checkbox should be checked");
+        } else {
+            console.log("Well fuck, no checking of the box for me");
         };
     };
 
