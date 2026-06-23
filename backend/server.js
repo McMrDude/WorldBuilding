@@ -160,16 +160,21 @@ app.post("/api/pins", async (req, res) => {
 });
 
 app.put("/api/area/:pin", async (req, res) => {
-    await pool.query(`
-        UPDATE areas 
-        SET name = $2,
-            lore = $3,
-            will_have_characters = $4,
-        WHERE id = $1
-        `, [req.params.pin, req.body.name, req.body.lore, req.body.haveCharacters]
-    );
+    try {
+        await pool.query(`
+            UPDATE areas 
+            SET name = $2,
+                lore = $3,
+                will_have_characters = $4,
+            WHERE id = $1
+            `, [req.params.pin, req.body.name, req.body.lore, req.body.haveCharacters]
+        );
 
-    res.json({ success: true });
+        res.json({ success: true });
+    } catch (erro) {
+        console.error("Area hater meg altså: ", error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 });
 app.get("/api/area/:pin", async (req, res) => {
     const result = await pool.query(
