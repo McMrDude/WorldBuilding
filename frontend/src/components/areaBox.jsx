@@ -172,35 +172,62 @@ function AreaBox({ onClose, pinID, }) {
                         />
                     }
 
-                            { chosenCharacters.length > 0 ? 
-                                <>
-                                    { haveCharacters ? (
-                                        <div style={{ display: "flex", flexDirection: "column"}}>
-                                            { chosenCharacters.map((character) => (
-                                                <div style={{ display: "flex", flexDirection: "row"}}>
-                                                    <img src={character.img} style={{ width: "30px", height: "30px" }}/>
-                                                    <div style={{ display: "flex", flexDirection: "column" }}>
-                                                        <h4 style={{ margin: 0}}>{character.name}:</h4>
-                                                        <p style={{ margin: 0}}>{character.description}</p>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    ) : null
-                                    }
-                                </> : (
-                                    <div style={{ display: "flex", flexDirection: "column"}}>
-                                        <lable>Add characters?</lable>
-                                        <input type="checkbox" switch id="characterCheck" onChange={(e) => {setHaveCharacters(e.target.checked), console.log(haveCharacters)}}/>
-                                        { characters.map((character) => (
-                                            <div style={{ display: "flex", flexDirection: "row", cursor: "pointer"}} key={character.id} onClick={() => setTemporaryChosen(prev => [...prev, character])}>
-                                                <img src={character.img} style={{ width: "30px", height: "30px" }}/>
-                                                <p>{character.name}</p>
-                                            </div>
-                                        ))}
+                    {!edit && chosenCharacters.length > 0 && (
+                        <div style={{ display: "flex", flexDirection: "column" }}>
+                            {chosenCharacters.map((character) => (
+                                <div
+                                    key={character.id}
+                                    style={{ display: "flex", flexDirection: "row" }}
+                                >
+                                    <img
+                                        src={character.img}
+                                        style={{ width: "30px", height: "30px" }}
+                                    />
+                                    <div style={{ display: "flex", flexDirection: "column" }}>
+                                        <h4 style={{ margin: 0 }}>{character.name}:</h4>
+                                        <p style={{ margin: 0 }}>{character.description}</p>
                                     </div>
-                                )
-                            }
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
+                    {edit && (
+                        <div style={{ display: "flex", flexDirection: "column" }}>
+                            <label>Add characters?</label>
+
+                            <input
+                                type="checkbox"
+                                checked={haveCharacters}
+                                onChange={(e) => setHaveCharacters(e.target.checked)}
+                            />
+
+                            {haveCharacters && (
+                                <div style={{ display: "flex", flexDirection: "column" }}>
+                                    {characters.map((character) => (
+                                        <div
+                                            key={character.id}
+                                            style={{
+                                                display: "flex",
+                                                flexDirection: "row",
+                                                cursor: "pointer"
+                                            }}
+                                            onClick={() =>
+                                                setTemporaryChosen((prev) => [...prev, character])
+                                            }
+                                        >
+                                            <img
+                                                src={character.img}
+                                                style={{ width: "30px", height: "30px" }}
+                                            />
+                                            <p>{character.name}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    )}
+
                     { edit || !area.name || !area.lore || chosenCharacters.length <= 0 ? <button onClick={updateArea}>Update Place</button> : null}
                 </div>
             )}
