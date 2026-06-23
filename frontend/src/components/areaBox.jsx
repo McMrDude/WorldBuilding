@@ -172,9 +172,6 @@ function AreaBox({ onClose, pinID, }) {
                         />
                     }
 
-                    <lable>Add characters?</lable>
-                    <input type="checkbox" switch id="characterCheck" onChange={(e) => {setHaveCharacters(e.target.checked), console.log(haveCharacters)}}/>
-
                     { haveCharacters ?
                         (<>
                             { chosenCharacters.length > 0 ? 
@@ -192,6 +189,8 @@ function AreaBox({ onClose, pinID, }) {
                                     </div>
                                 ) : (
                                     <div style={{ display: "flex", flexDirection: "column"}}>
+                                        <lable>Add characters?</lable>
+                                        <input type="checkbox" switch id="characterCheck" onChange={(e) => {setHaveCharacters(e.target.checked), console.log(haveCharacters)}}/>
                                         { characters.map((character) => (
                                             <div style={{ display: "flex", flexDirection: "row", cursor: "pointer"}} key={character.id} onClick={() => setTemporaryChosen(prev => [...prev, character])}>
                                                 <img src={character.img} style={{ width: "30px", height: "30px" }}/>
