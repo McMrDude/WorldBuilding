@@ -32,7 +32,7 @@ function AreaBox({ onClose, pinID, }) {
             setHaveCharacters(data.will_have_characters)
         });
 
-        if (haveCharacters = true) {
+        if (haveCharacters === true) {
             document.getElementById("characterCheck").checked = true;
         };
     };
