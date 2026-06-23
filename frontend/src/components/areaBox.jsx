@@ -11,6 +11,7 @@ function AreaBox({ onClose, pinID, }) {
 
     const [characters, setCharacters] = useState([]);
     const [chosenCharacters, setChosenCharacters] = useState([]);
+    const [temporaryChosen, setTemporaryChosen] = useState([]);
 
     const [edit, setEdit] = useState(false);
     const [prevArea, setPrevArea] = useState(null);
@@ -54,6 +55,9 @@ function AreaBox({ onClose, pinID, }) {
                 name,
                 lore,
             })
+        })
+        temporaryChosen.map((chosen) => {
+            setChosenCharacters(prev => [...prev, chosen]);
         })
         setEdit(false)
         loadArea();
@@ -99,6 +103,7 @@ function AreaBox({ onClose, pinID, }) {
                         });
                         setName(prevName.current);
                         setLore(prevLore.current);
+                        setChosenCharacters([]);
                         /* console.log(prevArea) */
                     }}
                 >
@@ -120,6 +125,7 @@ function AreaBox({ onClose, pinID, }) {
                             name: null,
                             lore: null
                         })
+                        setChosenCharacters([]);
                     }}
                 >
                     Edit
@@ -147,7 +153,7 @@ function AreaBox({ onClose, pinID, }) {
                         />
                     }
 
-                    { chosenCharacters.length > 0 && !edit ? 
+                    { chosenCharacters.length > 0 ? 
                         (
                             <div style={{ display: "flex", flexDirection: "row"}}>
                                 { chosenCharacters.map((character) => (
@@ -160,7 +166,7 @@ function AreaBox({ onClose, pinID, }) {
                         ) : (
                             <div style={{ display: "flex", flexDirection: "column"}}>
                                 { characters.map((character) => (
-                                    <div style={{ display: "flex", flexDirection: "row", cursor: "pointer"}} key={character.id} onClick={() => setChosenCharacters(character.id)}>
+                                    <div style={{ display: "flex", flexDirection: "row", cursor: "pointer"}} key={character.id} onClick={() => setTemporaryChosen(prev => [...prev, character])}>
                                         <img src={character.img} style={{ width: "30px", height: "30px" }}/>
                                         <p>{character.name}</p>
                                     </div>
