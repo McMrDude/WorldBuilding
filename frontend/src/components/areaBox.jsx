@@ -29,6 +29,7 @@ function AreaBox({ onClose, pinID, }) {
             setArea(data)
             setName(data.name)
             setLore(data.lore)
+            setHaveCharacters(data.will_have_characters)
         });
     };
 
