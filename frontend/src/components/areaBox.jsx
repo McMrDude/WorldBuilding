@@ -157,11 +157,14 @@ function AreaBox({ onClose, pinID, }) {
 
                     { chosenCharacters.length > 0 ? 
                         (
-                            <div style={{ display: "flex", flexDirection: "row"}}>
+                            <div style={{ display: "flex", flexDirection: "column"}}>
                                 { chosenCharacters.map((character) => (
-                                    <div style={{ display: "flex", flexDirection: "column"}}>
+                                    <div style={{ display: "flex", flexDirection: "row"}}>
                                         <img src={character.img} style={{ width: "30px", height: "30px" }}/>
-                                        <p>{character.name}</p>
+                                        <div style={{ display: "flex", flexDirection: "column" }}>
+                                            <h4>{character.name}:</h4>
+                                            <p>{character.description}</p>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
