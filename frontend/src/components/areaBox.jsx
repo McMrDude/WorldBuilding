@@ -31,8 +31,6 @@ function AreaBox({ onClose, pinID, }) {
             setLore(data.lore)
             setHaveCharacters(data.will_have_characters)
         });
-
-        checkIfCheckedBoxes();
     };
 
     const loadCharacters = () => {
@@ -49,6 +47,10 @@ function AreaBox({ onClose, pinID, }) {
         loadArea();
         loadCharacters();
     }, []);
+
+    useEffect(() => {
+        checkIfCheckedBoxes();
+    }, [haveCharacters]);
 
     const checkIfCheckedBoxes = () => {
         if (haveCharacters === true) {
