@@ -37,6 +37,7 @@ function AreaBox({ onClose, pinID, }) {
             console.log("CHARACTERS DATA:", data);
             setCharacters(data);
         });
+        setTemporaryChosen([]);
     };
 
     useEffect(() => {
@@ -61,6 +62,7 @@ function AreaBox({ onClose, pinID, }) {
         })
         setEdit(false)
         loadArea();
+        loadCharacters();
         console.log("ABOUT TO LOAD AREA")
     };
 
