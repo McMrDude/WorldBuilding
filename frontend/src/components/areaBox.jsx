@@ -162,8 +162,8 @@ function AreaBox({ onClose, pinID, }) {
                                     <div style={{ display: "flex", flexDirection: "row"}}>
                                         <img src={character.img} style={{ width: "30px", height: "30px" }}/>
                                         <div style={{ display: "flex", flexDirection: "column" }}>
-                                            <h4>{character.name}:</h4>
-                                            <p>{character.description}</p>
+                                            <h4 style={{ margin: 0}}>{character.name}:</h4>
+                                            <p style={{ margin: 0}}>{character.description}</p>
                                         </div>
                                     </div>
                                 ))}
