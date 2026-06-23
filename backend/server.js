@@ -171,7 +171,7 @@ app.put("/api/area/:pin", async (req, res) => {
         );
 
         res.json({ success: true });
-    } catch (erro) {
+    } catch (error) {
         console.error("Area hater meg altså: ", error);
         res.status(500).json({ error: 'Internal server error' });
     }
