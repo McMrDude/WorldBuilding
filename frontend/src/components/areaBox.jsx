@@ -198,7 +198,6 @@ function AreaBox({ onClose, pinID, }) {
 
                             <input
                                 type="checkbox"
-                                checked={haveCharacters}
                                 onChange={(e) => setHaveCharacters(e.target.checked)}
                             />
 
