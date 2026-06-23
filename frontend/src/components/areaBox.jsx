@@ -180,7 +180,7 @@ function AreaBox({ onClose, pinID, }) {
                         )
                     }
 
-                    { edit || !area.name || !area.lore ? <button onClick={updateArea}>Update Place</button> : null}
+                    { edit || !area.name || !area.lore || chosenCharacters.length <= 0 ? <button onClick={updateArea}>Update Place</button> : null}
                 </div>
             )}
         </div>
