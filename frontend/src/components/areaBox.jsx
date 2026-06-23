@@ -31,6 +31,10 @@ function AreaBox({ onClose, pinID, }) {
             setLore(data.lore)
             setHaveCharacters(data.will_have_characters)
         });
+
+        if (haveCharacters = true) {
+            document.getElementById("characterCheck").checked = true;
+        };
     };
 
     const loadCharacters = () => {
@@ -160,7 +164,7 @@ function AreaBox({ onClose, pinID, }) {
                     }
 
                     <lable>Add characters?</lable>
-                    <input type="checkbox" switch onChange={(e) => {setHaveCharacters(e.target.checked), console.log(haveCharacters)}}/>
+                    <input type="checkbox" switch id="characterCheck" onChange={(e) => {setHaveCharacters(e.target.checked), console.log(haveCharacters)}}/>
 
                     { haveCharacters ?
                         (<>
