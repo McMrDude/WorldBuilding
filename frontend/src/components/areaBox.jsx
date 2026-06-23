@@ -51,10 +51,9 @@ function AreaBox({ onClose, pinID, }) {
     const updateArea = async () => {
 
         const characterIDs = [];
-        chosenCharacters.map((character) => {
+        temporaryChosen.map((character) => {
             characterIDs.push(character.id);
         });
-        console.log(chosenCharacters)
         const res = await fetch(`/api/area/${pinID}`, {
             method: "PUT",
             headers: {
