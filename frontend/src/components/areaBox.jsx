@@ -30,6 +30,7 @@ function AreaBox({ onClose, pinID, }) {
             setName(data.name)
             setLore(data.lore)
             setHaveCharacters(data.will_have_characters)
+            setChosenCharacters(data.)
         });
     };
 
@@ -52,7 +53,7 @@ function AreaBox({ onClose, pinID, }) {
 
         const characterIDs = [];
         temporaryChosen.map((character) => {
-            characterIDs.push(character.id);
+            characterIDs.push(character);
         });
         const res = await fetch(`/api/area/${pinID}`, {
             method: "PUT",
