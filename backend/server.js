@@ -166,10 +166,21 @@ app.put("/api/area/:pin", async (req, res) => {
             SET name = $2,
                 lore = $3,
                 will_have_characters = $4,
-                character_ids = $5
             WHERE id = $1
-            `, [req.params.pin, req.body.name, req.body.lore, req.body.haveCharacters, req.body.IDs]
+            `, [req.params.pin, req.body.name, req.body.lore, req.body.haveCharacters]
         );
+
+        await pool.query(`
+            DELETE FROM area_characters
+            WHERE area_id = $1
+        `, [req.params.pin]);
+
+        for (const id of req.body.IDs) {
+            await pool.query(`
+                INSERT INTO area_characters(area_id, character_id)
+                VALUES($1, $2)
+            `, [req.params.pin, id]);
+        };
 
         res.json({ success: true });
     } catch (error) {
@@ -178,14 +189,26 @@ app.put("/api/area/:pin", async (req, res) => {
     }
 });
 app.get("/api/area/:pin", async (req, res) => {
-    const result = await pool.query(
+    const area = await pool.query(
         "SELECT * FROM areas WHERE id = $1",
         [req.params.pin]
     );
     
-    res.json(result.rows[0]);
-});
+    const characters = await pool.query(`
+        SELECT c.*
+        FROM characters c
+        JOIN area_characters ac
+            ON c.id = ac.character_id
+        WHERE ac.area_id = $1;
+        `, [req.params.pin]
+    );
 
+        
+    res.json({
+        area: area.rows[0],
+        characters: characters.rows
+    });
+});
 app.delete("/api/pins", async (req, res) => {
     await pool.query(`
         DELETE FROM pins WHERE id = $1`,

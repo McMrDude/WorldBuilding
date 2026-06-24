@@ -30,10 +30,14 @@ function AreaBox({ onClose, pinID, }) {
             setName(data.name)
             setLore(data.lore)
             setHaveCharacters(data.will_have_characters)
-            if (data.character_ids) {
-                console.log("THE CHARACTER DATA: ", data.character_ids)
-                setChosenCharacters(data.character_ids)
-            }
+        });
+    };
+
+    const loadAreaCharacters = () => {
+        fetch(`/api/areaCharacters/${pinID}`)
+        .then(res => res.json())
+        .then(data => {
+            setChosenCharacters(data)
         });
     };
 
