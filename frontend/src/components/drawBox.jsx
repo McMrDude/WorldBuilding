@@ -71,7 +71,10 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
     }
 
     const changeBackground = async (targetR, targetG, targetB, targetA, replacementR, replacementG, replacementB, replacementA) => {
-        const imgData = ctxRef.current.getImageData(0, 0, canvasRef.width, canvasRef.height);
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext("2d");
+
+        const imgData = ctx.getImageData(0, 0, canvasRef.width, canvasRef.height);
         const data = imgData.data;
 
         for (let i = 0; i < data.length; i += 4) {
