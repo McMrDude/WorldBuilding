@@ -8,11 +8,12 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         canvas.width = 400;
         canvas.height = 400;
+
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         ctx.lineCap = "round";
         ctx.strokeStyle = "black";
