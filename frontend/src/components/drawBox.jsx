@@ -84,14 +84,13 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
             const a = data[i + 3];
 
             if (r === targetR && g === targetG && b === targetB && a == targetA) {
-                console.log("found");
                 data[i] = replacementR;
                 data[i + 1] = replacementG;
                 data[i + 2] = replacementB;
                 data[i + 3] = replacementA;
-            } else {
-                console.log("no matching colors found");
             };
+
+            ctx.putImageData(imgData, 0, 0);
         };
     };
 
