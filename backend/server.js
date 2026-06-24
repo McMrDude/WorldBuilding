@@ -175,7 +175,7 @@ app.put("/api/area/:pin", async (req, res) => {
             WHERE area_id = $1
         `, [req.params.pin]);
 
-        for (const id of req.body.IDs) {
+        for (const id of req.body.IDs.id) {
             await pool.query(`
                 INSERT INTO area_characters(area_id, character_id)
                 VALUES($1, $2)
