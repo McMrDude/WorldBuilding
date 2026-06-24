@@ -26,10 +26,12 @@ function AreaBox({ onClose, pinID, }) {
         .then(data => {
             console.log("AREA DATA:", data);
 
-            setArea(data)
-            setName(data.name)
-            setLore(data.lore)
-            setHaveCharacters(data.will_have_characters)
+            setArea(data.area)
+            setChosenCharacters(data.characters)
+
+            setName(data.area.name)
+            setLore(data.area.lore)
+            setHaveCharacters(data.area.will_have_characters)
         });
     };
 
