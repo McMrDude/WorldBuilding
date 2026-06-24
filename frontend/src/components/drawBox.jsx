@@ -5,6 +5,8 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
     const ctxRef = useRef(null);
     const isDrawing = useRef(false);
 
+    const [transparentBackground, setTransparentBackground] = useState(false)
+
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
@@ -68,6 +70,25 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
         })
     }
 
+    const changeBackground = async (targetR, targetG, targetB, targetA, replacementR, replacementG, replacementB, replacementA) => {
+        const imgData = ctxRef.current.getImageData(0, 0, canvasRef.width, canvasRef.height);
+        const data = imgData.data;
+
+        for (let i = 0; i < data.length; i += 4) {
+            const r = data[i];
+            const g = data[i + 1];
+            const b = data[i + 2];
+            const a = data[i + 3];
+
+            if (r === targetR && g === targetG && b === targetB && a == targetA) {
+                data[i] = replacementR;
+                data[i + 1] = replacementG;
+                data[i + 2] = replacementB;
+                data[i + 3] = replacementA;
+            };
+        };
+    };
+
     return (
         <>
             <div style={{
@@ -87,6 +108,15 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                 <button className="closeBtn" onClick={onClose}>
                     ✕
                 </button>
+                { transparentBackground ?
+                    <button onClick={() => {
+                        changeBackground(0, 0, 0, 0, 255, 255, 255, 1);
+                        setTransparentBackground(false);
+                    }}>Background: Transparent</button> :
+                    <button onClick={() => {
+                        changeBackground(255, 255, 255, 1, 0, 0, 0, 0);
+                    setTransparentBackground(true)}}>Background: Filled</button>
+                }
                 <h2>Draw</h2>
 
                 <canvas 
