@@ -90,6 +90,7 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                 data[i + 3] = replacementA;
             };
 
+            console.log("we got past the thick of it, everybody knew")
             ctx.putImageData(imgData, 0, 0);
         };
     };
