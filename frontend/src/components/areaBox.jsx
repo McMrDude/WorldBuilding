@@ -30,7 +30,9 @@ function AreaBox({ onClose, pinID, }) {
             setName(data.name)
             setLore(data.lore)
             setHaveCharacters(data.will_have_characters)
-            setChosenCharacters(data.character_ids)
+            if (data.character_ids) {
+                setChosenCharacters(data.character_ids)
+            }
         });
     };
 
