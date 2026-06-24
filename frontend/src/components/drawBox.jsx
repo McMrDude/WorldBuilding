@@ -74,7 +74,7 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
 
-        const imgData = ctx.getImageData(0, 0, canvasRef.width, canvasRef.height);
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         const data = imgData.data;
 
         for (let i = 0; i < data.length; i += 4) {
