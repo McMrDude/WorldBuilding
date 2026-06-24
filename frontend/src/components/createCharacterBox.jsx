@@ -43,8 +43,8 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
     }
 
     const createCharacter = async () => {
-        if (!characterName) {
-            alert("Please enter a character name.");
+        if (!characterName || !race) {
+            alert("Please enter the necessary informasjon about your character OR ELSE (0_0)");
             return;
         } 
         setImgBoxOpen(true);
@@ -90,7 +90,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
                         checkRace(e.target.value);
                     }}
                 >
-                    <option value="" selected>-none-</option>
+                    <option value="Unknown" selected>-none-</option>
                     <option>Human</option>
                     <option>Assmuncher</option>
                     <option>Ratfolk</option>
