@@ -116,11 +116,11 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                 </button>
                 { transparentBackground ?
                     <button onClick={() => {
-                        changeBackground(0, 0, 0, 0, 255, 255, 255, 1);
+                        changeBackground(0, 0, 0, 0, 255, 255, 255, 255);
                         setTransparentBackground(false);
                     }}>Background: Transparent</button> :
                     <button onClick={() => {
-                        changeBackground(255, 255, 255, 1, 0, 0, 0, 0);
+                        changeBackground(255, 255, 255, 255, 0, 0, 0, 0);
                     setTransparentBackground(true)}}>Background: Filled</button>
                 }
                 <h2>Draw</h2>
