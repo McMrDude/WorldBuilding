@@ -61,7 +61,7 @@ function AreaBox({ onClose, pinID, }) {
 
         const characterIDs = [];
         temporaryChosen.map((character) => {
-            characterIDs.push(character);
+            characterIDs.push(character.id);
         });
         const res = await fetch(`/api/area/${pinID}`, {
             method: "PUT",
