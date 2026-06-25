@@ -1,4 +1,5 @@
 import {useRef, useEffect, useState } from 'react';
+import transparent from "../img/transparent_background"
 
 function Draw({ onClose, onDrawn, onSaveDrawing }) {    
     const canvasRef = useRef(null);
@@ -196,7 +197,8 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                         id={"canvasID"}
                         style={{ 
                             border: '1px solid #000;',
-                            cursor: 'crosshair' 
+                            cursor: 'crosshair',
+                            backgroundImage: {transparent},
                         }}
                         onMouseDown={(e) => {
                             if (!fill) {startDraw(e)}
