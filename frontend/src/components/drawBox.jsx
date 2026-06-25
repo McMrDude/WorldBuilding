@@ -6,9 +6,9 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
     const isDrawing = useRef(false);
 
     const [fill, setFill] = useState(false)
-    const [fillColor, setFillColor] = useState([{
+    const [fillColor, setFillColor] = useState({
         r: 0, g: 0, b: 255, a: 255
-    }]);
+    });
 
     const [transparentBackground, setTransparentBackground] = useState(false)
 
@@ -189,7 +189,7 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                     <button onClick={() => setFill(true)}>Fill Mode</button>
                 </div>
                 <h2>Draw</h2>
-¨
+
                 <div style={{ display: "flex", flexDirection: "row"}}>
                     <canvas 
                         ref={canvasRef} 
