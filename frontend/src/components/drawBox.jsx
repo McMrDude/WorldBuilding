@@ -182,8 +182,8 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                     setTransparentBackground(true)}}>Background: Filled</button>
                 }
                 <div style={{ display: "flex", flexDirection: "row"}}>
-                    <button onClick={setFill(false)}>Draw Mode</button>
-                    <button onClick={setFill(true)}>Fill Mode</button>
+                    <button onClick={() => setFill(false)}>Draw Mode</button>
+                    <button onClick={() => setFill(true)}>Fill Mode</button>
                 </div>
                 <h2>Draw</h2>
 
