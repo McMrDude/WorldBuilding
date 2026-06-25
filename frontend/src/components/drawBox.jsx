@@ -201,14 +201,16 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                             backgroundImage: `url(${transparent})`,
                         }}
                         onMouseDown={(e) => {
-                            if (!fill) {startDraw(e)}
-                            else {
-                                const canvas = canvasRef.current;
-                                const rect = canvas.getBoundingClientRect();
-                                const x = Math.floor(e.clientX - rect.left);
-                                const y = Math.floor(e.clientY - rect.top);
+                            if (e.button === 0) {
+                                if (!fill) {startDraw(e)}
+                                else {
+                                    const canvas = canvasRef.current;
+                                    const rect = canvas.getBoundingClientRect();
+                                    const x = Math.floor(e.clientX - rect.left);
+                                    const y = Math.floor(e.clientY - rect.top);
 
-                                floodFill(canvas, x, y, fillColor)
+                                    floodFill(canvas, x, y, fillColor)
+                                }
                             }
                         }}
                         onMouseMove={draw}
