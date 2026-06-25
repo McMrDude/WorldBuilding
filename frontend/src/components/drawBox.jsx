@@ -195,7 +195,7 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                         cursor: 'crosshair' 
                     }}
                     onMouseDown={(e) => {
-                        if (!fill) {startDraw}
+                        if (!fill) {startDraw(e)}
                         else {
                             const canvas = canvasRef.current;
                             const rect = canvas.getBoundingClientRect();
