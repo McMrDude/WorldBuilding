@@ -5,6 +5,8 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
     const ctxRef = useRef(null);
     const isDrawing = useRef(false);
 
+    const [fill, setFill] = useState(false)
+
     const [transparentBackground, setTransparentBackground] = useState(false)
 
     useEffect(() => {
@@ -53,6 +55,62 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
 
     const stopDraw = () => {
         isDrawing.current = false;
+    };
+
+
+    const floodFill = (canvas, startX, startY, fillColor) => {
+        const ctx = canvas.getContext("2d");
+        
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+
+        const getPixelColor = (x, y) => {
+            const offset = (y * canvas.width + x) * 4;
+            return {
+                r: data[offset],
+                g: data[offset + 1],
+                b: data[offset + 2],
+                a: data[offset + 3]
+            };
+        }
+
+        const targetColor = getPixelColor(startX, startY);
+
+        if (
+            targetColor.r == fillColor.r &&
+            targetColor.g == fillColor.g &&
+            targetColor.b == fillColor.b &&
+            targetColor.a == fillColor.a 
+        ) {
+            return
+        }
+
+        const queue = [[startX, startY]];
+
+        while (queue.length > 0) {
+            const [cx, cy] = queue.shift();
+
+            const offset = (cy * canvas.width + cx) * 4;
+
+            if (
+                data[offset] === targetColor.r &&
+                data[offset + 1] === targetColor.g &&
+                data[offset + 2] === targetColor.b &&
+                data[offset + 3] === targetColor.a 
+            ) {
+                data[offset] = fillColor.r;
+                data[offset + 1] = fillColor.g;
+                data[offset + 2] = fillColor.b;
+                data[offset + 3] = fillColor.a;
+
+                if (cx > 0) queue.push([cx - 1, cy]);
+                if (cx < canvas.width - 1) queue.push([cx + 1, cy]);
+                if (cy > 0) queue.push([cx, cy - 1]);
+                if (cy < canvas.height - 1) queue.push([cx, cy + 1]);
+            }
+        }
+
+        ctx.putImageData(imageData, 0, 0);
     };
 
 
@@ -123,6 +181,10 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                         changeBackground(255, 255, 255, 255, 0, 0, 0, 0);
                     setTransparentBackground(true)}}>Background: Filled</button>
                 }
+                <div>
+                    <button onClick={setFill(false)}>Draw Mode</button>
+                    <button onClick={setFill(true)}>Fill Mode</button>
+                </div>
                 <h2>Draw</h2>
 
                 <canvas 
@@ -132,7 +194,9 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                         border: '1px solid #000;',
                         cursor: 'crosshair' 
                     }}
-                    onMouseDown={startDraw}
+                    onMouseDown={() => {
+                        if (fill) {floodFill}
+                        else {startDraw}}}
                     onMouseMove={draw}
                     onMouseUp={stopDraw}
                     onMouseLeave={stopDraw}

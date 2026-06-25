@@ -20,7 +20,7 @@ function CreateCharacter({ onClose, onCharacterCreated }) {
             setRaceAge("Humans have an average lifespan of 74 years")
         }
         if (race === "Assmuncher") {
-            setRaceAge("Assmunchers usually live from 3 - 88 years depending on how much rump they munch")
+            setRaceAge("Assmunchers usually live from 3 - ∞ years depending on how much rump they munch")
         }
         if (race === "Ratfolk") {
             setRaceAge("Ratfolk have an average lifespan of 4")
