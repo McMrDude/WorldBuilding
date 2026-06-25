@@ -6,6 +6,7 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
     const isDrawing = useRef(false);
 
     const [fill, setFill] = useState(false)
+    const [fillColor, setFillColor] = useState([]);
 
     const [transparentBackground, setTransparentBackground] = useState(false)
 
@@ -186,31 +187,78 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                     <button onClick={() => setFill(true)}>Fill Mode</button>
                 </div>
                 <h2>Draw</h2>
+¨
+                <div style={{ display: "flex", flexDirection: "row"}}>
+                    <canvas 
+                        ref={canvasRef} 
+                        id={"canvasID"}
+                        style={{ 
+                            border: '1px solid #000;',
+                            cursor: 'crosshair' 
+                        }}
+                        onMouseDown={(e) => {
+                            if (!fill) {startDraw(e)}
+                            else {
+                                const canvas = canvasRef.current;
+                                const rect = canvas.getBoundingClientRect();
+                                const x = Math.floor(e.clientX - rect.left);
+                                const y = Math.floor(e.clientY - rect.top);
 
-                <canvas 
-                    ref={canvasRef} 
-                    id={"canvasID"}
-                    style={{ 
-                        border: '1px solid #000;',
-                        cursor: 'crosshair' 
-                    }}
-                    onMouseDown={(e) => {
-                        if (!fill) {startDraw(e)}
-                        else {
-                            const canvas = canvasRef.current;
-                            const rect = canvas.getBoundingClientRect();
-                            const x = Math.floor(e.clientX - rect.left);
-                            const y = Math.floor(e.clientY - rect.top);
+                                const chosenColor = { r: 0, g: 0, b: 255, a: 255 };
 
-                            const chosenColor = { r: 0, g: 0, b: 255, a: 255 };
+                                floodFill(canvas, x, y, chosenColor)
+                            }
+                        }}
+                        onMouseMove={draw}
+                        onMouseUp={stopDraw}
+                        onMouseLeave={stopDraw}
+                    ></canvas>
 
-                            floodFill(canvas, x, y, chosenColor)
-                        }
-                    }}
-                    onMouseMove={draw}
-                    onMouseUp={stopDraw}
-                    onMouseLeave={stopDraw}
-                ></canvas>
+                    <div style={{ display: "flex", flexDirection: "column"}}>
+                        <button style={{ color: "red"}} onClick={() => setFillColor(prev => [...prev, {
+                            r: 255,
+                            g: 0,
+                            b: 0,
+                            a: 255
+                        }])}/>
+                        <button style={{ color: "green"}} onClick={() => setFillColor(prev => [...prev, {
+                            r: 0,
+                            g: 255,
+                            b: 0,
+                            a: 255
+                        }])}/>
+                        <button style={{ color: "blue"}} onClick={() => setFillColor(prev => [...prev, {
+                            r: 0,
+                            g: 0,
+                            b: 255,
+                            a: 255
+                        }])}/>
+                        <button style={{ color: "yellow"}} onClick={() => setFillColor(prev => [...prev, {
+                            r: 255,
+                            g: 255,
+                            b: 0,
+                            a: 255
+                        }])}/>
+                        <button style={{ color: "purple"}} onClick={() => setFillColor(prev => [...prev, {
+                            r: 128,
+                            g: 0,
+                            b: 128,
+                            a: 255
+                        }])}/>
+                        <button style={{ color: "white"}} onClick={() => setFillColor(prev => [...prev, {
+                            r: 255,
+                            g: 255,
+                            b: 255,
+                            a: 255
+                        }])}/>
+                        <button style={{ color: "black"}} onClick={() => setFillColor(prev => [...prev, {
+                            r: 0,
+                            g: 0,
+                            b: 0,
+                            a: 255
+                        }])}/>
+                    </div>
+                </div>
 
                 <button onClick={ finish }>Finish Drawing</button>
             </div>
