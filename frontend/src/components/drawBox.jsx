@@ -7,7 +7,7 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
 
     const [fill, setFill] = useState(false)
     const [fillColor, setFillColor] = useState([{
-        r: 0, g: 0, b: 0, a: 0
+        r: 0, g: 0, b: 255, a: 0
     }]);
 
     const [transparentBackground, setTransparentBackground] = useState(false)
@@ -217,43 +217,43 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                     ></canvas>
 
                     <div style={{ display: "flex", flexDirection: "column"}}>
-                        <button style={{ color: "red"}} onClick={() => setFillColor(prev => [...prev, {
+                        <button style={{ backgroundColor: "red", width: "50px", height: "50px" }} onClick={() => setFillColor(prev => [...prev, {
                             r: 255,
                             g: 0,
                             b: 0,
                             a: 255
                         }])}/>
-                        <button style={{ color: "green"}} onClick={() => setFillColor(prev => [...prev, {
+                        <button style={{ backgroundColor: "green", width: "50px", height: "50px" }} onClick={() => setFillColor(prev => [...prev, {
                             r: 0,
                             g: 255,
                             b: 0,
                             a: 255
                         }])}/>
-                        <button style={{ color: "blue"}} onClick={() => setFillColor(prev => [...prev, {
+                        <button style={{ backgroundColor: "blue", width: "50px", height: "50px" }} onClick={() => setFillColor(prev => [...prev, {
                             r: 0,
                             g: 0,
                             b: 255,
                             a: 255
                         }])}/>
-                        <button style={{ color: "yellow"}} onClick={() => setFillColor(prev => [...prev, {
+                        <button style={{ backgroundColor: "yellow", width: "50px", height: "50px" }} onClick={() => setFillColor(prev => [...prev, {
                             r: 255,
                             g: 255,
                             b: 0,
                             a: 255
                         }])}/>
-                        <button style={{ color: "purple"}} onClick={() => setFillColor(prev => [...prev, {
+                        <button style={{ backgroundColor: "purple", width: "50px", height: "50px" }} onClick={() => setFillColor(prev => [...prev, {
                             r: 128,
                             g: 0,
                             b: 128,
                             a: 255
                         }])}/>
-                        <button style={{ color: "white"}} onClick={() => setFillColor(prev => [...prev, {
+                        <button style={{ backgroundColor: "white", width: "50px", height: "50px" }} onClick={() => setFillColor(prev => [...prev, {
                             r: 255,
                             g: 255,
                             b: 255,
                             a: 255
                         }])}/>
-                        <button style={{ color: "black"}} onClick={() => setFillColor(prev => [...prev, {
+                        <button style={{ backgroundColor: "black", width: "50px", height: "50px" }} onClick={() => setFillColor(prev => [...prev, {
                             r: 0,
                             g: 0,
                             b: 0,
