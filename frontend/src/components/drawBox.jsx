@@ -198,7 +198,7 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                         style={{ 
                             border: '1px solid #000;',
                             cursor: 'crosshair',
-                            backgroundImage: {transparent},
+                            backgroundImage: `url(${transparent})`,
                         }}
                         onMouseDown={(e) => {
                             if (!fill) {startDraw(e)}
