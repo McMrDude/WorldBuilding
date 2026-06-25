@@ -181,7 +181,7 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                         changeBackground(255, 255, 255, 255, 0, 0, 0, 0);
                     setTransparentBackground(true)}}>Background: Filled</button>
                 }
-                <div>
+                <div style={{ display: "flex", flexDirection: "row"}}>
                     <button onClick={setFill(false)}>Draw Mode</button>
                     <button onClick={setFill(true)}>Fill Mode</button>
                 </div>
@@ -194,9 +194,19 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                         border: '1px solid #000;',
                         cursor: 'crosshair' 
                     }}
-                    onMouseDown={() => {
-                        if (fill) {floodFill}
-                        else {startDraw}}}
+                    onMouseDown={(e) => {
+                        if (fill) {
+                            const canvas = canvasRef.current;
+                            const rect = canvas.getBoundingClientRect();
+                            const x = Math.floor(e.clientX - rect.left);
+                            const y = Math.floor(e.clientY - rect.top);
+
+                            const chosenColor = { r: 0, g: 0, b: 255, a: 255 };
+
+                            floodFill(canvas, x, y, chosenColor)
+                        }
+                        else {startDraw}
+                    }}
                     onMouseMove={draw}
                     onMouseUp={stopDraw}
                     onMouseLeave={stopDraw}
