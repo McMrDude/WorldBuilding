@@ -206,7 +206,7 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                                 const x = Math.floor(e.clientX - rect.left);
                                 const y = Math.floor(e.clientY - rect.top);
 
-                                const chosenColor = { r: 0, g: 0, b: 255, a: 255 };
+                                const chosenColor = { r: fillColor.r, g: fillColor.g, b: fillColor.b, a: fillColor.a };
 
                                 floodFill(canvas, x, y, chosenColor)
                             }
