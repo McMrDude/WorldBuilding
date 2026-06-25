@@ -248,7 +248,7 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                         <button style={{ backgroundColor: "white", width: "50px", height: "50px" }} onClick={() => setFillColor({
                             r: 255,
                             g: 255,
-                            b: 255,
+                            b: 254,
                             a: 255
                         })}/>
                         <button style={{ backgroundColor: "black", width: "50px", height: "50px" }} onClick={() => setFillColor({
