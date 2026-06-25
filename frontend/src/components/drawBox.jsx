@@ -7,7 +7,7 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
 
     const [fill, setFill] = useState(false)
     const [fillColor, setFillColor] = useState([{
-        r: 0, g: 0, b: 255, a: 0
+        r: 0, g: 0, b: 255, a: 255
     }]);
 
     const [transparentBackground, setTransparentBackground] = useState(false)
