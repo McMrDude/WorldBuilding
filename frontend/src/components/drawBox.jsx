@@ -205,7 +205,7 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
 
                             floodFill(canvas, x, y, chosenColor)
                         }
-                        else {startDraw}
+                        if (!fill) {startDraw}
                     }}
                     onMouseMove={draw}
                     onMouseUp={stopDraw}
