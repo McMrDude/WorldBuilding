@@ -195,7 +195,8 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                         cursor: 'crosshair' 
                     }}
                     onMouseDown={(e) => {
-                        if (fill) {
+                        if (!fill) {startDraw}
+                        else {
                             const canvas = canvasRef.current;
                             const rect = canvas.getBoundingClientRect();
                             const x = Math.floor(e.clientX - rect.left);
@@ -205,7 +206,6 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
 
                             floodFill(canvas, x, y, chosenColor)
                         }
-                        if (!fill) {startDraw}
                     }}
                     onMouseMove={draw}
                     onMouseUp={stopDraw}
