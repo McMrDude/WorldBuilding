@@ -1,5 +1,5 @@
 import {useRef, useEffect, useState } from 'react';
-import transparent from "../img/transparent_background"
+import transparent from "../img/transparent_background.png"
 
 function Draw({ onClose, onDrawn, onSaveDrawing }) {    
     const canvasRef = useRef(null);
