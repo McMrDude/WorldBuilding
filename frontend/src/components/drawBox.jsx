@@ -32,6 +32,7 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
 
     const startDraw = (e) => {
         const ctx = ctxRef.current;
+        ctx.strokeStyle = `rgba(${fillColor.r}, ${fillColor.g}, ${fillColor.b}, ${fillColor.a})`
         const rect = canvasRef.current.getBoundingClientRect();
 
         isDrawing.current = true;
