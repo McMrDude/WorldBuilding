@@ -206,9 +206,7 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                                 const x = Math.floor(e.clientX - rect.left);
                                 const y = Math.floor(e.clientY - rect.top);
 
-                                const chosenColor = { r: fillColor.r, g: fillColor.g, b: fillColor.b, a: fillColor.a };
-
-                                floodFill(canvas, x, y, chosenColor)
+                                floodFill(canvas, x, y, fillColor)
                             }
                         }}
                         onMouseMove={draw}
@@ -217,43 +215,43 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                     ></canvas>
 
                     <div style={{ display: "flex", flexDirection: "column"}}>
-                        <button style={{ backgroundColor: "red", width: "50px", height: "50px" }} onClick={() => setFillColor(prev => [...prev, {
+                        <button style={{ backgroundColor: "red", width: "50px", height: "50px" }} onClick={(e) => setFillColor(prev => [...prev, {
                             r: 255,
                             g: 0,
                             b: 0,
                             a: 255
                         }])}/>
-                        <button style={{ backgroundColor: "green", width: "50px", height: "50px" }} onClick={() => setFillColor(prev => [...prev, {
+                        <button style={{ backgroundColor: "green", width: "50px", height: "50px" }} onClick={(e) => setFillColor(prev => [...prev, {
                             r: 0,
                             g: 255,
                             b: 0,
                             a: 255
                         }])}/>
-                        <button style={{ backgroundColor: "blue", width: "50px", height: "50px" }} onClick={() => setFillColor(prev => [...prev, {
+                        <button style={{ backgroundColor: "blue", width: "50px", height: "50px" }} onClick={(e) => setFillColor(prev => [...prev, {
                             r: 0,
                             g: 0,
                             b: 255,
                             a: 255
                         }])}/>
-                        <button style={{ backgroundColor: "yellow", width: "50px", height: "50px" }} onClick={() => setFillColor(prev => [...prev, {
+                        <button style={{ backgroundColor: "yellow", width: "50px", height: "50px" }} onClick={(e) => setFillColor(prev => [...prev, {
                             r: 255,
                             g: 255,
                             b: 0,
                             a: 255
                         }])}/>
-                        <button style={{ backgroundColor: "purple", width: "50px", height: "50px" }} onClick={() => setFillColor(prev => [...prev, {
+                        <button style={{ backgroundColor: "purple", width: "50px", height: "50px" }} onClick={(e) => setFillColor(prev => [...prev, {
                             r: 128,
                             g: 0,
                             b: 128,
                             a: 255
                         }])}/>
-                        <button style={{ backgroundColor: "white", width: "50px", height: "50px" }} onClick={() => setFillColor(prev => [...prev, {
+                        <button style={{ backgroundColor: "white", width: "50px", height: "50px" }} onClick={(e) => setFillColor(prev => [...prev, {
                             r: 255,
                             g: 255,
                             b: 255,
                             a: 255
                         }])}/>
-                        <button style={{ backgroundColor: "black", width: "50px", height: "50px" }} onClick={() => setFillColor(prev => [...prev, {
+                        <button style={{ backgroundColor: "black", width: "50px", height: "50px" }} onClick={(e) => setFillColor(prev => [...prev, {
                             r: 0,
                             g: 0,
                             b: 0,
