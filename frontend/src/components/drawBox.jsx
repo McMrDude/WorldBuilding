@@ -33,6 +33,11 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
 
     const startDraw = (e) => {
         const ctx = ctxRef.current;
+        if (erase) {
+            ctx.globalCompositOperation = "destination-out";
+        } else {
+            ctx.globalCompositOperation = "source-over";
+        }
         ctx.strokeStyle = `rgba(${fillColor.r}, ${fillColor.g}, ${fillColor.b}, ${fillColor.a})`
         const rect = canvasRef.current.getBoundingClientRect();
 
@@ -50,12 +55,6 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
 
         const ctx = ctxRef.current;
         const rect = canvasRef.current.getBoundingClientRect();
-
-        if (erase) {
-            ctx.globalCompositOperation = "destination-out";
-        } else {
-            ctx.globalCompositOperation = "source-over";
-        }
 
         ctx.lineTo(
             e.clientX - rect.left,
