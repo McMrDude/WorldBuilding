@@ -33,10 +33,13 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
 
     const startDraw = (e) => {
         const ctx = ctxRef.current;
+        console.log(erase)
         if (erase) {
             ctx.globalCompositOperation = "destination-out";
+            console.log("should be erasing");
         } else {
             ctx.globalCompositOperation = "source-over";
+            console.log("no erasininining happenininining ):");
         }
         ctx.strokeStyle = `rgba(${fillColor.r}, ${fillColor.g}, ${fillColor.b}, ${fillColor.a})`
         const rect = canvasRef.current.getBoundingClientRect();
