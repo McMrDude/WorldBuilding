@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import './mapPage.css'
 import AreaBox from "../components/areaBox.jsx"
 import map from "../img/elden_map.png"
@@ -16,6 +16,8 @@ import townPin from "../img/city_pin.png"
 import dungeonPin from "../img/dungeon_pin.png"
 
 function MapPage() {
+    const navigate = useNavigate();
+
     const { id } = useParams();
     const [boxes, setBoxes] = useState([
         /* { id: 1, x: 100, y: 100, text: "RUB-A-DUB-DUB!!" },
@@ -315,7 +317,7 @@ function MapPage() {
             <title>Map Maker</title>
 
             <h1 style={{ fontFamily: "myFont", fontSize: "76px", color: "red", WebkitTextStroke: "1px darkRed", margin: 0, position: "absolute", top: 0, right: "20px", zIndex: "1" }}>MAP</h1>
-            <img src={sideSign} style={{ width: "100px", heigt: "100px", position: "absolute", top: 0, left: 0, cursor: "pointer" }}/>
+            <img src={sideSign} onClick={() => navigate(-1)} style={{ width: "100px", heigt: "100px", position: "absolute", top: 0, left: 0, cursor: "pointer" }}/>
 
             <div style={{ display: 'flex', border: "10px solid transparent", borderImage: `url(${border}) 30 round` }}>
                 <div 
