@@ -7,6 +7,7 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
     const isDrawing = useRef(false);
 
     const [fill, setFill] = useState(false)
+    const [erase, setErase] = useState(false)
     const [fillColor, setFillColor] = useState({
         r: 0, g: 0, b: 255, a: 255
     });
@@ -49,6 +50,12 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
 
         const ctx = ctxRef.current;
         const rect = canvasRef.current.getBoundingClientRect();
+
+        if (erase) {
+            ctx.globalCompositOperation = "destination-out";
+        } else {
+            ctx.globalCompositOperation = "source-over";
+        }
 
         ctx.lineTo(
             e.clientX - rect.left,
@@ -187,7 +194,14 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                     setTransparentBackground(true)}}>Background: Filled</button>
                 }
                 <div>
-                    <button onClick={() => setFill(false)}>Draw Mode</button>
+                    <button onClick={() => {
+                        setFill(false);
+                        setErase(false);
+                    }}>Draw Mode</button>
+                    <button onClick={() => {
+                        setFill(false);
+                        setErase(true);
+                    }}>Erase Mode</button>
                     <button onClick={() => setFill(true)}>Fill Mode</button>
                 </div>
                 <h2>Draw</h2>
