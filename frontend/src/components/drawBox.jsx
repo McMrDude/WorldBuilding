@@ -243,43 +243,43 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
                     ></canvas>
 
                     <div style={{ display: "flex", flexDirection: "column"}}>
-                        <button style={{ backgroundColor: "red", width: "30px", height: "30px" }} onClick={() => {if (transparentBackground && !erase) {setFillColor({
+                        <button style={{ backgroundColor: "red", width: "30px", height: "30px" }} onClick={() => {if (!erase) {setFillColor({
                             r: 255,
                             g: 0,
                             b: 0,
                             a: 255
                         })}}}/>
-                        <button style={{ backgroundColor: "green", width: "30px", height: "30px" }} onClick={() => {if (transparentBackground && !erase) {setFillColor({
+                        <button style={{ backgroundColor: "green", width: "30px", height: "30px" }} onClick={() => {if (!erase) {setFillColor({
                             r: 0,
                             g: 255,
                             b: 0,
                             a: 255
                         })}}}/>
-                        <button style={{ backgroundColor: "blue", width: "30px", height: "30px" }} onClick={() => {if (transparentBackground && !erase) {setFillColor({
+                        <button style={{ backgroundColor: "blue", width: "30px", height: "30px" }} onClick={() => {if (!erase) {setFillColor({
                             r: 0,
                             g: 0,
                             b: 255,
                             a: 255
                         })}}}/>
-                        <button style={{ backgroundColor: "yellow", width: "30px", height: "30px" }} onClick={() => {if (transparentBackground && !erase) {setFillColor({
+                        <button style={{ backgroundColor: "yellow", width: "30px", height: "30px" }} onClick={() => {if (!erase) {setFillColor({
                             r: 255,
                             g: 255,
                             b: 0,
                             a: 255
                         })}}}/>
-                        <button style={{ backgroundColor: "purple", width: "30px", height: "30px" }} onClick={() => {if (transparentBackground && !erase) {setFillColor({
+                        <button style={{ backgroundColor: "purple", width: "30px", height: "30px" }} onClick={() => {if (!erase) {setFillColor({
                             r: 128,
                             g: 0,
                             b: 128,
                             a: 255
                         })}}}/>
-                        <button style={{ backgroundColor: "white", width: "30px", height: "30px" }} onClick={() => {if (transparentBackground && !erase) {setFillColor({
+                        <button style={{ backgroundColor: "white", width: "30px", height: "30px" }} onClick={() => {if (!erase) {setFillColor({
                             r: 255,
                             g: 255,
                             b: 254,
                             a: 255
                         })}}}/>
-                        <button style={{ backgroundColor: "black", width: "30px", height: "30px" }} onClick={() => {if (transparentBackground && !erase) {setFillColor({
+                        <button style={{ backgroundColor: "black", width: "30px", height: "30px" }} onClick={() => {if (!erase) {setFillColor({
                             r: 0,
                             g: 0,
                             b: 0,
