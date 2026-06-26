@@ -35,10 +35,11 @@ function Draw({ onClose, onDrawn, onSaveDrawing }) {
         const ctx = ctxRef.current;
         console.log(erase)
         if (erase) {
-            ctx.globalCompositOperation = "destination-out";
+            ctx.globalCompositeOperation = 'destination-out';
+
             console.log("should be erasing");
         } else {
-            ctx.globalCompositOperation = "source-over";
+            ctx.globalCompositeOperation = "source-over";
             console.log("no erasininining happenininining ):");
         }
         ctx.strokeStyle = `rgba(${fillColor.r}, ${fillColor.g}, ${fillColor.b}, ${fillColor.a})`
